@@ -146,6 +146,7 @@ export default function App() {
         </HashRouter>
       </div>
       <Footer />
+      <Analytics />
     </div>
   );
 }
