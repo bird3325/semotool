@@ -43,17 +43,11 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose, favorites, toggleF
                 <div className="p-4 border-b flex justify-between items-center">
                      <div className="flex items-center space-x-2">
                         <div className="bg-orange-100 p-1.5 rounded-md">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="5" y="5" width="3" height="3" rx="1" fill="#F97316"/>
-                                <rect x="5" y="10" width="3" height="3" rx="1" fill="#F97316"/>
-                                <rect x="5" y="15" width="3" height="3" rx="1" fill="#F97316"/>
-                                <rect x="10" y="5" width="3" height="3" rx="1" fill="#F97316"/>
-                                <rect x="10" y="10" width="3" height="3" rx="1" fill="#F97316"/>
-                                <rect x="10" y="15" width="3" height="3" rx="1" fill="#F97316"/>
-                                <rect x="15" y="5" width="3" height="3" rx="1" fill="#F97316"/>
-                                <rect x="15" y="10" width="3" height="3" rx="1" fill="#F97316"/>
-                                <rect x="15" y="15" width="3" height="3" rx="1" fill="#F97316"/>
-                            </svg>
+                            <img 
+                                src="/semotools.png" 
+                                alt="SemoTools" 
+                                className="w-6 h-6 object-contain"
+                            />
                         </div>
                         <h2 id="menu-title" className="text-lg font-bold text-gray-800">세모툴</h2>
                     </div>
