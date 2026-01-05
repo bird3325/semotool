@@ -56,7 +56,6 @@ import {
     CalendarPlus,
     PartyPopper,
     TimerIcon,
-    // FIX: Module '"lucide-react"' has no exported member 'Stopwatch'. Using 'Timer' icon as a replacement.
     Timer as StopwatchIcon,
     Globe,
     PersonStanding,
@@ -64,7 +63,6 @@ import {
     BrainCircuit,
     ShieldAlert,
     Cake,
-    // FIX: Module '"lucide-react"' has no exported member 'ClipboardHeart'. Using 'ClipboardCheck' icon as a replacement.
     ClipboardCheck,
     GlassWater,
     Wind,
@@ -74,7 +72,13 @@ import {
     Languages,
     IterationCcw,
     FilePenLine,
-    MessageSquareText
+    MessageSquareText,
+    Dna,
+    Zap,
+    History,
+    Map,
+    Gavel,
+    Crown
 } from 'lucide-react';
 
 export const CALCULATOR_CATEGORIES: Category[] = [
@@ -154,7 +158,6 @@ export const CALCULATOR_CATEGORIES: Category[] = [
       { id: 'tip', name: '팁', icon: HandCoins },
       { id: 'anniversary', name: '기념일', icon: PartyPopper },
       { id: 'timer', name: '타이머', icon: TimerIcon },
-      // FIX: 스톱워치 툴에 누락된 icon 속성을 추가하고 이름을 '스톱워치'로 수정했습니다.
       { id: 'stopwatch', name: '스톱워치', icon: StopwatchIcon },
       { id: 'world-clock', name: '세계 시간', icon: Globe },
     ],
@@ -191,6 +194,12 @@ export const CALCULATOR_CATEGORIES: Category[] = [
       { id: 'grade-predictor', name: '성적 예측', icon: ClipboardEdit },
       { id: 'periodic-table', name: '주기율표', icon: Atom },
       { id: 'math-formulas', name: '수학 공식', icon: Sigma },
+      { id: 'physics-formulas', name: '물리 공식', icon: Zap },
+      { id: 'biology-terms', name: '생물 용어', icon: Dna },
+      { id: 'history-timeline', name: '역사 연표', icon: History },
+      { id: 'world-map-info', name: '세계 지도', icon: Map },
+      { id: 'constitution-summary', name: '헌법 개요', icon: Gavel },
+      { id: 'dynasty-kings', name: '왕조 계보', icon: Crown },
     ],
   },
 ];

@@ -54,23 +54,25 @@ const Stopwatch: React.FC = () => {
                 <p className="mt-1 opacity-90">시간을 측정하고 랩 타임을 기록하세요.</p>
             </div>
 
-            <div className="bg-white p-8 md:p-12 rounded-xl shadow-md text-center space-y-10">
-                <p className="text-6xl md:text-8xl font-mono font-black text-gray-900 tracking-tighter tabular-nums">{formatTime(time)}</p>
-                <div className="flex justify-center items-center space-x-6">
-                    <button onClick={handleReset} className="p-5 rounded-3xl bg-gray-100 hover:bg-gray-200 text-gray-600 transition-colors disabled:opacity-30" disabled={isActive || time === 0}>
-                        <RotateCcw size={28} />
+            <div className="bg-white p-6 sm:p-8 md:p-12 rounded-xl shadow-md text-center space-y-10">
+                <p className="text-4xl sm:text-6xl md:text-8xl font-mono font-black text-gray-900 tracking-tighter tabular-nums break-words">
+                    {formatTime(time)}
+                </p>
+                <div className="flex justify-center items-center space-x-3 sm:space-x-6">
+                    <button onClick={handleReset} className="p-4 sm:p-5 rounded-3xl bg-gray-100 hover:bg-gray-200 text-gray-600 transition-colors disabled:opacity-30" disabled={isActive || time === 0}>
+                        <RotateCcw size={24} className="sm:w-7 sm:h-7" />
                     </button>
                     {isActive ? (
-                        <button onClick={handlePause} className="p-6 rounded-[32px] bg-rose-500 hover:bg-rose-600 text-white shadow-lg shadow-rose-100 transform active:scale-95 transition-all">
-                            <Pause size={32} fill="currentColor" />
+                        <button onClick={handlePause} className="p-5 sm:p-6 rounded-[32px] bg-rose-500 hover:bg-rose-600 text-white shadow-lg shadow-rose-100 transform active:scale-95 transition-all">
+                            <Pause size={28} className="sm:w-8 sm:h-8" fill="currentColor" />
                         </button>
                     ) : (
-                        <button onClick={handleStart} className="p-6 rounded-[32px] bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg shadow-emerald-100 transform active:scale-95 transition-all">
-                            <Play size={32} fill="currentColor" className="ml-1" />
+                        <button onClick={handleStart} className="p-5 sm:p-6 rounded-[32px] bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg shadow-emerald-100 transform active:scale-95 transition-all">
+                            <Play size={28} className="sm:w-8 sm:h-8 ml-1" fill="currentColor" />
                         </button>
                     )}
-                    <button onClick={handleLap} className="p-5 rounded-3xl bg-blue-500 hover:bg-blue-600 text-white shadow-lg shadow-blue-100 disabled:opacity-30 transition-all" disabled={!isActive}>
-                        <Flag size={28} fill="currentColor" />
+                    <button onClick={handleLap} className="p-4 sm:p-5 rounded-3xl bg-blue-500 hover:bg-blue-600 text-white shadow-lg shadow-blue-100 disabled:opacity-30 transition-all" disabled={!isActive}>
+                        <Flag size={24} className="sm:w-7 sm:h-7" fill="currentColor" />
                     </button>
                 </div>
             </div>
@@ -78,30 +80,30 @@ const Stopwatch: React.FC = () => {
             <AdBanner />
 
             {laps.length > 0 && (
-                <div className="p-6 bg-white border border-gray-100 rounded-3xl shadow-xl space-y-4 animate-in slide-in-from-bottom-4 duration-500">
+                <div className="p-4 sm:p-6 bg-white border border-gray-100 rounded-3xl shadow-xl space-y-4 animate-in slide-in-from-bottom-4 duration-500">
                      <div className="flex justify-between items-center px-2">
                         <h3 className="text-sm font-black text-gray-400 uppercase tracking-widest">Lap Records</h3>
-                        <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-lg">{laps.length} Laps</span>
+                        <span className="text-[10px] sm:text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-lg">{laps.length} Laps</span>
                      </div>
-                     <div className="max-h-80 overflow-y-auto pr-2 no-scrollbar space-y-2">
+                     <div className="max-h-80 overflow-y-auto pr-1 no-scrollbar space-y-2">
                         {laps.slice().reverse().map((lap, index) => {
                             const currentIdx = laps.length - index;
                             const prevLap = laps[laps.length - index - 2] || 0;
                             const lapDiff = lap - prevLap;
                             return (
-                                <div key={index} className="flex justify-between items-center p-4 bg-gray-50 rounded-2xl border border-gray-100 group hover:border-blue-200 transition-colors">
-                                    <div className="flex items-center space-x-4">
-                                        <span className="w-8 h-8 flex items-center justify-center bg-white rounded-full text-xs font-black text-gray-400 border border-gray-100">{currentIdx}</span>
+                                <div key={index} className="flex justify-between items-center p-3 sm:p-4 bg-gray-50 rounded-2xl border border-gray-100 group hover:border-blue-200 transition-colors">
+                                    <div className="flex items-center space-x-3 sm:space-x-4">
+                                        <span className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center bg-white rounded-full text-[10px] sm:text-xs font-black text-gray-400 border border-gray-100 shrink-0">{currentIdx}</span>
                                         <div className="flex flex-col">
-                                            <span className="font-mono font-bold text-gray-900">{formatTime(lap)}</span>
-                                            <span className="text-[10px] font-black text-gray-400 uppercase">Total</span>
+                                            <span className="font-mono font-bold text-gray-900 text-sm sm:text-base">{formatTime(lap)}</span>
+                                            <span className="text-[8px] sm:text-[10px] font-black text-gray-400 uppercase">Total</span>
                                         </div>
                                     </div>
-                                    <div className="text-right">
-                                        <span className="font-mono font-black text-blue-600 text-lg tabular-nums">+{formatTime(lapDiff)}</span>
+                                    <div className="text-right shrink-0">
+                                        <span className="font-mono font-black text-blue-600 text-base sm:text-lg tabular-nums">+{formatTime(lapDiff)}</span>
                                     </div>
                                 </div>
-                            )
+                            );
                         })}
                      </div>
                 </div>

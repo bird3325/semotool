@@ -55,11 +55,15 @@ const CategorySection: React.FC<{
     index: number;
     isDragging: boolean;
     isAnyDragging: boolean;
-}> = ({ category, favorites, toggleFavorite, addRecent, onDragStart, onDragOver, onDragEnd, index, isDragging, isAnyDragging }) => {
+    isExpanded: boolean;
+    onToggleExpand: () => void;
+}> = ({ 
+    category, favorites, toggleFavorite, addRecent, onDragStart, onDragOver, onDragEnd, index, 
+    isDragging, isAnyDragging, isExpanded, onToggleExpand 
+}) => {
     const hasMore = category.tools.length > 6;
-    const [isExpanded, setIsExpanded] = useState(false);
-
-    const toolsToShow = isExpanded ? category.tools : category.tools.slice(0, 6);
+    // 드래그 중이 아닐 때만 실제 확장 상태를 적용하여 UI 구조를 유지합니다.
+    const toolsToShow = isExpanded && !isAnyDragging ? category.tools : category.tools.slice(0, 6);
 
     return (
         <div 
@@ -82,7 +86,7 @@ const CategorySection: React.FC<{
                     <h3 className={`font-bold text-gray-800 transition-all ${isAnyDragging ? 'text-base' : 'text-xl'}`}>{category.name}</h3>
                 </div>
                 {!isAnyDragging && hasMore && (
-                    <button onClick={() => setIsExpanded(!isExpanded)} className="text-sm font-semibold text-blue-600 hover:text-blue-800 flex items-center px-3 py-1 rounded-full hover:bg-blue-50 transition-colors">
+                    <button onClick={onToggleExpand} className="text-sm font-semibold text-blue-600 hover:text-blue-800 flex items-center px-3 py-1 rounded-full hover:bg-blue-50 transition-colors">
                         <span>{isExpanded ? '간략히' : '더보기'}</span>
                         {isExpanded ? <ChevronUp className="w-4 h-4 ml-1" /> : <ChevronDown className="w-4 h-4 ml-1" />}
                     </button>
@@ -92,7 +96,6 @@ const CategorySection: React.FC<{
                 )}
             </div>
 
-            {/* 드래그 중일 때는 도구 목록을 숨겨서 박스를 작게 만듭니다 */}
             <div className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 transition-all duration-300 overflow-hidden ${isAnyDragging ? 'max-h-0 opacity-0 mt-0' : 'max-h-[2000px] opacity-100 mt-2'}`}>
                 {toolsToShow.map(tool => {
                     const isFavorite = favorites.includes(tool.id);
@@ -135,16 +138,29 @@ const HomePage: React.FC<HomePageProps> = ({ favorites, toggleFavorite, openMenu
     return CALCULATOR_CATEGORIES;
   });
 
+  // 하나의 섹션만 확장하기 위한 상태 (상세 페이지 이동 후에도 유지되도록 localStorage 활용)
+  const [expandedCategoryId, setExpandedCategoryId] = useState<string | null>(() => {
+      return localStorage.getItem('lastExpandedCategory');
+  });
+
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
 
   useEffect(() => {
     localStorage.setItem('categoryOrder', JSON.stringify(categories.map(c => c.id)));
   }, [categories]);
 
+  // 확장 상태 변경 시 localStorage에 저장
+  useEffect(() => {
+      if (expandedCategoryId) {
+          localStorage.setItem('lastExpandedCategory', expandedCategoryId);
+      } else {
+          localStorage.removeItem('lastExpandedCategory');
+      }
+  }, [expandedCategoryId]);
+
   const handleDragStart = (e: React.DragEvent, index: number) => {
     setDraggedIndex(index);
     e.dataTransfer.effectAllowed = 'move';
-    // 투명한 고스트 이미지를 설정하여 브라우저 기본 드래그 UI 대신 우리가 만든 UI가 돋보이게 합니다.
     const img = new Image();
     img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
     e.dataTransfer.setDragImage(img, 0, 0);
@@ -167,12 +183,15 @@ const HomePage: React.FC<HomePageProps> = ({ favorites, toggleFavorite, openMenu
     setDraggedIndex(null);
   };
 
+  const toggleCategoryExpand = (categoryId: string) => {
+      setExpandedCategoryId(prev => prev === categoryId ? null : categoryId);
+  };
+
   return (
     <div className="pb-10">
       <Header openMenu={openMenu} />
       <Banner />
       
-      {/* 정렬 모드 시 안내 문구 */}
       <div className={`text-center transition-all duration-300 overflow-hidden ${draggedIndex !== null ? 'max-h-10 mb-4 opacity-100' : 'max-h-0 opacity-0'}`}>
          <span className="text-[10px] font-black text-blue-500 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full">순서 변경 모드 활성화됨</span>
       </div>
@@ -191,8 +210,9 @@ const HomePage: React.FC<HomePageProps> = ({ favorites, toggleFavorite, openMenu
               onDragEnd={handleDragEnd}
               isDragging={draggedIndex === index}
               isAnyDragging={draggedIndex !== null}
+              isExpanded={expandedCategoryId === category.id}
+              onToggleExpand={() => toggleCategoryExpand(category.id)}
             />
-            {/* 광고 영역은 드래그 상태가 아닐 때 항상 첫 번째 섹션(index 0) 다음에 위치하여 전체 2번째가 됨 */}
             {!draggedIndex && index === 0 && <AdBanner />}
           </React.Fragment>
         ))}

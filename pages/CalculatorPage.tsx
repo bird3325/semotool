@@ -69,6 +69,12 @@ import GradeConverter from '../components/calculators/GradeConverter';
 import GradePredictor from '../components/calculators/GradePredictor';
 import PeriodicTable from '../components/calculators/PeriodicTable';
 import MathFormulas from '../components/calculators/MathFormulas';
+import PhysicsFormulas from '../components/calculators/PhysicsFormulas';
+import BiologyTerms from '../components/calculators/BiologyTerms';
+import HistoryTimeline from '../components/calculators/HistoryTimeline';
+import WorldMapInfo from '../components/calculators/WorldMapInfo';
+import ConstitutionSummary from '../components/calculators/ConstitutionSummary';
+import DynastyKings from '../components/calculators/DynastyKings';
 
 interface CalculatorPageProps {
   favorites: string[];
@@ -181,6 +187,12 @@ const CalculatorPage: React.FC<CalculatorPageProps> = ({ favorites, toggleFavori
       case 'grade-predictor': return <GradePredictor />;
       case 'periodic-table': return <PeriodicTable />;
       case 'math-formulas': return <MathFormulas />;
+      case 'physics-formulas': return <PhysicsFormulas />;
+      case 'biology-terms': return <BiologyTerms />;
+      case 'history-timeline': return <HistoryTimeline />;
+      case 'world-map-info': return <WorldMapInfo />;
+      case 'constitution-summary': return <ConstitutionSummary />;
+      case 'dynasty-kings': return <DynastyKings />;
 
       default:
         return <div className="p-4 md:p-6 text-center">계산기 기능이 아직 구현되지 않았습니다.</div>;
@@ -198,7 +210,7 @@ const CalculatorPage: React.FC<CalculatorPageProps> = ({ favorites, toggleFavori
       calculatorName = popularTool.name;
   } else if (converterIds.includes(id)) {
       calculatorName = `${calculator.name} 변환기`;
-  } else if (['periodic-table', 'math-formulas'].includes(id)) {
+  } else if (['periodic-table', 'math-formulas', 'physics-formulas', 'biology-terms', 'history-timeline', 'world-map-info', 'constitution-summary', 'dynasty-kings'].includes(id)) {
       calculatorName = calculator.name;
   }
 
