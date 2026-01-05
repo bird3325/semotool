@@ -69,6 +69,10 @@ import GradeConverter from '../components/calculators/GradeConverter';
 import GradePredictor from '../components/calculators/GradePredictor';
 import PeriodicTable from '../components/calculators/PeriodicTable';
 import MathFormulas from '../components/calculators/MathFormulas';
+import HanjaTool from '../components/calculators/HanjaTool';
+import IrregularVerbs from '../components/calculators/IrregularVerbs';
+import GrammarRules from '../components/calculators/GrammarRules';
+import CommonIdioms from '../components/calculators/CommonIdioms';
 
 interface CalculatorPageProps {
   favorites: string[];
@@ -181,6 +185,10 @@ const CalculatorPage: React.FC<CalculatorPageProps> = ({ favorites, toggleFavori
       case 'grade-predictor': return <GradePredictor />;
       case 'periodic-table': return <PeriodicTable />;
       case 'math-formulas': return <MathFormulas />;
+      case 'hanja': return <HanjaTool />;
+      case 'irregular-verbs': return <IrregularVerbs />;
+      case 'grammar-rules': return <GrammarRules />;
+      case 'common-idioms': return <CommonIdioms />;
 
       default:
         return <div className="p-4 md:p-6 text-center">계산기 기능이 아직 구현되지 않았습니다.</div>;
@@ -198,7 +206,7 @@ const CalculatorPage: React.FC<CalculatorPageProps> = ({ favorites, toggleFavori
       calculatorName = popularTool.name;
   } else if (converterIds.includes(id)) {
       calculatorName = `${calculator.name} 변환기`;
-  } else if (['periodic-table', 'math-formulas'].includes(id)) {
+  } else if (['periodic-table', 'math-formulas', 'hanja', 'irregular-verbs', 'grammar-rules', 'common-idioms'].includes(id)) {
       calculatorName = calculator.name;
   }
 
