@@ -1,6 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
 import { CalendarDays } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import DatePicker from '../ui/DatePicker';
 
 const DdayCalculator: React.FC = () => {
     const today = new Date();
@@ -47,32 +49,30 @@ const DdayCalculator: React.FC = () => {
                 <p className="mt-1 opacity-90">특정 날짜까지 남은 일수 계산</p>
             </div>
 
-            <div className="bg-white p-6 rounded-xl shadow-md space-y-4">
-                <label htmlFor="dday-date" className="block text-sm font-medium text-gray-700 text-center">
-                    기준 날짜를 선택하세요
-                </label>
-                <input
-                    type="date"
-                    id="dday-date"
-                    value={targetDate}
-                    onChange={(e) => setTargetDate(e.target.value)}
-                    className="w-full p-3 border border-gray-300 rounded-lg text-lg text-center"
+            <div className="bg-white p-8 rounded-3xl shadow-md border border-gray-100">
+                <DatePicker 
+                  label="기준 날짜 선택" 
+                  value={targetDate} 
+                  onChange={setTargetDate} 
+                  colorClass="text-cyan-600"
                 />
             </div>
 
             <AdBanner />
 
             {result && (
-                <div className="p-6 bg-gray-50 rounded-xl text-center">
-                    <p className="text-sm text-gray-500">{getFormattedDate(new Date(targetDate))}</p>
-                    <p className="text-5xl font-bold text-blue-600 my-2">
+                <div className="p-8 bg-white border border-cyan-100 rounded-3xl shadow-xl text-center animate-in zoom-in-95 duration-500">
+                    <p className="text-xs font-black text-gray-400 uppercase tracking-widest">{targetDate}</p>
+                    <p className="text-6xl font-black text-cyan-600 my-4 tracking-tighter">
                         {result.type === 'D-day' ? 'D-Day' : `${result.type}${result.days}`}
                     </p>
-                    <p className="text-md text-gray-700">
-                        {result.type === 'D-' && `오늘로부터 ${result.days}일 남았습니다.`}
-                        {result.type === 'D+' && `오늘로부터 ${result.days}일 지났습니다.`}
-                        {result.type === 'D-day' && `바로 오늘입니다!`}
-                    </p>
+                    <div className="inline-block px-4 py-2 bg-cyan-50 rounded-full border border-cyan-100">
+                      <p className="text-sm font-bold text-cyan-700">
+                          {result.type === 'D-' && `오늘로부터 ${result.days}일 남았습니다.`}
+                          {result.type === 'D+' && `오늘로부터 ${result.days}일 지났습니다.`}
+                          {result.type === 'D-day' && `바로 오늘입니다!`}
+                      </p>
+                    </div>
                 </div>
             )}
         </div>

@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 import { PiggyBank } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import DatePicker from '../ui/DatePicker';
 
 const getDaysBetween = (date1: string, date2: string) => {
   const d1 = new Date(date1);
@@ -10,8 +12,8 @@ const getDaysBetween = (date1: string, date2: string) => {
 };
 
 const RetirementCalculator: React.FC = () => {
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [startDate, setStartDate] = useState('2020-01-01');
+  const [endDate, setEndDate] = useState(new Date().toISOString().split('T')[0]);
   const [last3MonthsSalary, setLast3MonthsSalary] = useState('10000000');
   const [annualBonus, setAnnualBonus] = useState('5000000');
   const [result, setResult] = useState<{ employmentDays: number; dailyWage: number; severancePay: number } | null>(null);
@@ -33,15 +35,11 @@ const RetirementCalculator: React.FC = () => {
 
     const employmentDays = getDaysBetween(startDate, endDate);
     if (employmentDays < 365) {
-      // Typically, severance is not required for less than a year of employment
       setResult({ employmentDays, dailyWage: 0, severancePay: 0 });
       return;
     }
     
-    // Simplified calculation for days in last 3 months
     const daysInLast3Months = 90;
-    
-    // Include pro-rated annual bonus
     const proratedBonus = (bonus || 0) * (3/12);
     const totalWagesFor3Months = salary + proratedBonus;
 
@@ -61,50 +59,58 @@ const RetirementCalculator: React.FC = () => {
         <p className="mt-1 opacity-90">예상 퇴직금을 계산해보세요.</p>
       </div>
       
-      <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-600 mb-2">입사일</label>
-            <input type="date" value={startDate} onChange={e => setStartDate(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg" />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-600 mb-2">퇴사일</label>
-            <input type="date" value={endDate} onChange={e => setEndDate(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg" />
-          </div>
+      <div className="bg-white p-8 rounded-3xl shadow-md border border-gray-100 space-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <DatePicker label="입사일" value={startDate} onChange={setStartDate} colorClass="text-amber-600" />
+          <DatePicker label="퇴사일" value={endDate} onChange={setEndDate} colorClass="text-amber-600" />
         </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-600 mb-2">3개월간 총 급여 (세전)</label>
-          <input type="text" value={last3MonthsSalary} onChange={e => setLast3MonthsSalary(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
-        </div>
-         <div>
-          <label className="block text-sm font-medium text-gray-600 mb-2">연간 상여금 등 (세전)</label>
-          <input type="text" value={annualBonus} onChange={e => setAnnualBonus(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+
+        <div className="space-y-6">
+          <div>
+            <label className="block text-sm font-black text-gray-500 uppercase tracking-wider mb-2">3개월간 총 급여 (세전)</label>
+            <div className="relative group">
+              <input type="text" value={last3MonthsSalary} onChange={e => setLast3MonthsSalary(formatNumber(e.target.value))} className="w-full py-4 bg-gray-50/50 border-b-2 border-gray-100 focus:border-amber-500 outline-none text-right font-black text-2xl text-gray-900 pr-10" />
+              <span className="absolute right-0 top-1/2 -translate-y-1/2 text-gray-500 font-bold text-lg">원</span>
+            </div>
+          </div>
+           <div>
+            <label className="block text-sm font-black text-gray-500 uppercase tracking-wider mb-2">연간 상여금 등 (세전)</label>
+            <div className="relative group">
+              <input type="text" value={annualBonus} onChange={e => setAnnualBonus(formatNumber(e.target.value))} className="w-full py-4 bg-gray-50/50 border-b-2 border-gray-100 focus:border-amber-500 outline-none text-right font-black text-2xl text-gray-900 pr-10" />
+              <span className="absolute right-0 top-1/2 -translate-y-1/2 text-gray-500 font-bold text-lg">원</span>
+            </div>
+          </div>
         </div>
         
-        <button onClick={handleCalculate} className="w-full p-4 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
-          계산하기
+        <button onClick={handleCalculate} className="w-full py-5 bg-amber-500 hover:bg-amber-600 text-white font-black rounded-2xl text-xl shadow-lg shadow-amber-100 transition-all active:scale-[0.98]">
+          실시간 계산하기
         </button>
       </div>
 
       <AdBanner />
 
       {result && (
-        <div className="p-6 bg-gray-50 rounded-xl text-left space-y-3">
-           <h3 className="text-lg font-bold text-center mb-4">계산 결과</h3>
-            <div className="flex justify-between items-center">
-                <span className="text-gray-600">총 재직일수</span>
-                <span className="font-semibold">{result.employmentDays.toLocaleString()} 일</span>
+        <div className="p-8 bg-white border border-amber-100 rounded-3xl shadow-xl space-y-6 animate-in zoom-in-95 duration-500">
+           <h3 className="text-[12px] font-black text-amber-600 uppercase tracking-[0.2em] text-center">Calculation Result</h3>
+           
+           <div className="grid grid-cols-2 gap-4">
+              <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100">
+                <span className="text-[10px] font-black text-gray-400 uppercase">총 재직일수</span>
+                <p className="font-black text-lg text-gray-900">{result.employmentDays.toLocaleString()} 일</p>
+              </div>
+              <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100">
+                <span className="text-[10px] font-black text-gray-400 uppercase">1일 평균임금</span>
+                <p className="font-black text-lg text-gray-900">{Math.round(result.dailyWage).toLocaleString()} 원</p>
+              </div>
+           </div>
+
+            <div className="p-6 bg-amber-50 rounded-3xl border border-amber-100 text-center">
+                <span className="text-xs font-bold text-amber-600">예상 퇴직금 (세전)</span>
+                <p className="font-black text-4xl text-gray-900 mt-2">{Math.round(result.severancePay).toLocaleString()} <span className="text-xl">원</span></p>
             </div>
-            <div className="flex justify-between items-center">
-                <span className="text-gray-600">1일 평균임금</span>
-                <span className="font-semibold">{Math.round(result.dailyWage).toLocaleString()} 원</span>
-            </div>
-            <hr className="my-2"/>
-            <div className="flex justify-between items-center text-blue-600">
-                <span className="text-lg font-bold">예상 퇴직금 (세전)</span>
-                <span className="font-bold text-2xl">{Math.round(result.severancePay).toLocaleString()} 원</span>
-            </div>
-            <p className="text-xs text-gray-500 text-center pt-2">※ 실제 퇴직금과 차이가 있을 수 있으므로 참고용으로만 활용하세요.</p>
+            <p className="text-[11px] text-gray-400 font-medium text-center leading-relaxed">
+                ※ 실제 퇴직금은 평균임금 산정 기준에 따라 차이가 있을 수 있습니다.
+            </p>
         </div>
       )}
     </div>
