@@ -2,9 +2,20 @@
 import React, { useState } from 'react';
 import { PiggyBank } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import SelectModal from '../ui/SelectModal';
 
 type InterestType = 'simple' | 'compound';
 type TaxType = 'general' | 'tax-free';
+
+const interestOptions = [
+    { value: 'simple', label: '단리' },
+    { value: 'compound', label: '복리' }
+];
+
+const taxOptions = [
+    { value: 'general', label: '일반과세 (15.4%)' },
+    { value: 'tax-free', label: '비과세' }
+];
 
 const SavingsCalculator: React.FC = () => {
     const [monthlyDeposit, setMonthlyDeposit] = useState('100000');
@@ -63,29 +74,40 @@ const SavingsCalculator: React.FC = () => {
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
-                <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">매월 저축액 (원)</label>
-                    <input type="text" value={monthlyDeposit} onChange={e => setMonthlyDeposit(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label className="block text-sm font-medium text-gray-600 mb-2">매월 저축액 (원)</label>
+                        <input type="text" value={monthlyDeposit} onChange={e => setMonthlyDeposit(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right outline-none focus:ring-2 focus:ring-amber-500" />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-600 mb-2">저축 기간 (개월)</label>
+                        <input type="number" value={period} onChange={e => setPeriod(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right outline-none focus:ring-2 focus:ring-amber-500" />
+                    </div>
                 </div>
-                <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">기간 (개월)</label>
-                    <input type="number" value={period} onChange={e => setPeriod(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
-                </div>
+                
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">연이율 (%)</label>
-                    <input type="number" value={rate} onChange={e => setRate(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                    <input type="number" value={rate} onChange={e => setRate(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right outline-none focus:ring-2 focus:ring-amber-500" />
                 </div>
-                <div className="grid grid-cols-2 gap-4">
-                    <select value={interestType} onChange={e => setInterestType(e.target.value as InterestType)} className="w-full p-3 border border-gray-300 rounded-lg bg-white">
-                        <option value="simple">단리</option>
-                        <option value="compound">복리</option>
-                    </select>
-                    <select value={taxType} onChange={e => setTaxType(e.target.value as TaxType)} className="w-full p-3 border border-gray-300 rounded-lg bg-white">
-                        <option value="general">일반과세 (15.4%)</option>
-                        <option value="tax-free">비과세</option>
-                    </select>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <SelectModal 
+                        label="이자 계산 방식"
+                        options={interestOptions}
+                        value={interestType}
+                        onChange={setInterestType}
+                        colorClass="text-amber-600"
+                    />
+                    <SelectModal 
+                        label="과세 방법"
+                        options={taxOptions}
+                        value={taxType}
+                        onChange={setTaxType}
+                        colorClass="text-amber-600"
+                    />
                 </div>
-                <button onClick={handleCalculate} className="w-full p-4 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
+                
+                <button onClick={handleCalculate} className="w-full p-4 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-lg text-lg transition-transform active:scale-95 shadow-md">
                     계산하기
                 </button>
             </div>
@@ -93,24 +115,24 @@ const SavingsCalculator: React.FC = () => {
             <AdBanner />
 
             {result && (
-                 <div className="p-6 bg-gray-50 rounded-xl text-left space-y-3">
-                    <h3 className="text-lg font-bold text-center mb-4">계산 결과</h3>
-                    <div className="flex justify-between items-center">
-                        <span className="text-gray-600">총 원금</span>
+                 <div className="p-6 bg-gray-50 rounded-xl text-left space-y-3 border border-amber-100 animate-in zoom-in-95 duration-300">
+                    <h3 className="text-lg font-bold text-center mb-4 text-gray-800">예상 만기 수령액</h3>
+                    <div className="flex justify-between items-center text-gray-600">
+                        <span className="text-sm">총 납입 원금</span>
                         <span className="font-semibold text-lg">{result.principal.toLocaleString('en-US', {maximumFractionDigits: 0})} 원</span>
                     </div>
-                    <div className="flex justify-between items-center">
-                        <span className="text-gray-600">세전 이자</span>
+                    <div className="flex justify-between items-center text-gray-600">
+                        <span className="text-sm">세전 이자</span>
                         <span className="font-semibold text-lg">{result.preTaxInterest.toLocaleString('en-US', {maximumFractionDigits: 0})} 원</span>
                     </div>
-                    <div className="flex justify-between items-center text-red-600">
-                        <span >이자과세</span>
+                    <div className="flex justify-between items-center text-red-500">
+                        <span className="text-sm">이자과세</span>
                         <span className="font-semibold text-lg">- {result.tax.toLocaleString('en-US', {maximumFractionDigits: 0})} 원</span>
                     </div>
-                    <hr className="my-2"/>
+                    <hr className="my-2 border-gray-200"/>
                     <div className="flex justify-between items-center text-blue-600">
-                        <span className="font-semibold">세후 수령액</span>
-                        <span className="font-bold text-2xl">{result.totalAmount.toLocaleString('en-US', {maximumFractionDigits: 0})} 원</span>
+                        <span className="font-bold">세후 수령액</span>
+                        <span className="font-black text-2xl">{result.totalAmount.toLocaleString('en-US', {maximumFractionDigits: 0})} 원</span>
                     </div>
                 </div>
             )}

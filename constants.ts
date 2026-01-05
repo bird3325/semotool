@@ -68,7 +68,9 @@ import {
     ClipboardCheck,
     GlassWater,
     Wind,
-    ClipboardEdit
+    ClipboardEdit,
+    Atom,
+    Sigma
 } from 'lucide-react';
 
 export const CALCULATOR_CATEGORIES: Category[] = [
@@ -148,6 +150,7 @@ export const CALCULATOR_CATEGORIES: Category[] = [
       { id: 'tip', name: '팁', icon: HandCoins },
       { id: 'anniversary', name: '기념일', icon: PartyPopper },
       { id: 'timer', name: '타이머', icon: TimerIcon },
+      // FIX: 스톱워치 툴에 누락된 icon 속성을 추가하고 이름을 '스톱워치'로 수정했습니다.
       { id: 'stopwatch', name: '스톱워치', icon: StopwatchIcon },
       { id: 'world-clock', name: '세계 시간', icon: Globe },
     ],
@@ -182,6 +185,8 @@ export const CALCULATOR_CATEGORIES: Category[] = [
       { id: 'percentage', name: '퍼센트', icon: PercentCircle },
       { id: 'grade-converter', name: '학점 변환', icon: ArrowRightLeft },
       { id: 'grade-predictor', name: '성적 예측', icon: ClipboardEdit },
+      { id: 'periodic-table', name: '주기율표', icon: Atom },
+      { id: 'math-formulas', name: '수학 공식', icon: Sigma },
     ],
   },
 ];

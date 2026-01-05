@@ -2,12 +2,20 @@
 import React, { useState } from 'react';
 import { Repeat } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import SelectModal from '../ui/SelectModal';
+
+const compoundingOptions = [
+    { value: '1', label: '매년' },
+    { value: '2', label: '6개월' },
+    { value: '4', label: '분기' },
+    { value: '12', label: '매월' }
+];
 
 const CompoundInterestCalculator: React.FC = () => {
     const [principal, setPrincipal] = useState('10000000');
     const [rate, setRate] = useState('5');
     const [years, setYears] = useState('10');
-    const [compounding, setCompounding] = useState(12); // Monthly
+    const [compounding, setCompounding] = useState('12'); // Monthly
     const [result, setResult] = useState<{ futureValue: number; totalInterest: number } | null>(null);
     
     const formatNumber = (val: string) => {
@@ -20,7 +28,7 @@ const CompoundInterestCalculator: React.FC = () => {
         const P = parseFloat(principal.replace(/,/g, ''));
         const r = parseFloat(rate) / 100;
         const t = parseInt(years, 10);
-        const n = compounding;
+        const n = parseInt(compounding, 10);
 
         if (isNaN(P) || isNaN(r) || isNaN(t) || P <= 0 || r < 0 || t <= 0) {
             setResult(null);
@@ -47,26 +55,29 @@ const CompoundInterestCalculator: React.FC = () => {
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">원금 (원)</label>
-                    <input type="text" value={principal} onChange={e => setPrincipal(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                    <input type="text" value={principal} onChange={e => setPrincipal(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right outline-none focus:ring-2 focus:ring-amber-500" />
                 </div>
-                <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">연이율 (%)</label>
-                    <input type="number" value={rate} onChange={e => setRate(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label className="block text-sm font-medium text-gray-600 mb-2">연이율 (%)</label>
+                        <input type="number" value={rate} onChange={e => setRate(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right outline-none focus:ring-2 focus:ring-amber-500" />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-600 mb-2">투자 기간 (년)</label>
+                        <input type="number" value={years} onChange={e => setYears(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right outline-none focus:ring-2 focus:ring-amber-500" />
+                    </div>
                 </div>
-                <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">기간 (년)</label>
-                    <input type="number" value={years} onChange={e => setYears(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
-                </div>
-                 <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">복리 주기</label>
-                    <select value={compounding} onChange={e => setCompounding(Number(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg bg-white">
-                        <option value={1}>매년</option>
-                        <option value={2}>6개월</option>
-                        <option value={4}>분기</option>
-                        <option value={12}>매월</option>
-                    </select>
-                </div>
-                <button onClick={handleCalculate} className="w-full p-4 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
+
+                <SelectModal 
+                    label="복리 주기"
+                    options={compoundingOptions}
+                    value={compounding}
+                    onChange={setCompounding}
+                    colorClass="text-amber-600"
+                />
+
+                <button onClick={handleCalculate} className="w-full p-4 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-lg text-lg transition-transform active:scale-95 shadow-md">
                     계산하기
                 </button>
             </div>
@@ -74,20 +85,20 @@ const CompoundInterestCalculator: React.FC = () => {
             <AdBanner />
 
             {result && (
-                <div className="p-6 bg-gray-50 rounded-xl text-left space-y-3">
-                    <h3 className="text-lg font-bold text-center mb-4">계산 결과</h3>
-                    <div className="flex justify-between items-center">
-                        <span className="text-gray-600">총 원금</span>
-                        <span className="font-semibold">{parseFloat(principal.replace(/,/g, '')).toLocaleString()} 원</span>
+                <div className="p-6 bg-gray-50 rounded-xl text-left space-y-3 border border-amber-100 animate-in zoom-in-95 duration-300">
+                    <h3 className="text-lg font-bold text-center mb-4 text-gray-800">미래 가치 예상 결과</h3>
+                    <div className="flex justify-between items-center text-gray-600">
+                        <span className="text-sm">투자 원금</span>
+                        <span className="font-semibold text-lg">{parseFloat(principal.replace(/,/g, '')).toLocaleString()} 원</span>
                     </div>
-                    <div className="flex justify-between items-center text-green-600">
-                        <span className="text-gray-600">총 이자</span>
-                        <span className="font-semibold">+ {Math.round(result.totalInterest).toLocaleString()} 원</span>
+                    <div className="flex justify-between items-center text-emerald-600">
+                        <span className="text-sm">수익 (이자)</span>
+                        <span className="font-semibold text-lg">+ {Math.round(result.totalInterest).toLocaleString()} 원</span>
                     </div>
-                    <hr className="my-2"/>
+                    <hr className="my-2 border-gray-200"/>
                     <div className="flex justify-between items-center text-blue-600">
-                        <span className="text-lg font-bold">최종 금액</span>
-                        <span className="font-bold text-2xl">{Math.round(result.futureValue).toLocaleString()} 원</span>
+                        <span className="font-bold">최종 예상 금액</span>
+                        <span className="font-black text-2xl">{Math.round(result.futureValue).toLocaleString()} 원</span>
                     </div>
                 </div>
             )}
