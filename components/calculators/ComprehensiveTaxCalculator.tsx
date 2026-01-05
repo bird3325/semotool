@@ -2,6 +2,12 @@
 import React, { useState } from 'react';
 import { Building2 } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import SelectModal from '../ui/SelectModal';
+
+const ownerOptions = [
+  { value: 'single', label: '1주택 (단독명의)' },
+  { value: 'multi', label: '다주택/공동명의' }
+];
 
 const ComprehensiveTaxCalculator: React.FC = () => {
     const [propertyValue, setPropertyValue] = useState('1500000000');
@@ -50,10 +56,15 @@ const ComprehensiveTaxCalculator: React.FC = () => {
                     <label className="block text-sm font-medium text-gray-600 mb-2">과세기준금액 (공시가격 합산)</label>
                     <input type="text" value={propertyValue} onChange={e => setPropertyValue(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
                 </div>
-                <div className="flex justify-center space-x-4">
-                    <button onClick={() => setIsSingleOwner(true)} className={`px-6 py-2 rounded-full font-semibold ${isSingleOwner ? 'bg-violet-500 text-white' : 'bg-gray-200 text-gray-700'}`}>1주택 (단독명의)</button>
-                    <button onClick={() => setIsSingleOwner(false)} className={`px-6 py-2 rounded-full font-semibold ${!isSingleOwner ? 'bg-violet-500 text-white' : 'bg-gray-200 text-gray-700'}`}>다주택/공동명의</button>
-                </div>
+                
+                <SelectModal 
+                  label="보유 형태" 
+                  options={ownerOptions} 
+                  value={isSingleOwner ? 'single' : 'multi'} 
+                  onChange={(val) => setIsSingleOwner(val === 'single')}
+                  colorClass="text-violet-600"
+                />
+
                 <button onClick={handleCalculate} className="w-full p-4 bg-violet-500 hover:bg-violet-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
                     계산하기
                 </button>

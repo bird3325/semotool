@@ -2,8 +2,14 @@
 import React, { useState } from 'react';
 import { PersonStanding } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import SelectModal from '../ui/SelectModal';
 
 type Gender = 'male' | 'female';
+
+const genderOptions = [
+  { value: 'male', label: '남성' },
+  { value: 'female', label: '여성' }
+];
 
 const BodyFatCalculator: React.FC = () => {
     const [gender, setGender] = useState<Gender>('male');
@@ -69,10 +75,14 @@ const BodyFatCalculator: React.FC = () => {
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
-                <div className="flex justify-center space-x-4">
-                    <button onClick={() => setGender('male')} className={`px-6 py-2 rounded-full font-semibold ${gender === 'male' ? 'bg-pink-500 text-white' : 'bg-gray-200 text-gray-700'}`}>남성</button>
-                    <button onClick={() => setGender('female')} className={`px-6 py-2 rounded-full font-semibold ${gender === 'female' ? 'bg-pink-500 text-white' : 'bg-gray-200 text-gray-700'}`}>여성</button>
-                </div>
+                <SelectModal 
+                  label="성별" 
+                  options={genderOptions} 
+                  value={gender} 
+                  onChange={setGender} 
+                  colorClass="text-pink-600"
+                />
+
                 <div className="grid grid-cols-2 gap-4">
                     <div>
                         <label className="block text-sm font-medium text-gray-600 mb-2">신장 (cm)</label>

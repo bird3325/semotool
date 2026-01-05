@@ -2,9 +2,15 @@
 import React, { useState } from 'react';
 import { Flame } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import SelectModal from '../ui/SelectModal';
 
 type Gender = 'male' | 'female';
 type ActivityLevel = 'sedentary' | 'light' | 'moderate' | 'active' | 'veryActive';
+
+const genderOptions = [
+  { value: 'male', label: '남성' },
+  { value: 'female', label: '여성' }
+];
 
 const activityLevels: { key: ActivityLevel, name: string, multiplier: number }[] = [
     { key: 'sedentary', name: '거의 없음', multiplier: 1.2 },
@@ -13,6 +19,11 @@ const activityLevels: { key: ActivityLevel, name: string, multiplier: number }[]
     { key: 'active', name: '적극적인 활동 (주 6-7일)', multiplier: 1.725 },
     { key: 'veryActive', name: '매우 적극적인 활동', multiplier: 1.9 },
 ];
+
+const activityOptions = activityLevels.map(level => ({
+    value: level.key,
+    label: level.name
+}));
 
 const MetabolismCalculator: React.FC = () => {
     const [gender, setGender] = useState<Gender>('male');
@@ -57,10 +68,14 @@ const MetabolismCalculator: React.FC = () => {
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
-                <div className="flex justify-center space-x-4">
-                    <button onClick={() => setGender('male')} className={`px-6 py-2 rounded-full font-semibold ${gender === 'male' ? 'bg-pink-500 text-white' : 'bg-gray-200 text-gray-700'}`}>남성</button>
-                    <button onClick={() => setGender('female')} className={`px-6 py-2 rounded-full font-semibold ${gender === 'female' ? 'bg-pink-500 text-white' : 'bg-gray-200 text-gray-700'}`}>여성</button>
-                </div>
+                <SelectModal 
+                  label="성별" 
+                  options={genderOptions} 
+                  value={gender} 
+                  onChange={setGender} 
+                  colorClass="text-pink-600"
+                />
+
                 <div className="grid grid-cols-3 gap-4">
                     <div>
                         <label className="block text-sm font-medium text-gray-600 mb-2 text-center">나이</label>
@@ -76,12 +91,13 @@ const MetabolismCalculator: React.FC = () => {
                     </div>
                 </div>
                  <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">활동 수준</label>
-                    <select value={activityLevel} onChange={e => setActivityLevel(e.target.value as ActivityLevel)} className="w-full p-3 border border-gray-300 rounded-lg bg-white text-base">
-                        {activityLevels.map(level => (
-                            <option key={level.key} value={level.key}>{level.name}</option>
-                        ))}
-                    </select>
+                    <SelectModal 
+                        label="활동 수준"
+                        options={activityOptions}
+                        value={activityLevel}
+                        onChange={setActivityLevel}
+                        colorClass="text-pink-600"
+                    />
                 </div>
                 <button onClick={handleCalculate} className="w-full p-4 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
                     계산하기

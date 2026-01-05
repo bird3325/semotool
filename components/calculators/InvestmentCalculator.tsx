@@ -1,6 +1,13 @@
+
 import React, { useState } from 'react';
 import { AreaChart } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import SelectModal from '../ui/SelectModal';
+
+const interestOptions = [
+  { value: 'simple', label: '단리' },
+  { value: 'compound', label: '복리 (월)' }
+];
 
 const InvestmentCalculator: React.FC = () => {
   const [initialAmount, setInitialAmount] = useState('1000000');
@@ -79,10 +86,14 @@ const InvestmentCalculator: React.FC = () => {
           <label className="block text-sm font-medium text-gray-600 mb-2">연간 예상 수익률 (%)</label>
           <input type="number" value={annualRate} onChange={e => setAnnualRate(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
         </div>
-         <div className="flex justify-center space-x-4">
-          <button onClick={() => setIsCompound(false)} className={`px-6 py-2 rounded-full font-semibold ${!isCompound ? 'bg-amber-500 text-white' : 'bg-gray-200 text-gray-700'}`}>단리</button>
-          <button onClick={() => setIsCompound(true)} className={`px-6 py-2 rounded-full font-semibold ${isCompound ? 'bg-amber-500 text-white' : 'bg-gray-200 text-gray-700'}`}>복리 (월)</button>
-        </div>
+
+        <SelectModal 
+          label="수익 계산 방식" 
+          options={interestOptions} 
+          value={isCompound ? 'compound' : 'simple'} 
+          onChange={(val) => setIsCompound(val === 'compound')}
+          colorClass="text-amber-600"
+        />
         
         <button onClick={handleCalculate} className="w-full p-4 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
           계산하기

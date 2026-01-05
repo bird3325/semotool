@@ -1,6 +1,13 @@
+
 import React, { useState } from 'react';
 import { FileText } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import SelectModal from '../ui/SelectModal';
+
+const homeOptions = [
+  { value: 'primary', label: '1주택' },
+  { value: 'multi', label: '다주택' }
+];
 
 const AcquisitionTaxCalculator: React.FC = () => {
   const [price, setPrice] = useState('');
@@ -55,10 +62,15 @@ const AcquisitionTaxCalculator: React.FC = () => {
           <label className="block text-sm font-medium text-gray-600 mb-2">취득가액 (원)</label>
           <input type="text" value={price} onChange={e => setPrice(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
         </div>
-        <div className="flex justify-center space-x-4">
-          <button onClick={() => setIsPrimaryHome(true)} className={`px-6 py-2 rounded-full font-semibold ${isPrimaryHome ? 'bg-violet-500 text-white' : 'bg-gray-200 text-gray-700'}`}>1주택</button>
-          <button onClick={() => setIsPrimaryHome(false)} className={`px-6 py-2 rounded-full font-semibold ${!isPrimaryHome ? 'bg-violet-500 text-white' : 'bg-gray-200 text-gray-700'}`}>다주택</button>
-        </div>
+        
+        <SelectModal 
+          label="보유 주택수" 
+          options={homeOptions} 
+          value={isPrimaryHome ? 'primary' : 'multi'} 
+          onChange={(val) => setIsPrimaryHome(val === 'primary')}
+          colorClass="text-violet-600"
+        />
+
         <button onClick={handleCalculate} className="w-full p-4 bg-violet-500 hover:bg-violet-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
           계산하기
         </button>

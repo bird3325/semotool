@@ -1,6 +1,13 @@
+
 import React, { useState } from 'react';
 import { Percent } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import SelectModal from '../ui/SelectModal';
+
+const interestOptions = [
+  { value: 'simple', label: '단리' },
+  { value: 'compound', label: '복리' }
+];
 
 const InterestCalculator: React.FC = () => {
   const [principal, setPrincipal] = useState('10000000');
@@ -67,10 +74,13 @@ const InterestCalculator: React.FC = () => {
           <input type="number" value={period} onChange={e => setPeriod(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
         </div>
         
-        <div className="flex justify-center space-x-4">
-          <button onClick={() => setIsCompound(false)} className={`px-6 py-2 rounded-full font-semibold ${!isCompound ? 'bg-amber-500 text-white' : 'bg-gray-200 text-gray-700'}`}>단리</button>
-          <button onClick={() => setIsCompound(true)} className={`px-6 py-2 rounded-full font-semibold ${isCompound ? 'bg-amber-500 text-white' : 'bg-gray-200 text-gray-700'}`}>복리</button>
-        </div>
+        <SelectModal 
+          label="이자 계산 방식" 
+          options={interestOptions} 
+          value={isCompound ? 'compound' : 'simple'} 
+          onChange={(val) => setIsCompound(val === 'compound')}
+          colorClass="text-amber-600"
+        />
         
         <button onClick={handleCalculate} className="w-full p-4 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
           계산하기
