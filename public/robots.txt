@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://semotools.vercel.app/sitemap.xml

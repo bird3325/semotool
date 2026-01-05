@@ -88,7 +88,6 @@ const RecentPage: React.FC<RecentPageProps> = ({ recents, favorites, toggleFavor
             </Link>
           </div>
         )}
-        <AdBanner />
       </main>
     </div>
   );

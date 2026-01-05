@@ -88,7 +88,6 @@ const FavoritesPage: React.FC<FavoritesPageProps> = ({ favorites, toggleFavorite
             </Link>
           </div>
         )}
-        <AdBanner />
       </main>
     </div>
   );

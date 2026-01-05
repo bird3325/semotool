@@ -97,16 +97,17 @@ const HomePage: React.FC<HomePageProps> = ({ favorites, toggleFavorite, openMenu
       <Banner />
       <div className="mt-8">
         {CALCULATOR_CATEGORIES.map(category => (
-          <CategorySection
-            key={category.id}
-            category={category}
-            favorites={favorites}
-            toggleFavorite={toggleFavorite}
-            addRecent={addRecent}
-          />
+          <React.Fragment key={category.id}>
+            <CategorySection
+              category={category}
+              favorites={favorites}
+              toggleFavorite={toggleFavorite}
+              addRecent={addRecent}
+            />
+            {category.id === 'unit-conversion' && <AdBanner />}
+          </React.Fragment>
         ))}
       </div>
-      <AdBanner />
     </div>
   );
 };
