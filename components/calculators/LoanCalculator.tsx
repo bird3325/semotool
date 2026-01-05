@@ -1,8 +1,15 @@
+
 import React, { useState } from 'react';
 import { Home } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import SelectModal from '../ui/SelectModal';
 
 type RepaymentMethod = 'equal-principal-interest' | 'equal-principal';
+
+const repaymentOptions = [
+    { value: 'equal-principal-interest', label: '원리금균등' },
+    { value: 'equal-principal', label: '원금균등' }
+];
 
 const LoanCalculator: React.FC = () => {
   const [loanAmount, setLoanAmount] = useState('100000000');
@@ -77,13 +84,13 @@ const LoanCalculator: React.FC = () => {
           <label className="block text-sm font-medium text-gray-600 mb-2">대출 기간 (년)</label>
           <input type="number" value={loanPeriod} onChange={e => setLoanPeriod(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
         </div>
-        <div>
-            <label className="block text-sm font-medium text-gray-600 mb-2">상환 방식</label>
-            <select value={repaymentMethod} onChange={e => setRepaymentMethod(e.target.value as RepaymentMethod)} className="w-full p-3 border border-gray-300 rounded-lg bg-white text-base">
-                <option value="equal-principal-interest">원리금균등</option>
-                <option value="equal-principal">원금균등</option>
-            </select>
-        </div>
+        
+        <SelectModal 
+            label="상환 방식"
+            options={repaymentOptions}
+            value={repaymentMethod}
+            onChange={setRepaymentMethod}
+        />
         
         <button onClick={handleCalculate} className="w-full p-4 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
           계산하기

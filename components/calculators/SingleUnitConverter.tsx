@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import SelectModal from '../ui/SelectModal';
 
 interface SingleUnitConverterProps {
   categoryInfo: {
@@ -51,6 +53,11 @@ const SingleUnitConverter: React.FC<SingleUnitConverterProps> = ({ categoryInfo,
   };
 
   const { icon: Icon, title, description, gradient, buttonColor } = categoryInfo;
+  
+  const options = Object.entries(units).map(([key, name]) => ({
+    value: key,
+    label: name
+  }));
 
   return (
     <div className="space-y-6">
@@ -74,19 +81,19 @@ const SingleUnitConverter: React.FC<SingleUnitConverterProps> = ({ categoryInfo,
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
-            <div>
-                <label className="block text-sm font-medium text-gray-600 mb-2 text-center">변환 전</label>
-                <select value={fromUnit} onChange={(e) => setFromUnit(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg bg-white text-base appearance-none bg-chevron-down bg-no-repeat bg-right pr-8 text-center">
-                    {Object.entries(units).map(([key, name]) => <option key={key} value={key}>{name}</option>)}
-                </select>
-            </div>
-            <div>
-                <label className="block text-sm font-medium text-gray-600 mb-2 text-center">변환 후</label>
-                 <select value={toUnit} onChange={(e) => setToUnit(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg bg-white text-base appearance-none bg-chevron-down bg-no-repeat bg-right pr-8 text-center">
-                    {Object.entries(units).map(([key, name]) => <option key={key} value={key}>{name}</option>)}
-                </select>
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <SelectModal 
+              label="변환 전"
+              options={options}
+              value={fromUnit}
+              onChange={setFromUnit}
+            />
+            <SelectModal 
+              label="변환 후"
+              options={options}
+              value={toUnit}
+              onChange={setToUnit}
+            />
         </div>
 
         <button onClick={handleConvert} className={`w-full p-4 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105 ${buttonColor}`}>

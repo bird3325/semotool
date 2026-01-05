@@ -1,6 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
 import { Repeat, ArrowLeftRight } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import SelectModal from '../ui/SelectModal';
 
 const currencies = [
     { code: 'KRW', name: '대한민국 원' },
@@ -9,6 +11,11 @@ const currencies = [
     { code: 'JPY', name: '일본 옌' },
     { code: 'CNY', name: '중국 위안' },
 ];
+
+const currencyOptions = currencies.map(c => ({
+    value: c.code,
+    label: `${c.name} (${c.code})`
+}));
 
 const ExchangeRateCalculator: React.FC = () => {
     const [amount, setAmount] = useState('1000');
@@ -79,12 +86,26 @@ const ExchangeRateCalculator: React.FC = () => {
                     />
                 </div>
 
-                <div className="flex items-center justify-center space-x-2">
-                    <CurrencySelector value={fromCurrency} onChange={setFromCurrency} />
-                    <button onClick={swapCurrencies} className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors flex-shrink-0">
-                        <ArrowLeftRight size={20} className="text-gray-600" />
-                    </button>
-                    <CurrencySelector value={toCurrency} onChange={setToCurrency} />
+                <div className="flex flex-col space-y-4">
+                    <SelectModal 
+                        label="변환 전 통화"
+                        options={currencyOptions}
+                        value={fromCurrency}
+                        onChange={setFromCurrency}
+                    />
+                    
+                    <div className="flex justify-center">
+                        <button onClick={swapCurrencies} className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors flex-shrink-0 shadow-inner">
+                            <ArrowLeftRight size={20} className="text-gray-600" />
+                        </button>
+                    </div>
+
+                    <SelectModal 
+                        label="변환 후 통화"
+                        options={currencyOptions}
+                        value={toCurrency}
+                        onChange={setToCurrency}
+                    />
                 </div>
 
                 <button onClick={fetchRateAndConvert} className="w-full p-4 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
@@ -109,12 +130,5 @@ const ExchangeRateCalculator: React.FC = () => {
         </div>
     );
 };
-
-const CurrencySelector: React.FC<{ value: string, onChange: (value: string) => void }> = ({ value, onChange }) => (
-    <select value={value} onChange={(e) => onChange(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg bg-white text-base appearance-none bg-chevron-down bg-no-repeat bg-right pr-8 text-center">
-        {currencies.map(c => <option key={c.code} value={c.code}>{c.name} ({c.code})</option>)}
-    </select>
-);
-
 
 export default ExchangeRateCalculator;

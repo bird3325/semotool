@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 import { BookCopy } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import SelectModal from '../ui/SelectModal';
 
 const scales = [
   { name: '4.5 만점', value: 4.5 },
@@ -8,6 +10,11 @@ const scales = [
   { name: '4.0 만점', value: 4.0 },
   { name: '100점 만점', value: 100 },
 ];
+
+const scaleOptions = scales.map(s => ({
+    value: String(s.value),
+    label: s.name
+}));
 
 const GPAConverter: React.FC = () => {
   const [gpa, setGpa] = useState('');
@@ -38,7 +45,7 @@ const GPAConverter: React.FC = () => {
     <div className="space-y-6">
       <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-rose-400 to-rose-600">
         <div className="flex items-center space-x-3">
-          <BookCopy size={28} />
+          < BookCopy size={28} />
           <h2 className="text-2xl font-bold">GPA 변환기</h2>
         </div>
         <p className="mt-1 opacity-90">학점 체계 간 변환</p>
@@ -56,19 +63,19 @@ const GPAConverter: React.FC = () => {
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
-            <div>
-                <label className="block text-sm font-medium text-gray-600 mb-2 text-center">현재 학점 기준</label>
-                <select value={fromScale} onChange={(e) => setFromScale(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg bg-white text-base text-center">
-                    {scales.map(s => <option key={s.value} value={s.value}>{s.name}</option>)}
-                </select>
-            </div>
-            <div>
-                <label className="block text-sm font-medium text-gray-600 mb-2 text-center">변환할 학점 기준</label>
-                 <select value={toScale} onChange={(e) => setToScale(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg bg-white text-base text-center">
-                    {scales.map(s => <option key={s.value} value={s.value}>{s.name}</option>)}
-                </select>
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <SelectModal 
+                label="현재 학점 기준"
+                options={scaleOptions}
+                value={fromScale}
+                onChange={setFromScale}
+            />
+            <SelectModal 
+                label="변환할 학점 기준"
+                options={scaleOptions}
+                value={toScale}
+                onChange={setToScale}
+            />
         </div>
 
         <button onClick={handleConvert} className="w-full p-4 bg-rose-500 hover:bg-rose-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
