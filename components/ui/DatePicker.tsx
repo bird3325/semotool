@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Calendar as CalendarIcon, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface DatePickerProps {
@@ -9,10 +9,15 @@ interface DatePickerProps {
   colorClass?: string;
 }
 
+type PickerMode = 'day' | 'month' | 'year';
+
 const DatePicker: React.FC<DatePickerProps> = ({ label, value, onChange, colorClass = "text-blue-600" }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [viewDate, setViewDate] = useState(new Date(value));
   const [selectedDate, setSelectedDate] = useState(new Date(value));
+  const [mode, setMode] = useState<PickerMode>('day');
+  
+  const yearGridRef = useRef<HTMLDivElement>(null);
 
   const daysInMonth = (year: number, month: number) => new Date(year, month + 1, 0).getDate();
   const firstDayOfMonth = (year: number, month: number) => new Date(year, month, 1).getDay();
@@ -34,21 +39,33 @@ const DatePicker: React.FC<DatePickerProps> = ({ label, value, onChange, colorCl
     const formatted = `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2, '0')}-${String(selectedDate.getDate()).padStart(2, '0')}`;
     onChange(formatted);
     setIsOpen(false);
+    setMode('day');
   };
 
-  const renderCalendar = () => {
+  const years = Array.from({ length: 201 }, (_, i) => 1920 + i);
+  const months = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
+
+  // Scroll to current year when year mode opens
+  useEffect(() => {
+    if (mode === 'year' && yearGridRef.current) {
+      const currentYearBtn = yearGridRef.current.querySelector(`[data-year="${viewDate.getFullYear()}"]`);
+      if (currentYearBtn) {
+        currentYearBtn.scrollIntoView({ block: 'center' });
+      }
+    }
+  }, [mode, viewDate]);
+
+  const renderDays = () => {
     const year = viewDate.getFullYear();
     const month = viewDate.getMonth();
     const totalDays = daysInMonth(year, month);
     const startDay = firstDayOfMonth(year, month);
     const days = [];
 
-    // Empty slots for previous month's days
     for (let i = 0; i < startDay; i++) {
       days.push(<div key={`empty-${i}`} className="h-10 w-10"></div>);
     }
 
-    // Days of current month
     for (let d = 1; d <= totalDays; d++) {
       const isSelected = 
         selectedDate.getFullYear() === year && 
@@ -76,16 +93,54 @@ const DatePicker: React.FC<DatePickerProps> = ({ label, value, onChange, colorCl
         </button>
       );
     }
-
     return days;
   };
+
+  const renderMonthPicker = () => (
+    <div className="grid grid-cols-3 gap-2 p-2">
+      {months.map((m, idx) => (
+        <button
+          key={m}
+          onClick={() => {
+            setViewDate(new Date(viewDate.getFullYear(), idx, 1));
+            setMode('day');
+          }}
+          className={`py-4 rounded-2xl text-base font-black transition-all ${
+            viewDate.getMonth() === idx ? 'bg-gray-900 text-white shadow-md' : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+          }`}
+        >
+          {m}
+        </button>
+      ))}
+    </div>
+  );
+
+  const renderYearPicker = () => (
+    <div ref={yearGridRef} className="grid grid-cols-3 gap-2 p-2 max-h-[300px] overflow-y-auto no-scrollbar">
+      {years.map(y => (
+        <button
+          key={y}
+          data-year={y}
+          onClick={() => {
+            setViewDate(new Date(y, viewDate.getMonth(), 1));
+            setMode('month');
+          }}
+          className={`py-4 rounded-2xl text-base font-black transition-all ${
+            viewDate.getFullYear() === y ? 'bg-gray-900 text-white shadow-md' : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+          }`}
+        >
+          {y}년
+        </button>
+      ))}
+    </div>
+  );
 
   return (
     <div className="w-full">
       <label className="block text-sm font-bold text-gray-700 mb-2">{label}</label>
       <button
         type="button"
-        onClick={() => setIsOpen(true)}
+        onClick={() => { setIsOpen(true); setMode('day'); }}
         className="w-full flex items-center justify-between p-4 bg-white border-2 border-gray-100 rounded-2xl hover:border-gray-200 transition-all text-left group"
       >
         <div className="flex items-center space-x-3">
@@ -102,7 +157,9 @@ const DatePicker: React.FC<DatePickerProps> = ({ label, value, onChange, colorCl
           <div className="relative w-full max-w-sm bg-white rounded-t-[32px] sm:rounded-[32px] shadow-2xl overflow-hidden animate-in slide-in-from-bottom duration-300">
             {/* Header */}
             <div className="p-6 border-b border-gray-100 flex justify-between items-center">
-              <h3 className="text-lg font-black text-gray-900">날짜 선택</h3>
+              <h3 className="text-lg font-black text-gray-900">
+                {mode === 'day' ? '날짜 선택' : mode === 'month' ? '월 선택' : '년도 선택'}
+              </h3>
               <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
                 <X size={20} className="text-gray-500" />
               </button>
@@ -110,31 +167,56 @@ const DatePicker: React.FC<DatePickerProps> = ({ label, value, onChange, colorCl
 
             {/* Calendar Control */}
             <div className="px-6 pt-6 flex justify-between items-center">
-              <button onClick={handlePrevMonth} className="p-2 hover:bg-gray-50 rounded-xl transition-colors text-gray-400">
+              <button 
+                onClick={handlePrevMonth} 
+                disabled={mode !== 'day'}
+                className={`p-2 rounded-xl transition-colors ${mode === 'day' ? 'hover:bg-gray-50 text-gray-400' : 'opacity-0 cursor-default'}`}
+              >
                 <ChevronLeft size={20} />
               </button>
-              <div className="text-center">
-                <p className="text-lg font-black text-gray-900">
-                  {viewDate.getFullYear()}년 {viewDate.getMonth() + 1}월
-                </p>
+              
+              <div className="flex items-center gap-1">
+                <button 
+                  onClick={() => setMode(mode === 'year' ? 'day' : 'year')}
+                  className={`px-3 py-1.5 rounded-full transition-all text-lg font-black ${mode === 'year' ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900 hover:bg-gray-100'}`}
+                >
+                  {viewDate.getFullYear()}년
+                </button>
+                <button 
+                  onClick={() => setMode(mode === 'month' ? 'day' : 'month')}
+                  className={`px-3 py-1.5 rounded-full transition-all text-lg font-black ${mode === 'month' ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900 hover:bg-gray-100'}`}
+                >
+                  {viewDate.getMonth() + 1}월
+                </button>
               </div>
-              <button onClick={handleNextMonth} className="p-2 hover:bg-gray-50 rounded-xl transition-colors text-gray-400">
+
+              <button 
+                onClick={handleNextMonth} 
+                disabled={mode !== 'day'}
+                className={`p-2 rounded-xl transition-colors ${mode === 'day' ? 'hover:bg-gray-50 text-gray-400' : 'opacity-0 cursor-default'}`}
+              >
                 <ChevronRight size={20} />
               </button>
             </div>
 
-            {/* Calendar Body */}
+            {/* Content Area */}
             <div className="p-6">
-              <div className="grid grid-cols-7 gap-1 mb-2 text-center">
-                {['일', '월', '화', '수', '목', '금', '토'].map((day, idx) => (
-                  <div key={day} className={`text-[10px] font-black uppercase tracking-widest ${idx === 0 ? 'text-red-400' : idx === 6 ? 'text-blue-400' : 'text-gray-400'}`}>
-                    {day}
+              {mode === 'day' && (
+                <>
+                  <div className="grid grid-cols-7 gap-1 mb-2 text-center">
+                    {['일', '월', '화', '수', '목', '금', '토'].map((day, idx) => (
+                      <div key={day} className={`text-[10px] font-black uppercase tracking-widest ${idx === 0 ? 'text-red-400' : idx === 6 ? 'text-blue-400' : 'text-gray-400'}`}>
+                        {day}
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-              <div className="grid grid-cols-7 gap-1">
-                {renderCalendar()}
-              </div>
+                  <div className="grid grid-cols-7 gap-1">
+                    {renderDays()}
+                  </div>
+                </>
+              )}
+              {mode === 'month' && renderMonthPicker()}
+              {mode === 'year' && renderYearPicker()}
             </div>
 
             {/* Footer Action */}

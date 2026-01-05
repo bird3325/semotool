@@ -191,10 +191,6 @@ export const CALCULATOR_CATEGORIES: Category[] = [
       { id: 'grade-predictor', name: '성적 예측', icon: ClipboardEdit },
       { id: 'periodic-table', name: '주기율표', icon: Atom },
       { id: 'math-formulas', name: '수학 공식', icon: Sigma },
-      { id: 'hanja', name: '필수 한자', icon: Languages },
-      { id: 'irregular-verbs', name: '불규칙 동사', icon: IterationCcw },
-      { id: 'grammar-rules', name: '기본 문법', icon: FilePenLine },
-      { id: 'common-idioms', name: '필수 숙어', icon: MessageSquareText },
     ],
   },
 ];

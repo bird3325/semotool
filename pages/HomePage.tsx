@@ -192,7 +192,8 @@ const HomePage: React.FC<HomePageProps> = ({ favorites, toggleFavorite, openMenu
               isDragging={draggedIndex === index}
               isAnyDragging={draggedIndex !== null}
             />
-            {!draggedIndex && category.id === 'unit-conversion' && <AdBanner />}
+            {/* 광고 영역은 드래그 상태가 아닐 때 항상 첫 번째 섹션(index 0) 다음에 위치하여 전체 2번째가 됨 */}
+            {!draggedIndex && index === 0 && <AdBanner />}
           </React.Fragment>
         ))}
       </div>
