@@ -11,7 +11,7 @@ interface SideMenuProps {
     toggleFavorite: (id: string) => void;
 }
 
-const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose, favorites, toggleFavorite }) => {
+const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose, favorites, toggleFavorite }: SideMenuProps) => {
     const location = useLocation();
     const [openCategory, setOpenCategory] = useState<string | null>(null);
     
@@ -42,20 +42,24 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose, favorites, toggleF
             >
                 <div className="p-4 border-b flex justify-between items-center">
                      <div className="flex items-center space-x-2">
-                        <div className="bg-orange-100 p-1.5 rounded-md">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="5" y="5" width="3" height="3" rx="1" fill="#F97316"/>
-                                <rect x="5" y="10" width="3" height="3" rx="1" fill="#F97316"/>
-                                <rect x="5" y="15" width="3" height="3" rx="1" fill="#F97316"/>
-                                <rect x="10" y="5" width="3" height="3" rx="1" fill="#F97316"/>
-                                <rect x="10" y="10" width="3" height="3" rx="1" fill="#F97316"/>
-                                <rect x="10" y="15" width="3" height="3" rx="1" fill="#F97316"/>
-                                <rect x="15" y="5" width="3" height="3" rx="1" fill="#F97316"/>
-                                <rect x="15" y="10" width="3" height="3" rx="1" fill="#F97316"/>
-                                <rect x="15" y="15" width="3" height="3" rx="1" fill="#F97316"/>
-                            </svg>
+                        {/* 로고 이미지 참조: assets/logo.png (경로 최적화) */}
+                        <div className="w-8 h-8 flex items-center justify-center overflow-hidden">
+                            <img 
+                                src="assets/logo.png" 
+                                alt="세모툴 로고" 
+                                className="w-full h-full object-contain"
+                                onError={(e) => {
+                                    // 이미지 로드 실패 시 표시할 임시 배경 스타일
+                                    e.currentTarget.style.display = 'none';
+                                    const parent = e.currentTarget.parentElement;
+                                    if (parent) {
+                                        parent.className = "w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center border border-orange-200";
+                                        parent.innerHTML = '<span class="text-orange-500 font-black text-[10px]">LOGO</span>';
+                                    }
+                                }}
+                            />
                         </div>
-                        <h2 id="menu-title" className="text-lg font-bold text-gray-800">세모툴</h2>
+                        <h2 id="menu-title" className="text-lg font-bold text-gray-800 tracking-tight">세모툴</h2>
                     </div>
                     <button onClick={onClose} className="p-2" aria-label="Close menu">
                         <X size={24} className="text-gray-600" />
