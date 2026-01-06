@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Gift } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import SelectModal from '../ui/SelectModal';
 
 const deductions = {
     spouse: 600000000,
@@ -9,6 +10,13 @@ const deductions = {
     parent: 50000000,
     other: 10000000,
 };
+
+const recipientOptions = [
+    { value: 'spouse', label: '배우자' },
+    { value: 'child', label: '자녀 (직계비속)' },
+    { value: 'parent', label: '부모 (직계존속)' },
+    { value: 'other', label: '기타 친족' },
+];
 
 const GiftTaxCalculator: React.FC = () => {
     const [assetValue, setAssetValue] = useState('100000000');
@@ -58,15 +66,15 @@ const GiftTaxCalculator: React.FC = () => {
                     <label className="block text-sm font-medium text-gray-600 mb-2">증여재산 가액</label>
                     <input type="text" value={assetValue} onChange={e => setAssetValue(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
                 </div>
-                <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">받는 사람 (수증자)</label>
-                    <select value={recipient} onChange={e => setRecipient(e.target.value as keyof typeof deductions)} className="w-full p-3 border border-gray-300 rounded-lg bg-white">
-                        <option value="spouse">배우자</option>
-                        <option value="child">자녀 (직계비속)</option>
-                        <option value="parent">부모 (직계존속)</option>
-                        <option value="other">기타 친족</option>
-                    </select>
-                </div>
+                
+                <SelectModal 
+                    label="받는 사람 (수증자)"
+                    options={recipientOptions}
+                    value={recipient}
+                    onChange={setRecipient}
+                    colorClass="text-violet-600"
+                />
+
                 <button onClick={handleCalculate} className="w-full p-4 bg-violet-500 hover:bg-violet-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
                     계산하기
                 </button>

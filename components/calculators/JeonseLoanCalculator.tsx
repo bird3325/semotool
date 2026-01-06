@@ -2,6 +2,16 @@
 import React, { useState } from 'react';
 import { Building } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import SelectModal from '../ui/SelectModal';
+
+const periodOptions = [
+    { value: '1', label: '1년' },
+    { value: '2', label: '2년 (기본)' },
+    { value: '3', label: '3년' },
+    { value: '4', label: '4년' },
+    { value: '5', label: '5년' },
+    { value: '10', label: '10년' },
+];
 
 const JeonseLoanCalculator: React.FC = () => {
   const [loanAmount, setLoanAmount] = useState('200000000');
@@ -50,10 +60,14 @@ const JeonseLoanCalculator: React.FC = () => {
           <label className="block text-sm font-medium text-gray-600 mb-2">대출금리 (연 %)</label>
           <input type="number" value={interestRate} onChange={e => setInterestRate(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
         </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-600 mb-2">대출 기간 (년)</label>
-          <input type="number" value={loanPeriod} onChange={e => setLoanPeriod(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
-        </div>
+        
+        <SelectModal 
+            label="대출 기간"
+            options={periodOptions}
+            value={loanPeriod}
+            onChange={setLoanPeriod}
+            colorClass="text-violet-600"
+        />
         
         <button onClick={handleCalculate} className="w-full p-4 bg-violet-500 hover:bg-violet-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
           계산하기
