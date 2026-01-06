@@ -1,10 +1,15 @@
 
 import React, { useState } from 'react';
-// FIX: Module '"lucide-react"' has no exported member 'ClipboardHeart'. Using 'ClipboardCheck' as a replacement.
 import { ClipboardCheck } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import SelectModal from '../ui/SelectModal';
 
 type Gender = 'male' | 'female';
+
+const genderOptions = [
+    { value: 'male', label: '남성' },
+    { value: 'female', label: '여성' }
+];
 
 const VisceralFatCalculator: React.FC = () => {
     const [gender, setGender] = useState<Gender>('male');
@@ -43,10 +48,14 @@ const VisceralFatCalculator: React.FC = () => {
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
-                <div className="flex justify-center space-x-4">
-                    <button onClick={() => setGender('male')} className={`px-6 py-2 rounded-full font-semibold ${gender === 'male' ? 'bg-pink-500 text-white' : 'bg-gray-200 text-gray-700'}`}>남성</button>
-                    <button onClick={() => setGender('female')} className={`px-6 py-2 rounded-full font-semibold ${gender === 'female' ? 'bg-pink-500 text-white' : 'bg-gray-200 text-gray-700'}`}>여성</button>
-                </div>
+                <SelectModal 
+                    label="성별"
+                    options={genderOptions}
+                    value={gender}
+                    onChange={setGender}
+                    colorClass="text-pink-600"
+                />
+
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">허리 둘레 (cm)</label>
                     <input
@@ -54,7 +63,7 @@ const VisceralFatCalculator: React.FC = () => {
                         value={waist}
                         onChange={e => setWaist(e.target.value)}
                         placeholder="예: 90"
-                        className="w-full p-3 border border-gray-300 rounded-lg text-lg text-center"
+                        className="w-full p-4 border border-gray-300 rounded-lg text-2xl text-center font-black outline-none focus:ring-2 focus:ring-pink-500"
                     />
                 </div>
                 <button onClick={handleCalculate} className="w-full p-4 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
@@ -65,10 +74,10 @@ const VisceralFatCalculator: React.FC = () => {
             <AdBanner />
 
             {result && (
-                <div className="p-6 bg-gray-50 rounded-xl text-center">
-                    <p className="text-sm text-gray-500">내장 지방 위험도</p>
-                    <p className={`text-5xl font-bold my-2 ${result.color}`}>{result.level}</p>
-                    <p className="text-xs text-gray-500 text-center pt-2">※ 이 평가는 의학적 진단이 아니며, 참고용으로만 사용하세요.</p>
+                <div className="p-6 bg-gray-50 rounded-xl text-center animate-in fade-in zoom-in-95 duration-500">
+                    <p className="text-sm text-gray-500 font-bold">내장 지방 위험도</p>
+                    <p className={`text-6xl font-black my-2 ${result.color}`}>{result.level}</p>
+                    <p className="text-[10px] text-gray-400 font-bold mt-4">※ 이 평가는 의학적 진단이 아니며, 참고용으로만 사용하세요.</p>
                 </div>
             )}
         </div>

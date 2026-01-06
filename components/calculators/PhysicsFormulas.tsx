@@ -51,7 +51,7 @@ const PhysicsFormulas: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-indigo-400 to-indigo-600">
+      <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-rose-400 to-rose-600">
         <div className="flex items-center space-x-3">
           <Zap size={28} />
           <h2 className="text-2xl font-bold">물리 공식</h2>
@@ -65,7 +65,7 @@ const PhysicsFormulas: React.FC = () => {
             key={cat.id}
             onClick={() => setActiveTab(cat.id)}
             className={`flex-1 py-2.5 px-4 rounded-xl text-sm font-black transition-all whitespace-nowrap ${
-              activeTab === cat.id ? 'bg-white text-indigo-600 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+              activeTab === cat.id ? 'bg-white text-rose-600 shadow-sm' : 'text-gray-500 hover:text-gray-700'
             }`}
           >
             {cat.name}
@@ -75,15 +75,15 @@ const PhysicsFormulas: React.FC = () => {
 
       <div className="space-y-4">
         {currentCategory?.formulas.map((formula, idx) => (
-          <div key={idx} className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm hover:border-indigo-200 transition-all group">
+          <div key={idx} className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm hover:border-rose-200 transition-all group">
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center space-x-2">
-                <div className="p-1.5 bg-indigo-50 rounded-lg text-indigo-500">
+                <div className="p-1.5 bg-rose-50 rounded-lg text-rose-500">
                    <BookOpen size={16} />
                 </div>
                 <h4 className="font-black text-gray-900">{formula.title}</h4>
               </div>
-              <ChevronRight size={16} className="text-gray-300 group-hover:text-indigo-400 transition-colors" />
+              <ChevronRight size={16} className="text-gray-300 group-hover:text-rose-400 transition-colors" />
             </div>
             
             <div className="py-8 bg-gray-50 rounded-2xl text-center mb-4 overflow-x-auto no-scrollbar">

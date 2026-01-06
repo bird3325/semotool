@@ -43,7 +43,7 @@ const HistoryTimeline: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-indigo-500 to-indigo-700">
+      <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-rose-400 to-rose-600">
         <div className="flex items-center space-x-3">
           <History size={28} />
           <h2 className="text-2xl font-bold">역사 연표</h2>
@@ -52,13 +52,13 @@ const HistoryTimeline: React.FC = () => {
       </div>
 
       <div className="relative group mx-1">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-indigo-500 transition-colors" size={20} />
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-rose-500 transition-colors" size={20} />
         <input 
           type="text" 
           placeholder="사건명, 연도, 내용 검색..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-full py-4 pl-12 pr-12 bg-white border-2 border-gray-100 rounded-2xl outline-none focus:border-indigo-400 transition-all font-bold text-gray-800 shadow-sm"
+          className="w-full py-4 pl-12 pr-12 bg-white border-2 border-gray-100 rounded-2xl outline-none focus:border-rose-400 transition-all font-bold text-gray-800 shadow-sm"
         />
         {query && (
           <button onClick={() => setQuery('')} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
@@ -67,14 +67,14 @@ const HistoryTimeline: React.FC = () => {
         )}
       </div>
 
-      <div className="relative pl-8 space-y-8 before:absolute before:left-3 before:top-2 before:bottom-2 before:w-0.5 before:bg-indigo-100">
+      <div className="relative pl-8 space-y-8 before:absolute before:left-3 before:top-2 before:bottom-2 before:w-0.5 before:bg-rose-100">
         {filteredEvents.map((event, idx) => (
           <div key={idx} className="relative group">
-            <div className="absolute -left-8 top-1.5 w-6 h-6 bg-white border-4 border-indigo-500 rounded-full z-10 group-hover:scale-125 transition-transform" />
-            <div className="bg-white p-5 rounded-3xl border border-gray-100 shadow-sm hover:border-indigo-200 transition-all">
+            <div className="absolute -left-8 top-1.5 w-6 h-6 bg-white border-4 border-rose-500 rounded-full z-10 group-hover:scale-125 transition-transform" />
+            <div className="bg-white p-5 rounded-3xl border border-gray-100 shadow-sm hover:border-rose-200 transition-all">
                <div className="flex justify-between items-start mb-2">
                   <div className="flex flex-col">
-                    <span className="text-xs font-black text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-lg w-fit mb-1">
+                    <span className="text-xs font-black text-rose-600 bg-rose-50 px-2 py-0.5 rounded-lg w-fit mb-1">
                         {event.year}
                     </span>
                     <h3 className="text-lg font-black text-gray-900">{event.title}</h3>

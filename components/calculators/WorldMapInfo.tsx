@@ -36,7 +36,7 @@ const WorldMapInfo: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-blue-500 to-blue-700">
+      <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-rose-400 to-rose-600">
         <div className="flex items-center space-x-3">
           <Map size={28} />
           <h2 className="text-2xl font-bold">세계 지도 정보</h2>
@@ -51,8 +51,8 @@ const WorldMapInfo: React.FC = () => {
             onClick={() => setActiveContinent(cont)}
             className={`px-4 py-2 rounded-full text-xs font-black transition-all whitespace-nowrap border-2 ${
               activeContinent === cont 
-                ? 'bg-blue-600 border-blue-600 text-white' 
-                : 'bg-white border-gray-100 text-gray-500 hover:border-blue-200'
+                ? 'bg-rose-600 border-rose-600 text-white' 
+                : 'bg-white border-gray-100 text-gray-500 hover:border-rose-200'
             }`}
           >
             {cont}
@@ -61,13 +61,13 @@ const WorldMapInfo: React.FC = () => {
       </div>
 
       <div className="relative group mx-1">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-blue-500 transition-colors" size={20} />
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-rose-500 transition-colors" size={20} />
         <input 
           type="text" 
           placeholder="국가명, 수도 검색..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-full py-4 pl-12 pr-12 bg-white border-2 border-gray-100 rounded-2xl outline-none focus:border-blue-400 transition-all font-bold text-gray-800 shadow-sm"
+          className="w-full py-4 pl-12 pr-12 bg-white border-2 border-gray-100 rounded-2xl outline-none focus:border-rose-400 transition-all font-bold text-gray-800 shadow-sm"
         />
         {query && (
           <button onClick={() => setQuery('')} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
@@ -81,11 +81,11 @@ const WorldMapInfo: React.FC = () => {
           <div key={idx} className="bg-white p-5 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-all group">
              <div className="flex justify-between items-start mb-3">
                 <div className="flex items-center space-x-3">
-                   <div className="p-2 bg-blue-50 rounded-xl text-blue-500">
+                   <div className="p-2 bg-rose-50 rounded-xl text-rose-500">
                       <Globe2 size={20} />
                    </div>
                    <div>
-                      <h3 className="text-lg font-black text-gray-900 group-hover:text-blue-600 transition-colors">{country.name}</h3>
+                      <h3 className="text-lg font-black text-gray-900 group-hover:text-rose-600 transition-colors">{country.name}</h3>
                       <p className="text-xs font-bold text-gray-400">{country.continent}</p>
                    </div>
                 </div>

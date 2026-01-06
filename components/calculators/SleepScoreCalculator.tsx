@@ -2,6 +2,21 @@
 import React, { useState } from 'react';
 import { BedDouble } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import SelectModal from '../ui/SelectModal';
+
+const fallAsleepOptions = [
+    { value: 0, label: '15분 미만' },
+    { value: 1, label: '15~30분' },
+    { value: 2, label: '30~60분' },
+    { value: 3, label: '60분 이상' },
+];
+
+const feelingOptions = [
+    { value: 0, label: '매우 피곤함' },
+    { value: 1, label: '피곤함' },
+    { value: 2, label: '보통' },
+    { value: 3, label: '개운함' },
+];
 
 const SleepScoreCalculator: React.FC = () => {
     const [sleepHours, setSleepHours] = useState(7);
@@ -54,31 +69,31 @@ const SleepScoreCalculator: React.FC = () => {
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">어젯밤 몇 시간 주무셨나요?</label>
-                    <input type="range" min="0" max="15" value={sleepHours} onChange={e => setSleepHours(Number(e.target.value))} className="w-full" />
-                    <div className="text-center font-bold text-lg">{sleepHours} 시간</div>
+                    <input type="range" min="0" max="15" value={sleepHours} onChange={e => setSleepHours(Number(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-pink-500" />
+                    <div className="text-center font-bold text-lg mt-2">{sleepHours} 시간</div>
                 </div>
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">잠드는 데 얼마나 걸렸나요?</label>
-                    <select value={fallAsleepTime} onChange={e => setFallAsleepTime(Number(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg bg-white">
-                        <option value={0}>15분 미만</option>
-                        <option value={1}>15~30분</option>
-                        <option value={2}>30~60분</option>
-                        <option value={3}>60분 이상</option>
-                    </select>
-                </div>
+                
+                <SelectModal 
+                    label="잠드는 데 얼마나 걸렸나요?"
+                    options={fallAsleepOptions}
+                    value={fallAsleepTime}
+                    onChange={setFallAsleepTime}
+                    colorClass="text-pink-600"
+                />
+
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">밤에 몇 번이나 깨셨나요?</label>
-                    <input type="number" value={wakeUps} onChange={e => setWakeUps(Math.max(0, Number(e.target.value)))} className="w-full p-2 border border-gray-300 rounded-lg text-center" />
+                    <input type="number" value={wakeUps} onChange={e => setWakeUps(Math.max(0, Number(e.target.value)))} className="w-full p-3 border border-gray-300 rounded-lg text-center font-bold" />
                 </div>
-                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">아침에 일어났을 때 기분은?</label>
-                    <select value={feeling} onChange={e => setFeeling(Number(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg bg-white">
-                        <option value={0}>매우 피곤함</option>
-                        <option value={1}>피곤함</option>
-                        <option value={2}>보통</option>
-                        <option value={3}>개운함</option>
-                    </select>
-                </div>
+
+                <SelectModal 
+                    label="아침에 일어났을 때 기분은?"
+                    options={feelingOptions}
+                    value={feeling}
+                    onChange={setFeeling}
+                    colorClass="text-pink-600"
+                />
+
                 <button onClick={calculateScore} className="w-full p-4 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
                     점수 확인하기
                 </button>
@@ -87,11 +102,11 @@ const SleepScoreCalculator: React.FC = () => {
             <AdBanner />
 
             {score !== null && (
-                 <div className="p-6 bg-gray-50 rounded-xl text-center">
-                    <p className="text-sm text-gray-500">당신의 수면 점수는</p>
-                    <p className="text-5xl font-bold text-blue-600 my-2">{score} / 100</p>
-                    <p className="text-xl font-semibold text-gray-800">{getInterpretation(score)}</p>
-                    <p className="text-xs text-gray-500 text-center pt-2">※ 이 평가는 의학적 진단이 아닙니다.</p>
+                 <div className="p-6 bg-gray-50 rounded-xl text-center animate-in fade-in zoom-in-95 duration-500">
+                    <p className="text-sm text-gray-500 font-bold">당신의 수면 점수는</p>
+                    <p className="text-6xl font-black text-blue-600 my-2">{score} / 100</p>
+                    <p className="text-xl font-black text-gray-800">{getInterpretation(score)}</p>
+                    <p className="text-[10px] text-gray-400 font-bold mt-4">※ 이 평가는 의학적 진단이 아닙니다.</p>
                 </div>
             )}
         </div>

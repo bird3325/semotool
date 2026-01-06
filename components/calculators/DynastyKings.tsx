@@ -54,7 +54,7 @@ const DynastyKings: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-amber-600 to-amber-800">
+      <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-rose-400 to-rose-600">
         <div className="flex items-center space-x-3">
           <Crown size={28} />
           <h2 className="text-2xl font-bold">왕조 계보</h2>
@@ -68,7 +68,7 @@ const DynastyKings: React.FC = () => {
             key={dyn.id}
             onClick={() => { setActiveTab(dyn.id); setQuery(''); }}
             className={`flex-1 py-2.5 rounded-xl text-sm font-black transition-all ${
-              activeTab === dyn.id ? 'bg-white text-amber-700 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+              activeTab === dyn.id ? 'bg-white text-rose-700 shadow-sm' : 'text-gray-500 hover:text-gray-700'
             }`}
           >
             {dyn.name}
@@ -77,13 +77,13 @@ const DynastyKings: React.FC = () => {
       </div>
 
       <div className="relative group mx-1">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-amber-500 transition-colors" size={20} />
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-rose-500 transition-colors" size={20} />
         <input 
           type="text" 
           placeholder={`${currentDynasty?.name} 왕 또는 업적 검색...`}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-full py-4 pl-12 pr-12 bg-white border-2 border-gray-100 rounded-2xl outline-none focus:border-amber-400 transition-all font-bold text-gray-800 shadow-sm"
+          className="w-full py-4 pl-12 pr-12 bg-white border-2 border-gray-100 rounded-2xl outline-none focus:border-rose-400 transition-all font-bold text-gray-800 shadow-sm"
         />
         {query && (
           <button onClick={() => setQuery('')} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
@@ -94,18 +94,18 @@ const DynastyKings: React.FC = () => {
 
       <div className="space-y-4">
         {filteredKings.map((king, idx) => (
-          <div key={idx} className="bg-white p-5 rounded-3xl border border-gray-100 shadow-sm hover:border-amber-200 transition-all group">
+          <div key={idx} className="bg-white p-5 rounded-3xl border border-gray-100 shadow-sm hover:border-rose-200 transition-all group">
              <div className="flex justify-between items-start mb-3">
                 <div className="flex items-center space-x-3">
-                   <div className="p-2 bg-amber-50 rounded-xl text-amber-600">
+                   <div className="p-2 bg-rose-50 rounded-xl text-rose-600">
                       <Crown size={18} />
                    </div>
                    <div>
-                      <h3 className="text-lg font-black text-gray-900 group-hover:text-amber-600 transition-colors">{king.name}</h3>
+                      <h3 className="text-lg font-black text-gray-900 group-hover:text-rose-600 transition-colors">{king.name}</h3>
                       <p className="text-xs font-bold text-gray-400">재위: {king.reign}</p>
                    </div>
                 </div>
-                <div className="p-1.5 bg-gray-50 rounded-lg text-gray-300 group-hover:text-amber-400 transition-colors">
+                <div className="p-1.5 bg-gray-50 rounded-lg text-gray-300 group-hover:text-rose-400 transition-colors">
                    <BookOpen size={16} />
                 </div>
              </div>

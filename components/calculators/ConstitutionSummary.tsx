@@ -25,7 +25,7 @@ const articles: Article[] = [
 const ConstitutionSummary: React.FC = () => {
   return (
     <div className="space-y-6">
-      <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-slate-600 to-slate-800">
+      <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-rose-400 to-rose-600">
         <div className="flex items-center space-x-3">
           <Gavel size={28} />
           <h2 className="text-2xl font-bold">헌법 개요</h2>
@@ -35,22 +35,22 @@ const ConstitutionSummary: React.FC = () => {
 
       <div className="grid grid-cols-1 gap-4">
         {articles.map((art, idx) => (
-          <div key={idx} className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm hover:border-slate-300 transition-all group">
+          <div key={idx} className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm hover:border-rose-300 transition-all group">
              <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-2">
-                   <div className="p-1.5 bg-slate-50 rounded-lg text-slate-500">
+                   <div className="p-1.5 bg-rose-50 rounded-lg text-rose-500">
                       <Scale size={16} />
                    </div>
-                   <span className="text-xs font-black text-slate-500 uppercase tracking-tighter">{art.number}</span>
+                   <span className="text-xs font-black text-rose-500 uppercase tracking-tighter">{art.number}</span>
                 </div>
                 <h4 className="font-black text-gray-900 text-lg">{art.title}</h4>
              </div>
              
-             <div className="p-5 bg-slate-50/50 rounded-2xl border border-slate-100 relative overflow-hidden">
+             <div className="p-5 bg-rose-50/50 rounded-2xl border border-rose-100 relative overflow-hidden">
                 <p className="text-sm font-bold text-gray-700 leading-relaxed z-10 relative">
                   "{art.content}"
                 </p>
-                <div className="absolute -right-4 -bottom-4 opacity-5 text-slate-900 transform rotate-12">
+                <div className="absolute -right-4 -bottom-4 opacity-5 text-rose-900 transform rotate-12">
                    <Gavel size={80} />
                 </div>
              </div>

@@ -30,7 +30,7 @@ const BiologyTerms: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-emerald-400 to-emerald-600">
+      <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-rose-400 to-rose-600">
         <div className="flex items-center space-x-3">
           <Dna size={28} />
           <h2 className="text-2xl font-bold">생물 용어</h2>
@@ -39,13 +39,13 @@ const BiologyTerms: React.FC = () => {
       </div>
 
       <div className="relative group mx-1">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-emerald-500 transition-colors" size={20} />
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-rose-500 transition-colors" size={20} />
         <input 
           type="text" 
           placeholder="용어 또는 의미 검색..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-full py-4 pl-12 pr-12 bg-white border-2 border-gray-100 rounded-2xl outline-none focus:border-emerald-400 transition-all font-bold text-gray-800 shadow-sm"
+          className="w-full py-4 pl-12 pr-12 bg-white border-2 border-gray-100 rounded-2xl outline-none focus:border-rose-400 transition-all font-bold text-gray-800 shadow-sm"
         />
         {query && (
           <button onClick={() => setQuery('')} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
@@ -56,15 +56,15 @@ const BiologyTerms: React.FC = () => {
 
       <div className="space-y-4">
         {filteredTerms.map((term, idx) => (
-          <div key={idx} className="bg-white p-5 rounded-3xl border border-gray-100 shadow-sm hover:border-emerald-200 transition-all group">
+          <div key={idx} className="bg-white p-5 rounded-3xl border border-gray-100 shadow-sm hover:border-rose-200 transition-all group">
              <div className="flex justify-between items-start mb-2">
                 <div className="flex flex-col">
-                  <span className="text-lg font-black text-gray-900 group-hover:text-emerald-600 transition-colors">{term.word}</span>
-                  <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-lg mt-1 inline-block w-fit">
+                  <span className="text-lg font-black text-gray-900 group-hover:text-rose-600 transition-colors">{term.word}</span>
+                  <span className="text-xs font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-lg mt-1 inline-block w-fit">
                     {term.meaning}
                   </span>
                 </div>
-                <div className="p-2 bg-gray-50 rounded-xl text-gray-300 group-hover:text-emerald-400 transition-colors">
+                <div className="p-2 bg-gray-50 rounded-xl text-gray-300 group-hover:text-rose-400 transition-colors">
                   <BookOpen size={18} />
                 </div>
              </div>

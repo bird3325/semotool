@@ -2,6 +2,12 @@
 import React, { useState } from 'react';
 import { ShieldAlert } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import SelectModal from '../ui/SelectModal';
+
+const binaryOptions = [
+    { value: 0, label: '아니오' },
+    { value: 1, label: '예' }
+];
 
 const HealthRiskCalculator: React.FC = () => {
     const [answers, setAnswers] = useState({
@@ -42,32 +48,35 @@ const HealthRiskCalculator: React.FC = () => {
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
-                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">현재 흡연을 하십니까?</label>
-                    <select value={answers.smoking} onChange={e => setAnswers(p => ({...p, smoking: Number(e.target.value)}))} className="w-full p-3 border border-gray-300 rounded-lg bg-white">
-                        <option value={0}>아니오</option>
-                        <option value={1}>예</option>
-                    </select>
-                </div>
+                <SelectModal 
+                    label="현재 흡연을 하십니까?"
+                    options={binaryOptions}
+                    value={answers.smoking}
+                    onChange={val => setAnswers(p => ({...p, smoking: Number(val)}))}
+                    colorClass="text-pink-600"
+                />
+
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">일주일에 30분 이상 운동하는 횟수는?</label>
-                    <input type="number" value={answers.exercise} onChange={e => setAnswers(p => ({...p, exercise: Number(e.target.value)}))} className="w-full p-2 border border-gray-300 rounded-lg" />
+                    <input type="number" value={answers.exercise} onChange={e => setAnswers(p => ({...p, exercise: Number(e.target.value)}))} className="w-full p-3 border border-gray-300 rounded-lg text-center font-bold" />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">하루에 과일/채소를 몇 회 섭취하나요?</label>
-                    <input type="number" value={answers.diet} onChange={e => setAnswers(p => ({...p, diet: Number(e.target.value)}))} className="w-full p-2 border border-gray-300 rounded-lg" />
+                    <input type="number" value={answers.diet} onChange={e => setAnswers(p => ({...p, diet: Number(e.target.value)}))} className="w-full p-3 border border-gray-300 rounded-lg text-center font-bold" />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">현재 BMI 지수는 얼마인가요?</label>
-                    <input type="number" value={answers.bmi} onChange={e => setAnswers(p => ({...p, bmi: Number(e.target.value)}))} className="w-full p-2 border border-gray-300 rounded-lg" />
+                    <input type="number" value={answers.bmi} onChange={e => setAnswers(p => ({...p, bmi: Number(e.target.value)}))} className="w-full p-3 border border-gray-300 rounded-lg text-center font-bold" />
                 </div>
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">심장병/당뇨 가족력이 있습니까?</label>
-                    <select value={answers.familyHistory} onChange={e => setAnswers(p => ({...p, familyHistory: Number(e.target.value)}))} className="w-full p-3 border border-gray-300 rounded-lg bg-white">
-                        <option value={0}>아니오</option>
-                        <option value={1}>예</option>
-                    </select>
-                </div>
+
+                <SelectModal 
+                    label="심장병/당뇨 가족력이 있습니까?"
+                    options={binaryOptions}
+                    value={answers.familyHistory}
+                    onChange={val => setAnswers(p => ({...p, familyHistory: Number(val)}))}
+                    colorClass="text-pink-600"
+                />
+
                 <button onClick={handleCalculate} className="w-full p-4 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
                     위험도 확인
                 </button>
@@ -76,10 +85,10 @@ const HealthRiskCalculator: React.FC = () => {
             <AdBanner />
 
             {riskScore !== null && (
-                 <div className="p-6 bg-gray-50 rounded-xl text-center">
-                    <p className="text-sm text-gray-500">당신의 건강 위험도는</p>
-                    <p className={`text-5xl font-bold my-2 ${getInterpretation(riskScore).color}`}>{getInterpretation(riskScore).level}</p>
-                    <p className="text-xs text-gray-500 text-center pt-2">※ 의학적 진단이 아니며, 건강 관리를 위한 참고 자료입니다. 정확한 진단은 의사와 상담하세요.</p>
+                 <div className="p-6 bg-gray-50 rounded-xl text-center animate-in fade-in zoom-in-95 duration-500">
+                    <p className="text-sm text-gray-500 font-bold">당신의 건강 위험도는</p>
+                    <p className={`text-6xl font-black my-2 ${getInterpretation(riskScore).color}`}>{getInterpretation(riskScore).level}</p>
+                    <p className="text-[10px] text-gray-400 font-bold mt-4">※ 의학적 진단이 아니며, 건강 관리를 위한 참고 자료입니다. 정확한 진단은 의사와 상담하세요.</p>
                 </div>
             )}
         </div>
