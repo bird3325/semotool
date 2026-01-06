@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { ArrowRightLeft } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import AmountUnit from '../ui/AmountUnit';
 
 const RentConversionCalculator: React.FC = () => {
     const [jeonseDeposit, setJeonseDeposit] = useState('500000000');
@@ -45,10 +46,12 @@ const RentConversionCalculator: React.FC = () => {
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">기존 전세 보증금</label>
                     <input type="text" value={jeonseDeposit} onChange={e => setJeonseDeposit(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                    <AmountUnit value={jeonseDeposit} />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">월세 보증금</label>
                     <input type="text" value={monthlyDeposit} onChange={e => setMonthlyDeposit(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                    <AmountUnit value={monthlyDeposit} />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">전환율 (%)</label>

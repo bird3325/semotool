@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { PiggyBank } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
 import DatePicker from '../ui/DatePicker';
+import AmountUnit from '../ui/AmountUnit';
 
 const getDaysBetween = (date1: string, date2: string) => {
   const d1 = new Date(date1);
@@ -72,6 +73,7 @@ const RetirementCalculator: React.FC = () => {
               <input type="text" value={last3MonthsSalary} onChange={e => setLast3MonthsSalary(formatNumber(e.target.value))} className="w-full py-4 bg-gray-50/50 border-b-2 border-gray-100 focus:border-amber-500 outline-none text-right font-black text-2xl text-gray-900 pr-10" />
               <span className="absolute right-0 top-1/2 -translate-y-1/2 text-gray-500 font-bold text-lg">원</span>
             </div>
+            <AmountUnit value={last3MonthsSalary} />
           </div>
            <div>
             <label className="block text-sm font-black text-gray-500 uppercase tracking-wider mb-2">연간 상여금 등 (세전)</label>
@@ -79,6 +81,7 @@ const RetirementCalculator: React.FC = () => {
               <input type="text" value={annualBonus} onChange={e => setAnnualBonus(formatNumber(e.target.value))} className="w-full py-4 bg-gray-50/50 border-b-2 border-gray-100 focus:border-amber-500 outline-none text-right font-black text-2xl text-gray-900 pr-10" />
               <span className="absolute right-0 top-1/2 -translate-y-1/2 text-gray-500 font-bold text-lg">원</span>
             </div>
+            <AmountUnit value={annualBonus} />
           </div>
         </div>
         

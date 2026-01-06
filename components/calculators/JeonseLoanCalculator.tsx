@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Building } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
 import SelectModal from '../ui/SelectModal';
+import AmountUnit from '../ui/AmountUnit';
 
 const periodOptions = [
     { value: '1', label: '1년' },
@@ -55,6 +56,7 @@ const JeonseLoanCalculator: React.FC = () => {
         <div>
           <label className="block text-sm font-medium text-gray-600 mb-2">대출금액 (원)</label>
           <input type="text" value={loanAmount} onChange={e => setLoanAmount(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+          <AmountUnit value={loanAmount} />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-600 mb-2">대출금리 (연 %)</label>

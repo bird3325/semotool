@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { FileDigit } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import AmountUnit from '../ui/AmountUnit';
 
 const VATCalculator: React.FC = () => {
     const [supplyPrice, setSupplyPrice] = useState('100000');
@@ -51,14 +52,17 @@ const VATCalculator: React.FC = () => {
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">공급가액</label>
                     <input type="text" value={displayFormatted(supplyPrice)} onChange={e => handleSupplyPriceChange(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                    <AmountUnit value={supplyPrice} />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">부가세 (10%)</label>
                     <input type="text" value={displayFormatted(vat)} readOnly className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right bg-gray-100" />
+                    <AmountUnit value={vat} />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">합계금액</label>
                     <input type="text" value={displayFormatted(totalPrice)} onChange={e => handleTotalPriceChange(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                    <AmountUnit value={totalPrice} />
                 </div>
             </div>
 

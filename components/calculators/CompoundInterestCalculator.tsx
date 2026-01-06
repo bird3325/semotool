@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Repeat } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
 import SelectModal from '../ui/SelectModal';
+import AmountUnit from '../ui/AmountUnit';
 
 const compoundingOptions = [
     { value: '1', label: '매년' },
@@ -56,6 +57,7 @@ const CompoundInterestCalculator: React.FC = () => {
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">원금 (원)</label>
                     <input type="text" value={principal} onChange={e => setPrincipal(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right outline-none focus:ring-2 focus:ring-amber-500" />
+                    <AmountUnit value={principal} />
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

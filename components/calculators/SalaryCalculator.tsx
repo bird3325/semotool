@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 import { Briefcase } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import AmountUnit from '../ui/AmountUnit';
 
 interface Deductions {
   nationalPension: number;
@@ -79,10 +81,12 @@ const SalaryCalculator: React.FC = () => {
         <div>
           <label className="block text-sm font-medium text-gray-600 mb-2">연봉 (원)</label>
           <input type="text" value={annualSalary} onChange={e => setAnnualSalary(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+          <AmountUnit value={annualSalary} />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-600 mb-2">월 비과세액 (원)</label>
           <input type="text" value={nonTaxable} onChange={e => setNonTaxable(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+          <AmountUnit value={nonTaxable} />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-600 mb-2">부양가족 수 (본인 포함)</label>

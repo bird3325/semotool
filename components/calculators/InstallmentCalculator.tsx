@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { CreditCard } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import AmountUnit from '../ui/AmountUnit';
 
 const InstallmentCalculator: React.FC = () => {
     const [principal, setPrincipal] = useState('1000000');
@@ -49,6 +50,7 @@ const InstallmentCalculator: React.FC = () => {
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">할부 원금 (원)</label>
                     <input type="text" value={principal} onChange={e => setPrincipal(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                    <AmountUnit value={principal} />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">할부 개월 수</label>

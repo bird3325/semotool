@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { CalendarClock } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import AmountUnit from '../ui/AmountUnit';
 
 const AnnuityCalculator: React.FC = () => {
     const [totalAnnuity, setTotalAnnuity] = useState('300000000');
@@ -54,6 +55,7 @@ const AnnuityCalculator: React.FC = () => {
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">연금 총액 (원)</label>
                     <input type="text" value={totalAnnuity} onChange={e => setTotalAnnuity(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                    <AmountUnit value={totalAnnuity} />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">예상 수익률 (연 %)</label>

@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Target } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import AmountUnit from '../ui/AmountUnit';
 
 const FinancialGoalCalculator: React.FC = () => {
     const [targetAmount, setTargetAmount] = useState('100000000');
@@ -57,10 +58,12 @@ const FinancialGoalCalculator: React.FC = () => {
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">목표 금액 (원)</label>
                     <input type="text" value={targetAmount} onChange={e => setTargetAmount(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                    <AmountUnit value={targetAmount} />
                 </div>
                  <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">현재 보유 금액 (원)</label>
                     <input type="text" value={initialAmount} onChange={e => setInitialAmount(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                    <AmountUnit value={initialAmount} />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">목표 기간 (년)</label>

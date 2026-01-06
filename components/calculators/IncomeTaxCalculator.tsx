@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Files } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import AmountUnit from '../ui/AmountUnit';
 
 const IncomeTaxCalculator: React.FC = () => {
     const [taxableIncome, setTaxableIncome] = useState('70000000');
@@ -51,6 +52,7 @@ const IncomeTaxCalculator: React.FC = () => {
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">과세표준 금액 (원)</label>
                     <input type="text" value={taxableIncome} onChange={e => setTaxableIncome(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                    <AmountUnit value={taxableIncome} />
                 </div>
                 <button onClick={handleCalculate} className="w-full p-4 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
                     계산하기

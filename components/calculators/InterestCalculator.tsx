@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Percent } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
 import SelectModal from '../ui/SelectModal';
+import AmountUnit from '../ui/AmountUnit';
 
 const interestOptions = [
   { value: 'simple', label: '단리' },
@@ -64,6 +65,7 @@ const InterestCalculator: React.FC = () => {
         <div>
           <label className="block text-sm font-medium text-gray-600 mb-2">원금 (원)</label>
           <input type="text" value={principal} onChange={e => setPrincipal(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+          <AmountUnit value={principal} />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-600 mb-2">연이율 (%)</label>

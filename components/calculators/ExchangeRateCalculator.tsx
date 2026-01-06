@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Repeat, ArrowLeftRight } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
 import SelectModal from '../ui/SelectModal';
+import AmountUnit from '../ui/AmountUnit';
 
 const currencies = [
     { code: 'KRW', name: '대한민국 원' },
@@ -84,6 +85,7 @@ const ExchangeRateCalculator: React.FC = () => {
                         onChange={handleAmountChange}
                         className="w-full p-4 border border-gray-300 rounded-lg text-3xl text-center font-bold focus:ring-2 focus:ring-blue-500 outline-none"
                     />
+                    <AmountUnit value={amount} />
                 </div>
 
                 <div className="flex flex-col space-y-4">

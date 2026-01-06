@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { HandCoins, Minus, Plus } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import AmountUnit from '../ui/AmountUnit';
 
 const TipCalculator: React.FC = () => {
     const [billAmount, setBillAmount] = useState('');
@@ -51,6 +52,7 @@ const TipCalculator: React.FC = () => {
                         placeholder="예: 50000"
                         className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right"
                     />
+                    <AmountUnit value={billAmount} />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">팁 (%)</label>

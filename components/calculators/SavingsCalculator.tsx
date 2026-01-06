@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { PiggyBank } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
 import SelectModal from '../ui/SelectModal';
+import AmountUnit from '../ui/AmountUnit';
 
 type InterestType = 'simple' | 'compound';
 type TaxType = 'general' | 'tax-free';
@@ -78,6 +79,7 @@ const SavingsCalculator: React.FC = () => {
                     <div>
                         <label className="block text-sm font-medium text-gray-600 mb-2">매월 저축액 (원)</label>
                         <input type="text" value={monthlyDeposit} onChange={e => setMonthlyDeposit(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right outline-none focus:ring-2 focus:ring-amber-500" />
+                        <AmountUnit value={monthlyDeposit} />
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-gray-600 mb-2">저축 기간 (개월)</label>

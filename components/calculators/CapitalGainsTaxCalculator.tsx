@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 import { ClipboardCopy } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import AmountUnit from '../ui/AmountUnit';
 
 const CapitalGainsTaxCalculator: React.FC = () => {
   const [purchasePrice, setPurchasePrice] = useState('');
@@ -51,10 +53,12 @@ const CapitalGainsTaxCalculator: React.FC = () => {
         <div>
           <label className="block text-sm font-medium text-gray-600 mb-2">취득가액 (원)</label>
           <input type="text" value={purchasePrice} onChange={e => setPurchasePrice(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+          <AmountUnit value={purchasePrice} />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-600 mb-2">양도가액 (원)</label>
           <input type="text" value={salePrice} onChange={e => setSalePrice(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+          <AmountUnit value={salePrice} />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-600 mb-2">보유 기간 (년)</label>

@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 import { Users, Minus, Plus } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import AmountUnit from '../ui/AmountUnit';
 
 const DutchPayCalculator: React.FC = () => {
     const [totalAmount, setTotalAmount] = useState('');
@@ -50,6 +52,7 @@ const DutchPayCalculator: React.FC = () => {
                         placeholder="예: 50000"
                         className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right"
                     />
+                    <AmountUnit value={totalAmount} />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">인원 수</label>

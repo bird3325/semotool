@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { LineChart } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import AmountUnit from '../ui/AmountUnit';
 
 const RentalYieldCalculator: React.FC = () => {
     const [purchasePrice, setPurchasePrice] = useState('500000000');
@@ -54,18 +55,22 @@ const RentalYieldCalculator: React.FC = () => {
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">매매가격</label>
                     <input type="text" value={purchasePrice} onChange={e => setPurchasePrice(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                    <AmountUnit value={purchasePrice} />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">보증금</label>
                     <input type="text" value={deposit} onChange={e => setDeposit(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                    <AmountUnit value={deposit} />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">월세</label>
                     <input type="text" value={monthlyRent} onChange={e => setMonthlyRent(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                    <AmountUnit value={monthlyRent} />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">연간 기타비용 (세금, 수리비 등)</label>
                     <input type="text" value={expenses} onChange={e => setExpenses(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                    <AmountUnit value={expenses} />
                 </div>
                 <button onClick={handleCalculate} className="w-full p-4 bg-violet-500 hover:bg-violet-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
                     계산하기

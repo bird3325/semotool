@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { FileCheck } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import AmountUnit from '../ui/AmountUnit';
 
 const YearEndTaxCalculator: React.FC = () => {
     const [annualSalary, setAnnualSalary] = useState('50000000');
@@ -53,14 +54,17 @@ const YearEndTaxCalculator: React.FC = () => {
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">총 급여액 (연봉)</label>
                     <input type="text" value={annualSalary} onChange={e => setAnnualSalary(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                    <AmountUnit value={annualSalary} />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">총 소득공제액</label>
                     <input type="text" value={totalDeductions} onChange={e => setTotalDeductions(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                    <AmountUnit value={totalDeductions} />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">기납부세액 (미리 낸 세금)</label>
                     <input type="text" value={prepaidTax} onChange={e => setPrepaidTax(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                    <AmountUnit value={prepaidTax} />
                 </div>
                 <button onClick={handleCalculate} className="w-full p-4 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
                     계산하기

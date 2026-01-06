@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Handshake, Info } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
 import SelectModal from '../ui/SelectModal';
+import AmountUnit from '../ui/AmountUnit';
 
 type PropertyType = 'house' | 'officetel' | 'other';
 type TransactionType = 'sell' | 'jeonse' | 'monthly';
@@ -148,6 +149,7 @@ const CommissionCalculator: React.FC = () => {
                 className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right outline-none focus:ring-2 focus:ring-violet-500"
                 placeholder="0"
             />
+            <AmountUnit value={price} />
           </div>
 
           {transactionType === 'monthly' && (
@@ -161,6 +163,7 @@ const CommissionCalculator: React.FC = () => {
                     className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right outline-none focus:ring-2 focus:ring-violet-500"
                     placeholder="0"
                 />
+                <AmountUnit value={monthlyRent} />
             </div>
           )}
         </div>

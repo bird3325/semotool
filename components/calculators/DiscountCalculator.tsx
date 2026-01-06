@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 import { Tag } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import AmountUnit from '../ui/AmountUnit';
 
 const DiscountCalculator: React.FC = () => {
   const [originalPrice, setOriginalPrice] = useState('');
@@ -49,6 +51,7 @@ const DiscountCalculator: React.FC = () => {
             className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" 
             placeholder="10,000"
           />
+          <AmountUnit value={originalPrice} />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-600 mb-2">할인율 (%)</label>

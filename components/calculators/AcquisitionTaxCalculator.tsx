@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { FileText } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
 import SelectModal from '../ui/SelectModal';
+import AmountUnit from '../ui/AmountUnit';
 
 const homeOptions = [
   { value: 'primary', label: '1주택' },
@@ -61,6 +62,7 @@ const AcquisitionTaxCalculator: React.FC = () => {
         <div>
           <label className="block text-sm font-medium text-gray-600 mb-2">취득가액 (원)</label>
           <input type="text" value={price} onChange={e => setPrice(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+          <AmountUnit value={price} />
         </div>
         
         <SelectModal 
