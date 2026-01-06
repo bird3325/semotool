@@ -1,16 +1,10 @@
+
 import React from 'react';
-import { Zap } from 'lucide-react';
 
 const AdBanner: React.FC = () => {
-  return (
-    <div className="my-6 mx-4 md:mx-6 p-4 rounded-lg bg-gray-100 border border-gray-200 text-center text-gray-500">
-      <div className="flex items-center justify-center">
-        <Zap size={16} className="mr-2" />
-        <span className="text-sm font-semibold">광고 영역</span>
-      </div>
-      <p className="text-xs mt-1">이곳에 광고가 표시됩니다.</p>
-    </div>
-  );
+  // UIUX 관점에서 사용자의 집중력을 흐리는 광고 영역을 숨김 처리합니다.
+  // null을 반환함으로써 레이아웃에서 해당 공간을 차지하지 않도록 합니다.
+  return null;
 };
 
 export default AdBanner;

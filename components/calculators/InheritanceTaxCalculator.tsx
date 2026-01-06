@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Network } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import AmountUnit from '../ui/AmountUnit';
 
 const InheritanceTaxCalculator: React.FC = () => {
     const [assetValue, setAssetValue] = useState('1000000000');
@@ -49,11 +50,23 @@ const InheritanceTaxCalculator: React.FC = () => {
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">총 상속재산 가액</label>
-                    <input type="text" value={assetValue} onChange={e => setAssetValue(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                    <input 
+                        type="text" 
+                        value={assetValue} 
+                        onChange={e => setAssetValue(formatNumber(e.target.value))} 
+                        className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" 
+                    />
+                    <AmountUnit value={assetValue} />
                 </div>
                  <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">각종 공제액 합계</label>
-                    <input type="text" value={deduction} onChange={e => setDeduction(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                    <input 
+                        type="text" 
+                        value={deduction} 
+                        onChange={e => setDeduction(formatNumber(e.target.value))} 
+                        className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" 
+                    />
+                    <AmountUnit value={deduction} />
                 </div>
                 <button onClick={handleCalculate} className="w-full p-4 bg-violet-500 hover:bg-violet-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
                     계산하기

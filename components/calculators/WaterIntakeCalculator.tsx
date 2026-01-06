@@ -2,11 +2,17 @@
 import React, { useState } from 'react';
 import { GlassWater } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import SelectModal from '../ui/SelectModal';
 
 const activityLevels = [
     { name: '보통', multiplier: 1 },
     { name: '운동선수/활동량 많음', multiplier: 1.2 },
 ];
+
+const activityOptions = activityLevels.map(level => ({
+    value: level.multiplier,
+    label: level.name
+}));
 
 const WaterIntakeCalculator: React.FC = () => {
     const [weight, setWeight] = useState('70');
@@ -44,17 +50,18 @@ const WaterIntakeCalculator: React.FC = () => {
                         value={weight}
                         onChange={e => setWeight(e.target.value)}
                         placeholder="예: 70"
-                        className="w-full p-3 border border-gray-300 rounded-lg text-lg"
+                        className="w-full p-4 border border-gray-300 rounded-lg text-2xl font-bold text-center outline-none focus:ring-2 focus:ring-pink-500"
                     />
                 </div>
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">활동 수준</label>
-                    <select value={activity} onChange={e => setActivity(Number(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg bg-white">
-                        {activityLevels.map(level => (
-                            <option key={level.name} value={level.multiplier}>{level.name}</option>
-                        ))}
-                    </select>
-                </div>
+                
+                <SelectModal 
+                    label="활동 수준"
+                    options={activityOptions}
+                    value={activity}
+                    onChange={setActivity}
+                    colorClass="text-pink-600"
+                />
+
                 <button onClick={handleCalculate} className="w-full p-4 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
                     계산하기
                 </button>

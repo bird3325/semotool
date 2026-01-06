@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { ReceiptText } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import AmountUnit from '../ui/AmountUnit';
 
 const PropertyTaxCalculator: React.FC = () => {
     const [propertyValue, setPropertyValue] = useState('500000000');
@@ -45,7 +46,13 @@ const PropertyTaxCalculator: React.FC = () => {
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
                 <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">주택 공시가격 (원)</label>
-                    <input type="text" value={propertyValue} onChange={e => setPropertyValue(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
+                    <input 
+                        type="text" 
+                        value={propertyValue} 
+                        onChange={e => setPropertyValue(formatNumber(e.target.value))} 
+                        className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" 
+                    />
+                    <AmountUnit value={propertyValue} />
                 </div>
                 <button onClick={handleCalculate} className="w-full p-4 bg-violet-500 hover:bg-violet-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
                     계산하기

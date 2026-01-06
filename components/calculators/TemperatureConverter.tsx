@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 import { Thermometer } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
+import SelectModal from '../ui/SelectModal';
 
 type TempUnit = 'celsius' | 'fahrenheit' | 'kelvin';
 
@@ -9,6 +11,11 @@ const UNITS: { [key in TempUnit]: string } = {
   fahrenheit: '화씨 (°F)',
   kelvin: '켈빈 (K)',
 };
+
+const unitOptions = Object.entries(UNITS).map(([key, name]) => ({
+    value: key,
+    label: name
+}));
 
 const formatNumber = (num: number): string => {
   return parseFloat(num.toFixed(2)).toLocaleString();
@@ -85,19 +92,21 @@ const TemperatureConverter: React.FC = () => {
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
-            <div>
-                <label className="block text-sm font-medium text-gray-600 mb-2 text-center">변환 전</label>
-                <select value={fromUnit} onChange={(e) => setFromUnit(e.target.value as TempUnit)} className="w-full p-3 border border-gray-300 rounded-lg bg-white text-base appearance-none bg-chevron-down bg-no-repeat bg-right pr-8 text-center">
-                    {Object.entries(UNITS).map(([key, name]) => <option key={key} value={key}>{name}</option>)}
-                </select>
-            </div>
-            <div>
-                <label className="block text-sm font-medium text-gray-600 mb-2 text-center">변환 후</label>
-                 <select value={toUnit} onChange={(e) => setToUnit(e.target.value as TempUnit)} className="w-full p-3 border border-gray-300 rounded-lg bg-white text-base appearance-none bg-chevron-down bg-no-repeat bg-right pr-8 text-center">
-                    {Object.entries(UNITS).map(([key, name]) => <option key={key} value={key}>{name}</option>)}
-                </select>
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <SelectModal 
+                label="변환 전"
+                options={unitOptions}
+                value={fromUnit}
+                onChange={setFromUnit}
+                colorClass="text-red-600"
+            />
+            <SelectModal 
+                label="변환 후"
+                options={unitOptions}
+                value={toUnit}
+                onChange={setToUnit}
+                colorClass="text-red-600"
+            />
         </div>
 
         <button onClick={handleConvert} className="w-full p-4 bg-red-500 hover:bg-red-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
