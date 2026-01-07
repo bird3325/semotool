@@ -1,10 +1,32 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const AdBanner: React.FC = () => {
-  // UIUX 관점에서 사용자의 집중력을 흐리는 광고 영역을 숨김 처리합니다.
-  // null을 반환함으로써 레이아웃에서 해당 공간을 차지하지 않도록 합니다.
-  return null;
+  useEffect(() => {
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (e) {
+      console.error('AdSense error', e);
+    }
+  }, []);
+
+  return (
+    <div className="my-4 text-center overflow-hidden">
+      {/* Responsive Ad Unit */}
+      <ins className="adsbygoogle block"
+        data-ad-client="ca-pub-4223979990517628"
+        data-ad-slot="1448444134"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+      <div className="text-[10px] text-gray-300 mt-1">Advertisement</div>
+    </div>
+  );
 };
+
+declare global {
+  interface Window {
+    adsbygoogle: any[];
+  }
+}
 
 export default AdBanner;
