@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { NavLink, useLocation, Link } from 'react-router-dom';
 import { Home as HomeIcon, Star as StarIcon, Clock, X, ChevronDown } from 'lucide-react';
 import { CALCULATOR_CATEGORIES } from '../constants';
+import logo from '../assets/logo.png';
 
 interface SideMenuProps {
     isOpen: boolean;
@@ -14,13 +15,13 @@ interface SideMenuProps {
 const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose, favorites, toggleFavorite }: SideMenuProps) => {
     const location = useLocation();
     const [openCategory, setOpenCategory] = useState<string | null>(null);
-    
+
     const navItems = [
         { path: '/', label: '홈', icon: HomeIcon },
         { path: '/favorites', label: '즐겨찾기', icon: StarIcon },
         { path: '/recent', label: '최근', icon: Clock },
     ];
-    
+
     const handleCategoryClick = (categoryId: string) => {
         setOpenCategory(prev => prev === categoryId ? null : categoryId);
     };
@@ -41,12 +42,12 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose, favorites, toggleF
                 aria-labelledby="menu-title"
             >
                 <div className="p-4 border-b flex justify-between items-center">
-                     <div className="flex items-center space-x-2">
+                    <div className="flex items-center space-x-2">
                         {/* 로고 이미지 참조: assets/logo.png (경로 최적화) */}
                         <div className="w-8 h-8 flex items-center justify-center overflow-hidden">
-                            <img 
-                                src="assets/logo.png" 
-                                alt="세모툴 로고" 
+                            <img
+                                src={logo}
+                                alt="세모툴 로고"
                                 className="w-full h-full object-contain"
                                 onError={(e) => {
                                     // 이미지 로드 실패 시 표시할 임시 배경 스타일
@@ -74,9 +75,8 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose, favorites, toggleF
                                     <NavLink
                                         to={item.path}
                                         onClick={onClose}
-                                        className={`flex items-center px-4 py-3 text-lg font-medium ${
-                                            isActive ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50'
-                                        }`}
+                                        className={`flex items-center px-4 py-3 text-lg font-medium ${isActive ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50'
+                                            }`}
                                     >
                                         <item.icon className={`w-6 h-6 mr-4 ${isActive ? 'text-gray-900' : 'text-gray-500'} ${isActive && item.path !== '/' ? 'fill-current' : ''}`} />
                                         <span>{item.label}</span>
@@ -89,8 +89,8 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose, favorites, toggleF
                     <p className="px-4 pt-2 pb-1 text-sm font-semibold text-gray-400 uppercase tracking-wider">Categories</p>
                     <ul>
                         {CALCULATOR_CATEGORIES.map((category) => {
-                             const isCategoryOpen = openCategory === category.id;
-                             return (
+                            const isCategoryOpen = openCategory === category.id;
+                            return (
                                 <li key={category.id}>
                                     <button
                                         onClick={() => handleCategoryClick(category.id)}
