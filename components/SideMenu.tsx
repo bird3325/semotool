@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { NavLink, useLocation, Link } from 'react-router-dom';
 import { Home as HomeIcon, Star as StarIcon, Clock, X, ChevronDown } from 'lucide-react';
 import { CALCULATOR_CATEGORIES } from '../constants';
@@ -15,11 +16,16 @@ interface SideMenuProps {
 const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose, favorites, toggleFavorite }: SideMenuProps) => {
     const location = useLocation();
     const [openCategory, setOpenCategory] = useState<string | null>(null);
+    const { i18n, t } = useTranslation();
+
+    const changeLanguage = (lng: string) => {
+        i18n.changeLanguage(lng);
+    };
 
     const navItems = [
-        { path: '/', label: '홈', icon: HomeIcon },
-        { path: '/favorites', label: '즐겨찾기', icon: StarIcon },
-        { path: '/recent', label: '최근', icon: Clock },
+        { path: '/', label: t('nav.home'), icon: HomeIcon },
+        { path: '/favorites', label: t('nav.favorites'), icon: StarIcon },
+        { path: '/recent', label: t('nav.recent'), icon: Clock },
     ];
 
     const handleCategoryClick = (categoryId: string) => {
@@ -99,7 +105,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose, favorites, toggleF
                                     >
                                         <div className="flex items-center">
                                             <category.icon className={`w-6 h-6 mr-4 ${category.color}`} />
-                                            <span>{category.name}</span>
+                                            <span>{t(`category.${category.id}`)}</span>
                                         </div>
                                         <ChevronDown className={`w-5 h-5 text-gray-500 transform transition-transform ${isCategoryOpen ? 'rotate-180' : ''}`} />
                                     </button>
@@ -116,12 +122,12 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose, favorites, toggleF
                                                                 className="flex items-center flex-grow"
                                                             >
                                                                 <tool.icon className="w-4 h-4 mr-3 text-gray-500" />
-                                                                <span>{tool.name}</span>
+                                                                <span>{t(`tool.${tool.id}`)}</span>
                                                             </Link>
                                                             <button
                                                                 onClick={() => toggleFavorite(tool.id)}
                                                                 className="p-1 ml-2 flex-shrink-0"
-                                                                aria-label={isFavorite ? `${tool.name} 즐겨찾기에서 삭제` : `${tool.name} 즐겨찾기에 추가`}
+                                                                aria-label={isFavorite ? `${t(`tool.${tool.id}`)} ${t('nav.favorites')}` : `${t(`tool.${tool.id}`)} ${t('nav.favorites')}`}
                                                             >
                                                                 <StarIcon className={`w-4 h-4 transition-colors ${isFavorite ? 'text-yellow-400 fill-current' : 'text-gray-400 hover:text-gray-600'}`} />
                                                             </button>
@@ -135,8 +141,25 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose, favorites, toggleF
                             );
                         })}
                     </ul>
+
+                    <div className="p-4 border-t mt-4">
+                        <div className="flex justify-center space-x-2">
+                            <button
+                                onClick={() => changeLanguage('ko')}
+                                className={`px-3 py-1 text-sm rounded-md font-medium transition-colors ${i18n.language.startsWith('ko') ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                            >
+                                한국어
+                            </button>
+                            <button
+                                onClick={() => changeLanguage('en')}
+                                className={`px-3 py-1 text-sm rounded-md font-medium transition-colors ${i18n.language.startsWith('en') ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                            >
+                                English
+                            </button>
+                        </div>
+                    </div>
                 </nav>
-            </aside>
+            </aside >
         </>
     );
 };

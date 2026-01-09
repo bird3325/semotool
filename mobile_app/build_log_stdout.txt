@@ -1,0 +1,3 @@
+Running Gradle task 'bundleRelease'...                          
+DEBUG: Configured release signing with keyAlias: upload
+Running Gradle task 'bundleRelease'...                              3.3s

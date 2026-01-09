@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import CalculatorPage from './pages/CalculatorPage';
@@ -8,13 +9,16 @@ import RecentPage from './pages/RecentPage';
 import SearchPage from './pages/SearchPage';
 import SideMenu from './components/SideMenu';
 
-const Footer = () => (
-  <footer className="bg-gray-100 border-t border-gray-200 py-6 px-4">
-    <div className="text-center">
-      <p className="text-xs text-gray-500">&copy; {new Date().getFullYear()} Semotool. All rights reserved.</p>
-    </div>
-  </footer>
-);
+const Footer = () => {
+  const { t } = useTranslation();
+  return (
+    <footer className="bg-gray-100 border-t border-gray-200 py-6 px-4">
+      <div className="text-center">
+        <p className="text-xs text-gray-500">{t('footer_text', { year: new Date().getFullYear() })}</p>
+      </div>
+    </footer>
+  );
+};
 
 export default function App() {
   const [favorites, setFavorites] = useState<string[]>(() => {
@@ -36,7 +40,7 @@ export default function App() {
       return [];
     }
   });
-  
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
