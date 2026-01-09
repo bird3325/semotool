@@ -1,10 +1,12 @@
 
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Files } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
 import AmountUnit from '../ui/AmountUnit';
 
 const IncomeTaxCalculator: React.FC = () => {
+    const { t } = useTranslation();
     const [taxableIncome, setTaxableIncome] = useState('70000000');
     const [result, setResult] = useState<{ tax: number; effectiveRate: number } | null>(null);
 
@@ -43,19 +45,19 @@ const IncomeTaxCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-amber-400 to-amber-600">
                 <div className="flex items-center space-x-3">
                     <Files size={28} />
-                    <h2 className="text-2xl font-bold">종합소득세 계산기</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.income-tax')} {t('suffix.calculator')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">과세표준에 따른 예상 세금을 계산합니다.</p>
+                <p className="mt-1 opacity-90">{t('finance.desc.income_tax')}</p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
                 <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">과세표준 금액 (원)</label>
+                    <label className="block text-sm font-medium text-gray-600 mb-2">{t('finance.label.taxable_income')}</label>
                     <input type="text" value={taxableIncome} onChange={e => setTaxableIncome(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
                     <AmountUnit value={taxableIncome} />
                 </div>
                 <button onClick={handleCalculate} className="w-full p-4 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
-                    계산하기
+                    {t('common.calculate')}
                 </button>
             </div>
 
@@ -63,14 +65,14 @@ const IncomeTaxCalculator: React.FC = () => {
 
             {result && (
                 <div className="p-6 bg-gray-50 rounded-xl text-center">
-                    <p className="text-sm text-gray-500">예상 산출세액</p>
+                    <p className="text-sm text-gray-500">{t('finance.result.expected_tax')}</p>
                     <p className="text-4xl font-bold text-blue-600 my-2">
-                        {Math.round(result.tax).toLocaleString()} 원
+                        {Math.round(result.tax).toLocaleString()} {t('currency.KRW')}
                     </p>
                     <p className="text-md text-gray-700">
-                        유효세율: {result.effectiveRate.toFixed(2)}%
+                        {t('finance.result.effective_rate')}: {result.effectiveRate.toFixed(2)}%
                     </p>
-                    <p className="text-xs text-gray-500 text-center pt-2">※ 지방소득세 10% 별도. 각종 공제 미반영.</p>
+                    <p className="text-xs text-gray-500 text-center pt-2">{t('finance.msg.local_tax_excluded')}</p>
                 </div>
             )}
         </div>

@@ -37,7 +37,6 @@ const Header: React.FC<{ openMenu: () => void }> = ({ openMenu }) => {
           <Search className="text-gray-500" />
         </Link>
       </div>
-    </div>
     </header >
   );
 };
@@ -93,7 +92,7 @@ const CategorySection: React.FC<{
           </div>
           {!isAnyDragging && hasMore && (
             <button onClick={onToggleExpand} className="text-sm font-semibold text-blue-600 hover:text-blue-800 flex items-center px-3 py-1 rounded-full hover:bg-blue-50 transition-colors">
-              <span>{isExpanded ? '간략히' : '더보기'}</span>
+              <span>{isExpanded ? t('common.show_less') : t('common.show_more')}</span>
               {isExpanded ? <ChevronUp className="w-4 h-4 ml-1" /> : <ChevronDown className="w-4 h-4 ml-1" />}
             </button>
           )}
@@ -129,6 +128,7 @@ const CategorySection: React.FC<{
   };
 
 const HomePage: React.FC<HomePageProps> = ({ favorites, toggleFavorite, openMenu, addRecent }) => {
+  const { t } = useTranslation();
   const [categories, setCategories] = useState<Category[]>(() => {
     const savedOrder = localStorage.getItem('categoryOrder');
     if (savedOrder) {
@@ -199,7 +199,7 @@ const HomePage: React.FC<HomePageProps> = ({ favorites, toggleFavorite, openMenu
       <Banner />
 
       <div className={`text-center transition-all duration-300 overflow-hidden ${draggedIndex !== null ? 'max-h-10 mb-4 opacity-100' : 'max-h-0 opacity-0'}`}>
-        <span className="text-[10px] font-black text-blue-500 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full">순서 변경 모드 활성화됨</span>
+        <span className="text-[10px] font-black text-blue-500 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full">{t('home.reorder_mode_active')}</span>
       </div>
 
       <div className="mt-4">

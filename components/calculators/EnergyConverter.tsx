@@ -1,15 +1,10 @@
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Bolt } from 'lucide-react';
 import SingleUnitConverter from './SingleUnitConverter';
 
-const ENERGY_UNITS = {
-  'j': '줄 (J)',
-  'kj': '킬로줄 (kJ)',
-  'cal': '칼로리 (cal)',
-  'kcal': '킬로칼로리 (kcal)',
-  'wh': '와트시 (Wh)',
-};
+
 
 const ENERGY_CONVERSIONS_TO_JOULE: { [key: string]: number } = {
   'j': 1,
@@ -19,15 +14,22 @@ const ENERGY_CONVERSIONS_TO_JOULE: { [key: string]: number } = {
   'wh': 3600,
 };
 
-const CATEGORY_INFO = {
-  icon: Bolt,
-  title: '에너지 변환기',
-  description: '줄, 칼로리, 와트시를 쉽게 변환!',
-  gradient: 'bg-gradient-to-br from-emerald-400 to-emerald-600',
-  buttonColor: 'bg-emerald-500 hover:bg-emerald-600',
-};
-
 const EnergyConverter: React.FC = () => {
+  const { t } = useTranslation();
+
+  const ENERGY_UNITS = {
+    'j': t('unit.j'), 'kj': t('unit.kj'), 'cal': t('unit.cal'),
+    'kcal': t('unit.kcal'), 'wh': t('unit.wh')
+  };
+
+  const CATEGORY_INFO = {
+    icon: Bolt,
+    title: `${t('tool.energy')} ${t('suffix.converter')}`,
+    description: t('desc.energy'),
+    gradient: 'bg-gradient-to-br from-emerald-400 to-emerald-600',
+    buttonColor: 'bg-emerald-500 hover:bg-emerald-600',
+  };
+
   return (
     <SingleUnitConverter
       categoryInfo={CATEGORY_INFO}

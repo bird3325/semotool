@@ -1,9 +1,10 @@
-
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { TimerIcon, Play, Pause, RotateCcw } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
 
 const Timer: React.FC = () => {
+    const { t } = useTranslation();
     const [hours, setHours] = useState(0);
     const [minutes, setMinutes] = useState(5);
     const [seconds, setSeconds] = useState(0);
@@ -24,7 +25,7 @@ const Timer: React.FC = () => {
             if (intervalRef.current) clearInterval(intervalRef.current);
         };
     }, [isActive, timeLeft]);
-    
+
     const handleStart = () => {
         const totalSeconds = hours * 3600 + minutes * 60 + seconds;
         if (totalSeconds > 0) {
@@ -32,7 +33,7 @@ const Timer: React.FC = () => {
             setIsActive(true);
         }
     };
-    
+
     const handlePause = () => setIsActive(false);
     const handleResume = () => setIsActive(true);
     const handleReset = () => {
@@ -55,54 +56,54 @@ const Timer: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-cyan-400 to-cyan-600">
                 <div className="flex items-center space-x-3">
                     <TimerIcon size={28} />
-                    <h2 className="text-2xl font-bold">타이머</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.timer')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">시간을 설정하고 카운트다운을 시작하세요.</p>
+                <p className="mt-1 opacity-90">{t('date.timer.desc')}</p>
             </div>
 
             {!isTimerSet ? (
                 <div className="bg-white p-6 md:p-10 rounded-xl shadow-md space-y-8">
                     <div className="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6 text-2xl sm:text-3xl md:text-5xl font-mono">
                         <div className="flex flex-col items-center">
-                            <span className="text-[10px] font-black text-gray-400 uppercase mb-2 tracking-widest">Hours</span>
+                            <span className="text-[10px] font-black text-gray-400 uppercase mb-2 tracking-widest">{t('date.timer.hours')}</span>
                             <TimeInput value={hours} onChange={setHours} max={23} />
                         </div>
                         <span className="pt-6 text-gray-300">:</span>
                         <div className="flex flex-col items-center">
-                            <span className="text-[10px] font-black text-gray-400 uppercase mb-2 tracking-widest">Mins</span>
+                            <span className="text-[10px] font-black text-gray-400 uppercase mb-2 tracking-widest">{t('date.timer.mins')}</span>
                             <TimeInput value={minutes} onChange={setMinutes} max={59} />
                         </div>
                         <span className="pt-6 text-gray-300">:</span>
                         <div className="flex flex-col items-center">
-                            <span className="text-[10px] font-black text-gray-400 uppercase mb-2 tracking-widest">Secs</span>
+                            <span className="text-[10px] font-black text-gray-400 uppercase mb-2 tracking-widest">{t('date.timer.secs')}</span>
                             <TimeInput value={seconds} onChange={setSeconds} max={59} />
                         </div>
                     </div>
                     <button onClick={handleStart} className="w-full p-5 bg-cyan-500 hover:bg-cyan-600 text-white font-black rounded-2xl text-xl transition-all shadow-lg shadow-cyan-100 flex items-center justify-center space-x-2 active:scale-95">
                         <Play size={24} fill="currentColor" />
-                        <span>타이머 시작</span>
+                        <span>{t('date.timer.start')}</span>
                     </button>
                 </div>
             ) : (
                 <div className="bg-white p-6 sm:p-10 md:p-16 rounded-xl shadow-md text-center space-y-8 animate-in fade-in duration-500">
-                     <p className="text-4xl sm:text-6xl md:text-8xl font-mono font-black text-gray-900 tracking-tighter tabular-nums">{formatTime(timeLeft)}</p>
-                     <div className="flex justify-center space-x-4 sm:space-x-6">
+                    <p className="text-4xl sm:text-6xl md:text-8xl font-mono font-black text-gray-900 tracking-tighter tabular-nums">{formatTime(timeLeft)}</p>
+                    <div className="flex justify-center space-x-4 sm:space-x-6">
                         <button onClick={handleReset} className="p-4 sm:p-5 rounded-3xl bg-gray-100 hover:bg-gray-200 text-gray-600 transition-colors shadow-sm">
                             <RotateCcw size={24} className="sm:w-7 sm:h-7" />
                         </button>
-                         {isActive ? (
+                        {isActive ? (
                             <button onClick={handlePause} className="p-4 sm:p-5 rounded-3xl bg-rose-500 hover:bg-rose-600 text-white transition-all shadow-lg shadow-rose-100 scale-105 sm:scale-110">
                                 <Pause size={24} className="sm:w-7 sm:h-7" fill="currentColor" />
                             </button>
-                         ) : (
+                        ) : (
                             <button onClick={handleResume} className="p-4 sm:p-5 rounded-3xl bg-emerald-500 hover:bg-emerald-600 text-white transition-all shadow-lg shadow-emerald-100 scale-105 sm:scale-110">
                                 <Play size={24} className="sm:w-7 sm:h-7" fill="currentColor" />
                             </button>
-                         )}
-                     </div>
+                        )}
+                    </div>
                 </div>
             )}
-            
+
             <AdBanner />
         </div>
     );
@@ -116,7 +117,7 @@ const TimeInput: React.FC<{ value: number, onChange: (n: number) => void, max: n
         onChange(val);
     };
     return (
-        <input 
+        <input
             type="number"
             inputMode="numeric"
             value={String(value).padStart(2, '0')}

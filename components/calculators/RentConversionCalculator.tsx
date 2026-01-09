@@ -1,10 +1,11 @@
-
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ArrowRightLeft } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
 import AmountUnit from '../ui/AmountUnit';
 
 const RentConversionCalculator: React.FC = () => {
+    const { t } = useTranslation();
     const [jeonseDeposit, setJeonseDeposit] = useState('500000000');
     const [monthlyDeposit, setMonthlyDeposit] = useState('300000000');
     const [conversionRate, setConversionRate] = useState('5.5');
@@ -37,28 +38,28 @@ const RentConversionCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-violet-400 to-violet-600">
                 <div className="flex items-center space-x-3">
                     <ArrowRightLeft size={28} />
-                    <h2 className="text-2xl font-bold">전월세 전환 계산기</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.rent_conversion')} {t('suffix.calculator')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">보증금을 월세로 전환 시 금액을 계산합니다.</p>
+                <p className="mt-1 opacity-90">{t('finance.rent_conversion.desc')}</p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
                 <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">기존 전세 보증금</label>
+                    <label className="block text-sm font-medium text-gray-600 mb-2">{t('finance.rent_conversion.label_jeonse_deposit')}</label>
                     <input type="text" value={jeonseDeposit} onChange={e => setJeonseDeposit(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
                     <AmountUnit value={jeonseDeposit} />
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">월세 보증금</label>
+                    <label className="block text-sm font-medium text-gray-600 mb-2">{t('finance.rent_conversion.label_monthly_deposit')}</label>
                     <input type="text" value={monthlyDeposit} onChange={e => setMonthlyDeposit(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
                     <AmountUnit value={monthlyDeposit} />
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">전환율 (%)</label>
+                    <label className="block text-sm font-medium text-gray-600 mb-2">{t('finance.rent_conversion.label_rate')}</label>
                     <input type="number" value={conversionRate} onChange={e => setConversionRate(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
                 </div>
                 <button onClick={handleCalculate} className="w-full p-4 bg-violet-500 hover:bg-violet-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
-                    계산하기
+                    {t('common.calculate')}
                 </button>
             </div>
 
@@ -66,9 +67,9 @@ const RentConversionCalculator: React.FC = () => {
 
             {result && (
                 <div className="p-6 bg-gray-50 rounded-xl text-center">
-                    <p className="text-sm text-gray-500">전환된 월세</p>
+                    <p className="text-sm text-gray-500">{t('finance.rent_conversion.result_monthly_rent')}</p>
                     <p className="text-4xl font-bold text-blue-600 my-2">
-                        {Math.round(result.monthlyRent).toLocaleString()} 원
+                        {Math.round(result.monthlyRent).toLocaleString()} {t('currency.KRW')}
                     </p>
                 </div>
             )}

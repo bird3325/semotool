@@ -1,10 +1,11 @@
-
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { CalendarDays } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
 import DatePicker from '../ui/DatePicker';
 
 const DdayCalculator: React.FC = () => {
+    const { t } = useTranslation();
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
@@ -44,17 +45,17 @@ const DdayCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-cyan-400 to-cyan-600">
                 <div className="flex items-center space-x-3">
                     <CalendarDays size={28} />
-                    <h2 className="text-2xl font-bold">D-day 계산기</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.d_day')} {t('suffix.calculator')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">특정 날짜까지 남은 일수 계산</p>
+                <p className="mt-1 opacity-90">{t('date.d_day.desc')}</p>
             </div>
 
             <div className="bg-white p-8 rounded-3xl shadow-md border border-gray-100">
-                <DatePicker 
-                  label="기준 날짜 선택" 
-                  value={targetDate} 
-                  onChange={setTargetDate} 
-                  colorClass="text-cyan-600"
+                <DatePicker
+                    label={t('date.label_target_date')}
+                    value={targetDate}
+                    onChange={setTargetDate}
+                    colorClass="text-cyan-600"
                 />
             </div>
 
@@ -67,11 +68,11 @@ const DdayCalculator: React.FC = () => {
                         {result.type === 'D-day' ? 'D-Day' : `${result.type}${result.days}`}
                     </p>
                     <div className="inline-block px-4 py-2 bg-cyan-50 rounded-full border border-cyan-100">
-                      <p className="text-sm font-bold text-cyan-700">
-                          {result.type === 'D-' && `오늘로부터 ${result.days}일 남았습니다.`}
-                          {result.type === 'D+' && `오늘로부터 ${result.days}일 지났습니다.`}
-                          {result.type === 'D-day' && `바로 오늘입니다!`}
-                      </p>
+                        <p className="text-sm font-bold text-cyan-700">
+                            {result.type === 'D-' && t('date.d_day.msg_remaining', { days: result.days })}
+                            {result.type === 'D+' && t('date.d_day.msg_passed', { days: result.days })}
+                            {result.type === 'D-day' && t('date.d_day.msg_today')}
+                        </p>
                     </div>
                 </div>
             )}

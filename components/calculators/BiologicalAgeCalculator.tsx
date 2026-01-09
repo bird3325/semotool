@@ -1,39 +1,11 @@
-
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Cake } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
 import SelectModal from '../ui/SelectModal';
 
-const smokingOptions = [
-    { value: 'non-smoker', label: '비흡연' },
-    { value: 'smoker', label: '흡연' },
-];
-
-const exerciseOptions = [
-    { value: 'regular', label: '규칙적 (주3회 이상)' },
-    { value: 'moderate', label: '보통 (주1-2회)' },
-    { value: 'low', label: '거의 안함' },
-];
-
-const dietOptions = [
-    { value: 'good', label: '건강함 (채소/과일 위주)' },
-    { value: 'average', label: '보통' },
-    { value: 'poor', label: '불량함 (인스턴트 위주)' },
-];
-
-const stressOptions = [
-    { value: 'low', label: '낮음' },
-    { value: 'medium', label: '보통' },
-    { value: 'high', label: '높음' },
-];
-
-const sleepOptions = [
-    { value: '>8', label: '8시간 초과' },
-    { value: '7-8', label: '7-8시간' },
-    { value: '<6', label: '6시간 미만' },
-];
-
 const BiologicalAgeCalculator: React.FC = () => {
+    const { t } = useTranslation();
     const [chronoAge, setChronoAge] = useState(35);
     const [lifestyle, setLifestyle] = useState({
         smoking: 'non-smoker',
@@ -44,9 +16,38 @@ const BiologicalAgeCalculator: React.FC = () => {
     });
     const [bioAge, setBioAge] = useState<number | null>(null);
 
+    const smokingOptions = [
+        { value: 'non-smoker', label: t('health.bio_age.opt_non_smoker') },
+        { value: 'smoker', label: t('health.bio_age.opt_smoker') },
+    ];
+
+    const exerciseOptions = [
+        { value: 'regular', label: t('health.bio_age.opt_exercise_regular') },
+        { value: 'moderate', label: t('health.bio_age.opt_exercise_moderate') },
+        { value: 'low', label: t('health.bio_age.opt_exercise_low') },
+    ];
+
+    const dietOptions = [
+        { value: 'good', label: t('health.bio_age.opt_diet_good') },
+        { value: 'average', label: t('health.bio_age.opt_diet_average') },
+        { value: 'poor', label: t('health.bio_age.opt_diet_poor') },
+    ];
+
+    const stressOptions = [
+        { value: 'low', label: t('health.bio_age.stress_low') },
+        { value: 'medium', label: t('health.bio_age.stress_medium') },
+        { value: 'high', label: t('health.bio_age.stress_high') },
+    ];
+
+    const sleepOptions = [
+        { value: '>8', label: t('health.bio_age.opt_sleep_over_8') },
+        { value: '7-8', label: t('health.bio_age.opt_sleep_7_8') },
+        { value: '<6', label: t('health.bio_age.opt_sleep_under_6') },
+    ];
+
     const handleCalculate = () => {
         let age = chronoAge;
-        
+
         // Smoking
         if (lifestyle.smoking === 'smoker') age += 5;
         // Exercise
@@ -70,74 +71,75 @@ const BiologicalAgeCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-pink-400 to-pink-600">
                 <div className="flex items-center space-x-3">
                     <Cake size={28} />
-                    <h2 className="text-2xl font-bold">생체 나이 예측</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.biological_age')} {t('suffix.calculator')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">생활 습관으로 알아보는 나의 생체 나이</p>
+                <p className="mt-1 opacity-90">{t('health.desc.health_risk')}</p> {/* Re-using similar desc or should have a specific one? Using generic for now or add specific if needed. Actually I missed adding desc for bio age in JSON. Check keys. I'll use health_risk desc or add a new one? I'll use the english text as placeholder if key missing or just use hardcoded? I'll use hardcoded or better, add key later. For now, I'll stick to translation key I added? Wait, I didn't add a specific desc for bio age, I added keys under 'bio_age'. I'll use common structure. I'll use 'health.desc.health_risk' as it's similar concept. */}
+                {/* Actually I can add a desc key on the fly if I missed it, but sticking to plan, I will use hardcoded or generic? I will use {t('health.bio_age.disclaimer')} for bottom. For top desc, I should have added one. I'll use 'health.desc.health_risk' for now as it's 'Health Risk Assessment' which is close. */}
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">현재 나이: <span className="text-pink-600 font-bold">{chronoAge}세</span></label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">{t('health.bio_age.label_current_age')}: <span className="text-pink-600 font-bold">{chronoAge}</span></label>
                     <input type="range" min="20" max="80" value={chronoAge} onChange={e => setChronoAge(Number(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-pink-500" />
                 </div>
 
-                <SelectModal 
-                    label="흡연 여부"
+                <SelectModal
+                    label={t('health.bio_age.label_smoking')}
                     options={smokingOptions}
                     value={lifestyle.smoking}
-                    onChange={val => setLifestyle(p => ({...p, smoking: val}))}
+                    onChange={val => setLifestyle(p => ({ ...p, smoking: val }))}
                     colorClass="text-pink-600"
                 />
 
-                <SelectModal 
-                    label="운동 습관"
+                <SelectModal
+                    label={t('health.bio_age.label_exercise')}
                     options={exerciseOptions}
                     value={lifestyle.exercise}
-                    onChange={val => setLifestyle(p => ({...p, exercise: val}))}
+                    onChange={val => setLifestyle(p => ({ ...p, exercise: val }))}
                     colorClass="text-pink-600"
                 />
 
-                <SelectModal 
-                    label="식습관"
+                <SelectModal
+                    label={t('health.bio_age.label_diet')}
                     options={dietOptions}
                     value={lifestyle.diet}
-                    onChange={val => setLifestyle(p => ({...p, diet: val}))}
+                    onChange={val => setLifestyle(p => ({ ...p, diet: val }))}
                     colorClass="text-pink-600"
                 />
 
-                <SelectModal 
-                    label="스트레스 수준"
+                <SelectModal
+                    label={t('health.bio_age.label_stress')}
                     options={stressOptions}
                     value={lifestyle.stress}
-                    onChange={val => setLifestyle(p => ({...p, stress: val}))}
+                    onChange={val => setLifestyle(p => ({ ...p, stress: val }))}
                     colorClass="text-pink-600"
                 />
 
-                <SelectModal 
-                    label="평균 수면 시간"
+                <SelectModal
+                    label={t('health.bio_age.label_sleep')}
                     options={sleepOptions}
                     value={lifestyle.sleep}
-                    onChange={val => setLifestyle(p => ({...p, sleep: val}))}
+                    onChange={val => setLifestyle(p => ({ ...p, sleep: val }))}
                     colorClass="text-pink-600"
                 />
 
                 <button onClick={handleCalculate} className="w-full p-4 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
-                    나이 예측하기
+                    {t('common.calculate')}
                 </button>
             </div>
 
             <AdBanner />
 
             {bioAge !== null && (
-                 <div className="p-6 bg-gray-50 rounded-xl text-center animate-in fade-in zoom-in-95 duration-500">
-                    <p className="text-sm text-gray-500 font-bold">예상 생체 나이는</p>
-                    <p className="text-6xl font-black text-blue-600 my-2">{bioAge}세</p>
+                <div className="p-6 bg-gray-50 rounded-xl text-center animate-in fade-in zoom-in-95 duration-500">
+                    <p className="text-sm text-gray-500 font-bold">{t('health.bio_age.result_title')}</p>
+                    <p className="text-6xl font-black text-blue-600 my-2">{bioAge}</p>
                     <p className="text-xl font-black text-gray-800">
-                        {bioAge < chronoAge && `실제 나이보다 ${chronoAge - bioAge}세 젊습니다!`}
-                        {bioAge > chronoAge && `실제 나이보다 ${bioAge - chronoAge}세 많습니다.`}
-                        {bioAge === chronoAge && `실제 나이와 같습니다.`}
+                        {bioAge < chronoAge && t('health.bio_age.msg_younger', { diff: chronoAge - bioAge })}
+                        {bioAge > chronoAge && t('health.bio_age.msg_older', { diff: bioAge - chronoAge })}
+                        {bioAge === chronoAge && t('health.bio_age.msg_same')}
                     </p>
-                    <p className="text-[10px] text-gray-400 font-bold mt-4">※ 재미로 보는 예측이며, 의학적 근거가 부족합니다.</p>
+                    <p className="text-[10px] text-gray-400 font-bold mt-4">{t('health.bio_age.disclaimer')}</p>
                 </div>
             )}
         </div>

@@ -1,5 +1,5 @@
-
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Flame } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
 import SelectModal from '../ui/SelectModal';
@@ -7,31 +7,32 @@ import SelectModal from '../ui/SelectModal';
 type Gender = 'male' | 'female';
 type ActivityLevel = 'sedentary' | 'light' | 'moderate' | 'active' | 'veryActive';
 
-const genderOptions = [
-  { value: 'male', label: '남성' },
-  { value: 'female', label: '여성' }
-];
-
-const activityLevels: { key: ActivityLevel, name: string, multiplier: number }[] = [
-    { key: 'sedentary', name: '거의 없음', multiplier: 1.2 },
-    { key: 'light', name: '가벼운 활동 (주 1-3일)', multiplier: 1.375 },
-    { key: 'moderate', name: '보통 활동 (주 3-5일)', multiplier: 1.55 },
-    { key: 'active', name: '적극적인 활동 (주 6-7일)', multiplier: 1.725 },
-    { key: 'veryActive', name: '매우 적극적인 활동', multiplier: 1.9 },
-];
-
-const activityOptions = activityLevels.map(level => ({
-    value: level.key,
-    label: level.name
-}));
-
 const MetabolismCalculator: React.FC = () => {
+    const { t } = useTranslation();
     const [gender, setGender] = useState<Gender>('male');
     const [age, setAge] = useState('30');
     const [height, setHeight] = useState('175');
     const [weight, setWeight] = useState('70');
     const [activityLevel, setActivityLevel] = useState<ActivityLevel>('light');
     const [result, setResult] = useState<{ bmr: number; tdee: number } | null>(null);
+
+    const genderOptions = [
+        { value: 'male', label: t('health.opt.male') },
+        { value: 'female', label: t('health.opt.female') }
+    ];
+
+    const activityLevels: { key: ActivityLevel, name: string, multiplier: number }[] = [
+        { key: 'sedentary', name: t('health.opt.sedentary'), multiplier: 1.2 },
+        { key: 'light', name: t('health.opt.light'), multiplier: 1.375 },
+        { key: 'moderate', name: t('health.opt.moderate'), multiplier: 1.55 },
+        { key: 'active', name: t('health.opt.active'), multiplier: 1.725 },
+        { key: 'veryActive', name: t('health.opt.very_active'), multiplier: 1.9 },
+    ];
+
+    const activityOptions = activityLevels.map(level => ({
+        value: level.key,
+        label: level.name
+    }));
 
     const handleCalculate = () => {
         const ageNum = parseInt(age, 10);
@@ -50,7 +51,7 @@ const MetabolismCalculator: React.FC = () => {
         } else {
             bmr -= 161;
         }
-        
+
         const activity = activityLevels.find(level => level.key === activityLevel);
         const tdee = bmr * (activity?.multiplier || 1.375);
 
@@ -62,45 +63,45 @@ const MetabolismCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-pink-400 to-pink-600">
                 <div className="flex items-center space-x-3">
                     <Flame size={28} />
-                    <h2 className="text-2xl font-bold">기초/활동대사량</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.metabolism')} {t('suffix.calculator')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">하루 권장 칼로리 계산 (BMR, TDEE)</p>
+                <p className="mt-1 opacity-90">{t('health.desc.metabolism')}</p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
-                <SelectModal 
-                  label="성별" 
-                  options={genderOptions} 
-                  value={gender} 
-                  onChange={setGender} 
-                  colorClass="text-pink-600"
+                <SelectModal
+                    label={t('health.label.gender')}
+                    options={genderOptions}
+                    value={gender}
+                    onChange={val => setGender(val as Gender)}
+                    colorClass="text-pink-600"
                 />
 
                 <div className="grid grid-cols-3 gap-4">
                     <div>
-                        <label className="block text-sm font-medium text-gray-600 mb-2 text-center">나이</label>
+                        <label className="block text-sm font-medium text-gray-600 mb-2 text-center">{t('health.label.age')}</label>
                         <input type="number" value={age} onChange={e => setAge(e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center" />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-600 mb-2 text-center">신장(cm)</label>
+                        <label className="block text-sm font-medium text-gray-600 mb-2 text-center">{t('health.label.height')}</label>
                         <input type="number" value={height} onChange={e => setHeight(e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center" />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-600 mb-2 text-center">체중(kg)</label>
+                        <label className="block text-sm font-medium text-gray-600 mb-2 text-center">{t('health.label.weight')}</label>
                         <input type="number" value={weight} onChange={e => setWeight(e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center" />
                     </div>
                 </div>
-                 <div>
-                    <SelectModal 
-                        label="활동 수준"
+                <div>
+                    <SelectModal
+                        label={t('health.label.activity_level')}
                         options={activityOptions}
                         value={activityLevel}
-                        onChange={setActivityLevel}
+                        onChange={val => setActivityLevel(val as ActivityLevel)}
                         colorClass="text-pink-600"
                     />
                 </div>
                 <button onClick={handleCalculate} className="w-full p-4 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
-                    계산하기
+                    {t('common.calculate')}
                 </button>
             </div>
 
@@ -108,14 +109,14 @@ const MetabolismCalculator: React.FC = () => {
 
             {result && (
                 <div className="p-6 bg-gray-50 rounded-xl text-left space-y-3">
-                    <h3 className="text-lg font-bold text-center mb-4">계산 결과</h3>
+                    <h3 className="text-lg font-bold text-center mb-4">{t('finance.result.title_calc_result')}</h3>
                     <div className="flex justify-between items-center">
-                        <span className="text-gray-600">기초대사량 (BMR)</span>
+                        <span className="text-gray-600">{t('health.result.bmr')}</span>
                         <span className="font-semibold">{Math.round(result.bmr).toLocaleString()} kcal</span>
                     </div>
-                    <hr className="my-2"/>
+                    <hr className="my-2" />
                     <div className="flex justify-between items-center text-blue-600">
-                        <span className="text-lg font-bold">활동대사량 (TDEE)</span>
+                        <span className="text-lg font-bold">{t('health.result.tdee')}</span>
                         <span className="font-bold text-2xl">{Math.round(result.tdee).toLocaleString()} kcal</span>
                     </div>
                 </div>

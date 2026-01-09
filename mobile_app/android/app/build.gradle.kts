@@ -60,10 +60,14 @@ android {
     buildTypes {
         release {
             signingConfig = signingConfigs.getByName("release")
-            // Fix for "Release app bundle failed to strip debug symbols" error
-            ndk {
-                debugSymbolLevel = "SYMBOL_TABLE"
-            }
+            // ndk block removed to rely on packagingOptions
+        }
+    }
+
+    packagingOptions {
+        jniLibs {
+            keepDebugSymbols.add("**/libapp.so")
+            keepDebugSymbols.add("**/libflutter.so")
         }
     }
 }

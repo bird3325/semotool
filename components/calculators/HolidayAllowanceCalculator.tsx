@@ -1,9 +1,10 @@
-
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { CalendarPlus } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
 
 const HolidayAllowanceCalculator: React.FC = () => {
+    const { t } = useTranslation();
     const [hourlyWage, setHourlyWage] = useState('9860'); // 2024 minimum wage
     const [weeklyHours, setWeeklyHours] = useState('40');
     const [result, setResult] = useState<{ allowance: number; isEligible: boolean; reason?: string, wage: number, hours: number } | null>(null);
@@ -24,7 +25,7 @@ const HolidayAllowanceCalculator: React.FC = () => {
         }
 
         if (hours < 15) {
-            setResult({ allowance: 0, isEligible: false, reason: '주 15시간 미만 근로자는 주휴수당 지급 대상이 아닙니다.', wage, hours });
+            setResult({ allowance: 0, isEligible: false, reason: t('finance.holiday_allowance.msg_ineligible'), wage, hours });
             return;
         }
 
@@ -40,23 +41,23 @@ const HolidayAllowanceCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-amber-400 to-amber-600">
                 <div className="flex items-center space-x-3">
                     <CalendarPlus size={28} />
-                    <h2 className="text-2xl font-bold">주휴수당 계산기</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.holiday_allowance')} {t('suffix.calculator')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">내 주휴수당은 얼마일까요?</p>
+                <p className="mt-1 opacity-90">{t('finance.holiday_allowance.desc')}</p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
                 <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">시급 (원)</label>
+                    <label className="block text-sm font-medium text-gray-600 mb-2">{t('finance.holiday_allowance.label_hourly_wage')} ({t('currency.KRW')})</label>
                     <input type="text" value={formatNumber(hourlyWage)} onChange={e => setHourlyWage(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">1주간 총 근로시간</label>
+                    <label className="block text-sm font-medium text-gray-600 mb-2">{t('finance.holiday_allowance.label_weekly_hours')}</label>
                     <input type="number" value={weeklyHours} onChange={e => setWeeklyHours(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
                 </div>
-                <p className="text-xs text-gray-500 text-center">※ 주휴수당은 1주 15시간 이상 근무, 약정한 근무일수를 모두 채운 근로자에게 지급됩니다.</p>
+                <p className="text-xs text-gray-500 text-center">{t('finance.holiday_allowance.msg_disclaimer')}</p>
                 <button onClick={handleCalculate} className="w-full p-4 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
-                    계산하기
+                    {t('common.calculate')}
                 </button>
             </div>
 
@@ -66,12 +67,12 @@ const HolidayAllowanceCalculator: React.FC = () => {
                 <div className="p-6 bg-gray-50 rounded-xl text-center">
                     {result.isEligible ? (
                         <>
-                            <p className="text-sm text-gray-500">예상 주휴수당</p>
+                            <p className="text-sm text-gray-500">{t('finance.holiday_allowance.result_allowance')}</p>
                             <p className="text-4xl font-bold text-blue-600 my-2">
-                                {Math.round(result.allowance).toLocaleString()} 원
+                                {Math.round(result.allowance).toLocaleString()} {t('currency.KRW')}
                             </p>
                             <p className="text-md text-gray-700">
-                                1주일 총 급여: {Math.round((result.wage * result.hours) + result.allowance).toLocaleString()} 원
+                                {t('finance.holiday_allowance.result_total_weekly', { total: Math.round((result.wage * result.hours) + result.allowance).toLocaleString() })}
                             </p>
                         </>
                     ) : (

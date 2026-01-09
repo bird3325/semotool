@@ -1,21 +1,22 @@
-
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Wind } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
 import SelectModal from '../ui/SelectModal';
 
 type Gender = 'male' | 'female';
 
-const genderOptions = [
-  { value: 'male', label: '남성' },
-  { value: 'female', label: '여성' }
-];
-
 const VO2MaxCalculator: React.FC = () => {
+    const { t } = useTranslation();
     const [gender, setGender] = useState<Gender>('male');
     const [age, setAge] = useState('35');
     const [restingHR, setRestingHR] = useState('70');
     const [result, setResult] = useState<{ vo2max: number, interpretation: string } | null>(null);
+
+    const genderOptions = [
+        { value: 'male', label: t('health.opt.male') },
+        { value: 'female', label: t('health.opt.female') }
+    ];
 
     // Classification based on ACSM guidelines (simplified)
     const getInterpretation = (vo2max: number, age: number, gender: Gender) => {
@@ -39,14 +40,14 @@ const VO2MaxCalculator: React.FC = () => {
         const chart = gender === 'male' ? maleChart : femaleChart;
         const ageIndex = ageRanges.findIndex(range => age >= range[0] && age <= range[1]);
 
-        if (ageIndex === -1) return "해당 연령대 데이터 없음";
-        
+        if (ageIndex === -1) return t('health.vo2.msg_no_data');
+
         const levels = chart[ageIndex];
-        if (vo2max < levels[0]) return "매우 낮음";
-        if (vo2max < levels[1]) return "낮음";
-        if (vo2max < levels[2]) return "보통";
-        if (vo2max < levels[3]) return "좋음";
-        return "매우 좋음";
+        if (vo2max < levels[0]) return t('health.vo2.level_very_low');
+        if (vo2max < levels[1]) return t('health.vo2.level_low');
+        if (vo2max < levels[2]) return t('health.vo2.level_fair');
+        if (vo2max < levels[3]) return t('health.vo2.level_good');
+        return t('health.vo2.level_excellent');
     }
 
     const handleCalculate = () => {
@@ -74,30 +75,30 @@ const VO2MaxCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-pink-400 to-pink-600">
                 <div className="flex items-center space-x-3">
                     <Wind size={28} />
-                    <h2 className="text-2xl font-bold">최대산소섭취량 (VO2 Max)</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.vo2_max')} {t('suffix.calculator')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">심폐지구력 수준을 예측합니다.</p>
+                <p className="mt-1 opacity-90">{t('health.desc.health_risk')}</p> {/* Generic desc */}
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
-                <SelectModal 
-                  label="성별" 
-                  options={genderOptions} 
-                  value={gender} 
-                  onChange={setGender} 
-                  colorClass="text-pink-600"
+                <SelectModal
+                    label={t('health.label.gender')}
+                    options={genderOptions}
+                    value={gender}
+                    onChange={val => setGender(val as Gender)}
+                    colorClass="text-pink-600"
                 />
-                
+
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">나이 (세)</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">{t('health.label.age')} {t('unit.age')}</label>
                     <input type="number" value={age} onChange={e => setAge(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg" />
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">안정 시 심박수 (bpm)</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">{t('health.vo2.label_resting_hr')}</label>
                     <input type="number" value={restingHR} onChange={e => setRestingHR(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg" />
                 </div>
                 <button onClick={handleCalculate} className="w-full p-4 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
-                    예측하기
+                    {t('common.calculate')}
                 </button>
             </div>
 
@@ -105,10 +106,10 @@ const VO2MaxCalculator: React.FC = () => {
 
             {result && (
                 <div className="p-6 bg-gray-50 rounded-xl text-center">
-                    <p className="text-sm text-gray-500">예상 VO2 Max</p>
+                    <p className="text-sm text-gray-500">{t('health.vo2.result_title')}</p>
                     <p className="text-5xl font-bold text-blue-600 my-2">{result.vo2max.toFixed(2)}</p>
                     <p className="text-xl font-semibold text-gray-800">{result.interpretation}</p>
-                    <p className="text-xs text-gray-500 text-center pt-2">※ 이 값은 추정치이며 실제 측정값과 다를 수 있습니다.</p>
+                    <p className="text-xs text-gray-500 text-center pt-2">{t('health.msg.navy_method')}</p> {/* Reusing similar disclaimer 'results may vary' */}
                 </div>
             )}
         </div>

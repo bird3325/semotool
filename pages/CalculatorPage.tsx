@@ -1,5 +1,6 @@
 
 import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ChevronLeft, Star } from 'lucide-react';
 import { CALCULATOR_CATEGORIES, POPULAR_TOOLS } from '../constants';
@@ -88,7 +89,7 @@ const CalculatorPage: React.FC<CalculatorPageProps> = ({ favorites, toggleFavori
 
   useEffect(() => {
     if (id) {
-        addRecent(id);
+      addRecent(id);
     }
   }, [id, addRecent]);
 
@@ -105,7 +106,7 @@ const CalculatorPage: React.FC<CalculatorPageProps> = ({ favorites, toggleFavori
       </div>
     );
   }
-  
+
   const isFavorite = favorites.includes(id);
 
   const renderCalculator = () => {
@@ -125,7 +126,7 @@ const CalculatorPage: React.FC<CalculatorPageProps> = ({ favorites, toggleFavori
       case 'force': return <ForceConverter />;
       case 'power': return <PowerConverter />;
       case 'frequency': return <FrequencyConverter />;
-      
+
       // Finance Calculators
       case 'exchange': return <ExchangeRateCalculator />;
       case 'interest': return <InterestCalculator />;
@@ -142,7 +143,7 @@ const CalculatorPage: React.FC<CalculatorPageProps> = ({ favorites, toggleFavori
       case 'financial-goal': return <FinancialGoalCalculator />;
       case 'installment': return <InstallmentCalculator />;
       case 'holiday-allowance': return <HolidayAllowanceCalculator />;
-      
+
       // Real Estate Calculators
       case 'commission': return <CommissionCalculator />;
       case 'acquisition-tax': return <AcquisitionTaxCalculator />;
@@ -165,7 +166,7 @@ const CalculatorPage: React.FC<CalculatorPageProps> = ({ favorites, toggleFavori
       case 'timer': return <Timer />;
       case 'stopwatch': return <Stopwatch />;
       case 'world-clock': return <WorldClock />;
-      
+
       // Health Calculators
       case 'bmi': return <IdealWeightCalculator />;
       case 'calorie': return <MetabolismCalculator />;
@@ -195,23 +196,35 @@ const CalculatorPage: React.FC<CalculatorPageProps> = ({ favorites, toggleFavori
       case 'dynasty-kings': return <DynastyKings />;
 
       default:
-        return <div className="p-4 md:p-6 text-center">계산기 기능이 아직 구현되지 않았습니다.</div>;
+        return <div className="p-4 md:p-6 text-center">{t('common.not_implemented')}</div>;
     }
   };
-  
+
+  const { t } = useTranslation();
+
   // Use popular tool name if it exists (e.g., '환율 계산기' vs '환율')
-  const popularTool = POPULAR_TOOLS.find(t => t.id === id);
-  let calculatorName = `${calculator.name} 계산기`;
+  // For popular tools, we might need a specific key or just check if it matches a known pattern.
+  // Actually, popular tools are just tools with specific IDs. We can just use the tool ID for translation.
+  // Original logic was using `calculator.name` which is raw Korean.
+  // New logic: t(`tool.${id}`) + Suffix
+
+  let calculatorName = `${t(`tool.${id}`)} ${t('suffix.calculator')}`;
+
   const converterIds = [
-      'length', 'weight', 'temperature', 'area', 'volume', 'time', 'gpa', 'data-storage',
-      'speed', 'energy', 'pressure', 'angle', 'force', 'power', 'frequency', 'grade-converter'
+    'length', 'weight', 'temperature', 'area', 'volume', 'time', 'gpa', 'data-storage',
+    'speed', 'energy', 'pressure', 'angle', 'force', 'power', 'frequency', 'grade-converter'
   ];
-  if (popularTool) {
-      calculatorName = popularTool.name;
-  } else if (converterIds.includes(id)) {
-      calculatorName = `${calculator.name} 변환기`;
+
+  // Specific handling if some popular tools have nice names, but generally 'Name Calculator' works.
+  // '환율 계산기' -> 'Exchange Rate Calculator'
+  // 'BMI 계산기' -> 'BMI Calculator'
+  // '더치페이 계산기' -> 'Dutch Pay Calculator'
+
+  if (converterIds.includes(id)) {
+    calculatorName = `${t(`tool.${id}`)} ${t('suffix.converter')}`;
   } else if (['periodic-table', 'math-formulas', 'physics-formulas', 'biology-terms', 'history-timeline', 'world-map-info', 'constitution-summary', 'dynasty-kings'].includes(id)) {
-      calculatorName = calculator.name;
+    // These are just the names, no suffix
+    calculatorName = t(`tool.${id}`);
   }
 
 

@@ -1,9 +1,476 @@
 {
     "footer_text": "© {{year}} Semotool. 모든 권리 보유.",
+    "home": {
+        "reorder_mode_active": "순서 변경 모드 활성화됨"
+    },
+    "finance": {
+        "label": {
+            "loan_principal": "대출 원금 (원)",
+            "deposit_monthly": "매월 저축액 (원)",
+            "principal": "원금 (원)",
+            "installment_principal": "할부 원금 (원)",
+            "rate_year": "연이율 (%)",
+            "fee_rate_year": "연 수수료율 (%)",
+            "period_year": "대출 기간 (년)",
+            "period_month": "기간 (개월)",
+            "savings_period_month": "저축 기간 (개월)",
+            "installment_month": "할부 개월 수",
+            "repayment_method": "상환 방식",
+            "interest_method": "이자 계산 방식",
+            "tax_method": "과세 방법",
+            "annual_salary": "연봉 (원)",
+            "taxable_income": "과세표준 금액 (원)",
+            "non_taxable_monthly": "월 비과세액 (원)",
+            "dependents": "부양가족 수 (본인 포함)",
+            "supply_price": "공급가액 (원)",
+            "tax_amount_input": "부가세액 (원)",
+            "total_amount_input": "합계금액 (원)",
+            "total_deductions": "총 소득공제액 (원)",
+            "prepaid_tax": "기납부세액 (원)",
+            "property_value_total": "과세기준금액 (공시가격 합산) (원)",
+            "ownership_type": "보유 형태",
+            "acquisition_price": "취득가액 (원)",
+            "home_count": "보유 주택수",
+            "purchase_price": "취득가액 (원)",
+            "sale_price": "양도가액 (원)",
+            "holding_period_year": "보유 기간 (년)",
+            "gift_asset_value": "증여재산 가액 (원)",
+            "recipient": "받는 사람 (수증자)",
+            "inheritance_asset_value": "총 상속재산 가액 (원)",
+            "deduction_total": "각종 공제액 합계 (원)",
+            "official_property_price": "주택 공시가격 (원)"
+        },
+        "result": {
+            "title_expected_repayment": "예상 상환금액",
+            "title_expected_payout": "예상 만기 수령액",
+            "title_calc_result": "계산 결과",
+            "title_expected_net_salary": "예상 실수령액",
+            "monthly_payment": "매월 상환금",
+            "total_loan_principal": "총 대출원금",
+            "total_interest": "총 이자",
+            "total_repayment": "총 상환금액",
+            "total_principal_paid": "총 납입 원금",
+            "pre_tax_interest": "세전 이자",
+            "tax_amount": "이자과세",
+            "tax_amount_rate": "이자과세 (15.4%)",
+            "after_tax_payout": "세후 수령액",
+            "after_tax_interest": "세후 수령이자",
+            "final_payout": "최종 수령액",
+            "monthly_bill": "월 납부액",
+            "total_fee": "총 수수료(이자)",
+            "total_bill": "총 납부액",
+            "monthly_gross_pre_tax": "월 예상 소득 (세전)",
+            "net_salary_monthly": "월 예상 실수령액",
+            "expected_tax": "예상 산출세액",
+            "effective_rate": "유효세율",
+            "supply_price": "공급가액",
+            "vat_tax": "부가세",
+            "total_sum": "합계금액",
+            "expected_refund": "예상 환급세액",
+            "expected_additional_pay": "예상 추가납부세액",
+            "expected_comprehensive_tax": "예상 종합부동산세",
+            "expected_acquisition_tax": "예상 취득세 (부가세 포함)",
+            "expected_capital_gains_tax": "예상 양도소득세",
+            "capital_gain": "양도차익",
+            "expected_gift_tax": "예상 증여세",
+            "expected_inheritance_tax": "예상 상속세",
+            "expected_property_tax": "예상 재산세"
+        },
+        "deduction": {
+            "title": "공제액 내역",
+            "national_pension": "국민연금",
+            "health_insurance": "건강보험",
+            "long_term_care": "장기요양",
+            "employment_insurance": "고용보험",
+            "income_tax": "소득세",
+            "local_tax": "지방소득세",
+            "total": "총 공제액"
+        },
+        "desc": {
+            "loan": "월 상환금과 총 이자를 확인하세요.",
+            "savings": "매월 꾸준히 저축하면 얼마가 될까요?",
+            "interest": "예금, 적금 이자를 간단하게 계산!",
+            "installment": "카드 할부 시 총 비용을 계산합니다.",
+            "salary": "내 실수령액은 얼마일까요?",
+            "income_tax": "과세표준에 따른 예상 세금을 계산합니다.",
+            "vat": "공급가액, 부가세, 합계금액을 계산합니다.",
+            "year_end_tax": "예상 환급금 또는 추가 납부금을 계산합니다.",
+            "comprehensive_tax": "간이 종부세 계산",
+            "acquisition_tax": "주택/토지별 세율 적용",
+            "capital_gains_tax": "보유기간, 거주용/비거주용 고려",
+            "gift_tax": "매우 간소화된 예상 세액 계산",
+            "inheritance_tax": "매우 간소화된 예상 세액 계산",
+            "property_tax": "주택 공시가격 기준 간이 계산"
+        },
+        "msg": {
+            "local_tax_excluded": "※ 지방소득세 10% 별도. 각종 공제 미반영.",
+            "simple_calc_warning": "※ 간이 계산 결과로 실제와 차이가 있을 수 있습니다.",
+            "comprehensive_warning": "※ 실제 세액과 큰 차이가 있을 수 있습니다.",
+            "capital_gains_warning": "※ 매우 간소화된 계산으로, 실제 세액과 큰 차이가 있을 수 있습니다.",
+            "gift_warning": "※ 10년간 합산액 기준. 실제 세액과 큰 차이가 있을 수 있습니다.",
+            "property_warning": "※ 실제 세액과 차이가 있을 수 있습니다."
+        },
+        "jeonse": {
+            "label_loan_amount": "대출금액 (원)",
+            "label_interest_rate": "대출금리 (연 %)",
+            "label_period": "대출 기간",
+            "opt_1_year": "1년",
+            "opt_2_years": "2년 (기본)",
+            "opt_3_years": "3년",
+            "opt_4_years": "4년",
+            "opt_5_years": "5년",
+            "opt_10_years": "10년",
+            "result_monthly_payment": "월 상환 이자",
+            "result_total_interest": "총 이자",
+            "desc": "매월 내야 할 이자를 계산합니다."
+        },
+        "mortgage": {
+            "label_principal": "대출 원금 (원)",
+            "label_rate": "연이율 (%)",
+            "label_period": "대출 기간 (년)",
+            "label_method": "상환 방식",
+            "opt_equal_principal_interest": "원리금균등",
+            "opt_equal_principal": "원금균등",
+            "result_monthly_payment": "매월 상환금",
+            "result_total_principal": "총 대출원금",
+            "result_total_repayment": "총 상환금액",
+            "desc": "월 상환금과 총 이자를 확인하세요."
+        },
+        "rent_conversion": {
+            "label_jeonse_deposit": "기존 전세 보증금",
+            "label_monthly_deposit": "월세 보증금",
+            "label_rate": "전환율 (%)",
+            "result_monthly_rent": "전환된 월세",
+            "desc": "보증금을 월세로 전환 시 금액을 계산합니다."
+        },
+        "rental_yield": {
+            "label_purchase_price": "매매가격",
+            "label_deposit": "보증금",
+            "label_monthly_rent": "월세",
+            "label_expenses": "연간 기타비용 (세금, 수리비 등)",
+            "result_yield": "연간 임대수익률 (세전)",
+            "result_net_income": "연간 순수익",
+            "desc": "부동산 투자 수익률을 계산합니다."
+        },
+        "retirement": {
+            "label_start_date": "입사일",
+            "label_end_date": "퇴사일",
+            "label_salary_3m": "3개월간 총 급여 (세전)",
+            "label_bonus": "연간 상여금 등 (세전)",
+            "result_days": "총 재직일수",
+            "result_daily_wage": "1일 평균임금",
+            "result_severance": "예상 퇴직금 (세전)",
+            "msg_disclaimer": "※ 실제 퇴직금은 평균임금 산정 기준에 따라 차이가 있을 수 있습니다.",
+            "desc": "예상 퇴직금을 계산해보세요."
+        },
+        "opt": {
+            "equal_principal_interest": "원리금균등",
+            "equal_principal": "원금균등",
+            "bullet_repayment": "만기일시",
+            "simple": "단리",
+            "compound": "복리",
+            "single_owner": "단독 명의",
+            "joint_owner": "공동 명의",
+            "one_home": "1주택",
+            "multi_home": "2주택 이상",
+            "spouse": "배우자",
+            "child": "자녀 (성년)",
+            "minor_child": "자녀 (미성년)",
+            "parent": "직계존속 (부모, 조부모 등)",
+            "relative": "기타 친족"
+        }
+    },
+    "health": {
+        "label": {
+            "height": "신장 (cm)",
+            "weight": "체중 (kg)",
+            "age": "나이",
+            "gender": "성별",
+            "waist": "허리 둘레 (cm)",
+            "neck": "목 둘레 (cm)",
+            "hip": "엉덩이 둘레 (cm)",
+            "activity_level": "활동 수준",
+            "smoking": "현재 흡연을 하십니까?",
+            "exercise_freq": "일주일에 30분 이상 운동하는 횟수는?",
+            "diet_freq": "하루에 과일/채소를 몇 회 섭취하나요?",
+            "bmi": "BMI 지수",
+            "family_history": "심장병/당뇨 가족력이 있습니까?"
+        },
+        "opt": {
+            "male": "남성",
+            "female": "여성",
+            "yes": "예",
+            "no": "아니오",
+            "sedentary": "거의 없음",
+            "light": "가벼운 활동 (주 1-3일)",
+            "moderate": "보통 활동 (주 3-5일)",
+            "active": "적극적인 활동 (주 6-7일)",
+            "very_active": "매우 적극적인 활동"
+        },
+        "result": {
+            "body_fat": "예상 체지방률",
+            "bmr": "기초대사량 (BMR)",
+            "tdee": "활동대사량 (TDEE)",
+            "risk_level": "건강 위험도",
+            "visceral_fat_risk": "내장 지방 위험도",
+            "ideal_weight_range": "적정 체중 범위",
+            "bmi_index": "당신의 BMI 지수"
+        },
+        "level": {
+            "low": "낮음",
+            "caution": "주의",
+            "warning": "경고",
+            "danger": "위험",
+            "essential_fat": "필수 지방",
+            "athlete": "운동선수",
+            "healthy": "건강한",
+            "average": "평균",
+            "obese": "비만",
+            "underweight": "저체중",
+            "normal": "정상",
+            "overweight": "과체중",
+            "severely_obese": "고도비만"
+        },
+        "desc": {
+            "health_risk": "생활 습관 기반 간이 건강 위험도 평가",
+            "body_fat": "신체 측정치 기반 체지방률 예측",
+            "metabolism": "하루 권장 칼로리 계산 (BMR, TDEE)",
+            "ideal_weight": "내 키에 맞는 적정 체중을 알아보세요.",
+            "visceral_fat": "허리 둘레로 내장 지방 위험도를 확인하세요."
+        },
+        "msg": {
+            "navy_method": "※ 미 해군 방식 계산법으로, 실제와 차이가 있을 수 있습니다.",
+            "medical_disclaimer": "※ 의학적 진단이 아니며, 건강 관리를 위한 참고 자료입니다."
+        },
+        "bio_age": {
+            "label_current_age": "현재 나이",
+            "label_smoking": "흡연 여부",
+            "label_exercise": "운동 습관",
+            "label_diet": "식습관",
+            "label_stress": "스트레스 수준",
+            "label_sleep": "평균 수면 시간",
+            "opt_smoker": "흡연",
+            "opt_non_smoker": "비흡연",
+            "opt_exercise_regular": "규칙적 (주3회 이상)",
+            "opt_exercise_moderate": "보통 (주1-2회)",
+            "opt_exercise_low": "거의 안함",
+            "opt_diet_good": "건강함 (채소/과일 위주)",
+            "opt_diet_average": "보통",
+            "opt_diet_poor": "불량함 (인스턴트 위주)",
+            "opt_sleep_over_8": "8시간 초과",
+            "opt_sleep_7_8": "7-8시간",
+            "opt_sleep_under_6": "6시간 미만",
+            "result_title": "예상 생체 나이는",
+            "msg_younger": "실제 나이보다 {{diff}}세 젊습니다!",
+            "msg_older": "실제 나이보다 {{diff}}세 많습니다.",
+            "msg_same": "실제 나이와 같습니다.",
+            "disclaimer": "※ 재미로 보는 예측이며, 의학적 근거가 부족합니다."
+        },
+        "sleep": {
+            "label_hours": "어젯밤 몇 시간 주무셨나요?",
+            "label_fall_asleep": "잠드는 데 얼마나 걸렸나요?",
+            "label_wake_ups": "밤에 몇 번이나 깨셨나요?",
+            "label_feeling": "아침에 일어났을 때 기분은?",
+            "opt_less_15": "15분 미만",
+            "opt_15_30": "15~30분",
+            "opt_30_60": "30~60분",
+            "opt_over_60": "60분 이상",
+            "opt_very_tired": "매우 피곤함",
+            "opt_tired": "피곤함",
+            "opt_average": "보통",
+            "opt_refreshed": "개운함",
+            "result_title": "당신의 수면 점수는",
+            "level_best": "최상의 수면",
+            "level_good": "좋은 수면",
+            "level_avg": "보통 수면",
+            "level_poor": "개선이 필요한 수면"
+        },
+        "stress": {
+            "q1": "중요한 일을 통제할 수 없다고 느낀 적이 얼마나 있었나요?",
+            "q2": "자신감을 잃은 적이 얼마나 있었나요?",
+            "q3": "일이 당신의 뜻대로 진행되지 않는다고 느낀 적이 얼마나 있었나요?",
+            "q4": "당신의 통제 범위를 벗어난 일 때문에 화가 난 적이 얼마나 있었나요?",
+            "q5": "어려움이 너무 많이 쌓여 극복할 수 없다고 느낀 적이 얼마나 있었나요?",
+            "opt_0": "전혀 없음 (0점)",
+            "opt_1": "거의 없음 (1점)",
+            "opt_2": "때때로 (2점)",
+            "opt_3": "자주 (3점)",
+            "opt_4": "매우 자주 (4점)",
+            "result_title": "당신의 스트레스 점수는",
+            "level_low": "낮은 스트레스",
+            "level_moderate": "보통 스트레스",
+            "level_high": "높은 스트레스",
+            "level_very_high": "매우 높은 스트레스"
+        },
+        "vo2": {
+            "label_resting_hr": "안정 시 심박수 (bpm)",
+            "result_title": "예상 VO2 Max",
+            "level_very_low": "매우 낮음",
+            "level_low": "낮음",
+            "level_fair": "보통",
+            "level_good": "좋음",
+            "level_excellent": "매우 좋음",
+            "msg_no_data": "해당 연령대 데이터 없음"
+        },
+        "water": {
+            "opt_normal": "보통",
+            "opt_active": "운동선수/활동량 많음",
+            "result_title": "하루 권장 물 섭취량",
+            "result_sum": "합계: {{sum}}",
+            "result_count": "개수: {{count}}"
+        }
+    },
+    "school": {
+        "gpa": {
+            "desc": "예상 학점을 간단하게 계산!",
+            "label_course_name": "과목명 (선택)",
+            "placeholder_course_name": "과목명을 입력하세요",
+            "label_credits": "학점",
+            "label_grade": "성적",
+            "btn_add_course": "과목 추가하기",
+            "btn_calculate_gpa": "평균 학점 계산하기",
+            "header_course_list": "과목 목록",
+            "count_course": "{{count}}개 과목",
+            "result_header": "GPA 계산 결과",
+            "result_total_credits": "총 {{credits}}학점 이수",
+            "msg_disclaimer": "※ 위 계산 결과는 입력된 성적을 바탕으로 한 산술 평균값입니다."
+        },
+        "grade_converter": {
+            "desc": "점수를 학점/GPA로 변환합니다.",
+            "label_score": "점수 (100점 만점)",
+            "placeholder_score": "예: 95",
+            "btn_convert": "변환하기",
+            "result_header": "변환 결과",
+            "result_gpa": "GPA: {{gpa}} / 4.5"
+        },
+        "grade_predictor": {
+            "desc": "목표 성적을 위해 필요한 기말고사 점수를 계산합니다.",
+            "label_current_score": "현재까지 평균 점수 (%)",
+            "label_current_weight": "현재까지 성적의 비중 (%)",
+            "label_target_score": "목표하는 최종 성적 (%)",
+            "result_required_score": "남은 시험(과제)에서 필요한 점수",
+            "result_remaining_weight": "(남은 시험 비중: {{weight}}%)",
+            "msg_hard": "목표 달성이 어려울 수 있습니다.",
+            "msg_achieved": "이미 목표를 달성했습니다!"
+        }
+    },
     "nav": {
         "home": "홈",
         "favorites": "즐겨찾기",
         "recent": "최근"
+    },
+    "suffix": {
+        "calculator": "계산기",
+        "converter": "변환기"
+    },
+    "common": {
+        "convert": "변환하기",
+        "calculate": "계산하기",
+        "result": "변환 결과",
+        "calculation_result": "계산 결과",
+        "from": "변환 전",
+        "to": "변환 후",
+        "input_value": "변환할 값",
+        "enter_amount": "금액을 입력하세요",
+        "invalid_number": "유효한 숫자를 입력하세요.",
+        "cannot_convert": "변환을 수행할 수 없습니다.",
+        "send_amount": "보낼 금액",
+        "from_currency": "변환 전 통화",
+        "to_currency": "변환 후 통화",
+        "based_on": "기준",
+        "total_amount": "총 금액",
+        "num_people": "인원 수",
+        "per_person_amount": "1인당 부담할 금액",
+        "people_count": "명"
+    },
+    "currency": {
+        "KRW": "대한민국 원",
+        "USD": "미국 달러",
+        "EUR": "유로",
+        "JPY": "일본 옌",
+        "CNY": "중국 위안",
+        "KRW_symbol": "원"
+    },
+    "unit": {
+        "mm": "밀리미터 (mm)",
+        "cm": "센티미터 (cm)",
+        "m": "미터 (m)",
+        "km": "킬로미터 (km)",
+        "inch": "인치 (in)",
+        "ft": "피트 (ft)",
+        "yard": "야드 (yd)",
+        "mile": "마일 (mile)",
+        "g": "그램 (g)",
+        "kg": "킬로그램 (kg)",
+        "t": "톤 (t)",
+        "oz": "온스 (oz)",
+        "lb": "파운드 (lb)",
+        "m2": "제곱미터 (m²)",
+        "km2": "제곱킬로미터 (km²)",
+        "pyeong": "평 (py)",
+        "acre": "에이커 (ac)",
+        "s": "초 (s)",
+        "min": "분 (min)",
+        "h": "시간 (h)",
+        "d": "일 (d)",
+        "m/s": "미터/초 (m/s)",
+        "km/h": "킬로미터/시 (km/h)",
+        "mph": "마일/시 (mph)",
+        "ft/s": "피트/초 (ft/s)",
+        "knot": "노트 (knot)",
+        "byte": "바이트 (B)",
+        "kb": "킬로바이트 (KB)",
+        "mb": "메가바이트 (MB)",
+        "gb": "기가바이트 (GB)",
+        "tb": "테라바이트 (TB)",
+        "j": "줄 (J)",
+        "kj": "킬로줄 (kJ)",
+        "cal": "칼로리 (cal)",
+        "kcal": "킬로칼로리 (kcal)",
+        "wh": "와트시 (Wh)",
+        "pa": "파스칼 (Pa)",
+        "kpa": "킬로파스칼 (kPa)",
+        "bar": "바 (bar)",
+        "atm": "기압 (atm)",
+        "psi": "제곱인치당 파운드 (psi)",
+        "deg": "도 (°)",
+        "rad": "라디안 (rad)",
+        "grad": "그라디안 (grad)",
+        "mrad": "밀리라디안 (mrad)",
+        "n": "뉴턴 (N)",
+        "kgf": "킬로그램힘 (kgf)",
+        "lbf": "파운드힘 (lbf)",
+        "w": "와트 (W)",
+        "kw": "킬로와트 (kW)",
+        "hp": "마력 (hp)",
+        "hz": "헤르츠 (Hz)",
+        "khz": "킬로헤르츠 (kHz)",
+        "mhz": "메가헤르츠 (MHz)",
+        "ghz": "기가헤르츠 (GHz)",
+        "rpm": "분당 회전수 (rpm)",
+        "ml": "밀리리터 (ml)",
+        "l": "리터 (l)",
+        "gal": "갤런 (gal)",
+        "cup": "컵 (cup)",
+        "floz": "액량 온스 (fl oz)",
+        "doe": "되"
+    },
+    "desc": {
+        "length": "미터, 인치, 피트를 쉽게 변환!",
+        "weight": "그램, 킬로그램, 파운드를 쉽게 변환!",
+        "exchange": "실시간 환율로 정확하게!",
+        "dutch-pay": "N분할, 개별 금액 분담",
+        "area": "제곱미터, 평, 에이커를 쉽게 변환!",
+        "time": "초, 분, 시간을 쉽게 변환!",
+        "speed": "m/s, km/h, mph를 쉽게 변환!",
+        "data-storage": "바이트, KB, MB, GB를 쉽게 변환!",
+        "energy": "줄, 칼로리, 와트시를 쉽게 변환!",
+        "pressure": "파스칼, 바, psi를 쉽게 변환!",
+        "angle": "도, 라디안, 그라디안을 쉽게 변환!",
+        "force": "뉴턴, 킬로그램힘을 쉽게 변환!",
+        "power": "와트, 킬로와트, 마력을 쉽게 변환!",
+        "frequency": "헤르츠, 킬로헤르츠, rpm을 쉽게 변환!",
+        "volume": "리터, 갤런, 컵을 쉽게 변환!"
     },
     "category": {
         "unit-conversion": "단위 변환기",
@@ -86,5 +553,644 @@
         "world-map-info": "세계 지도",
         "constitution-summary": "헌법 개요",
         "dynasty-kings": "왕조 계보"
+    },
+    "ref": {
+        "bio": {
+            "title": "생물 용어",
+            "desc": "생물학의 핵심 용어와 개념을 탐구합니다.",
+            "placeholder": "용어 또는 의미 검색...",
+            "term": {
+                "cell": {
+                    "word": "세포 (Cell)",
+                    "meaning": "생명체의 구조적, 기능적 기본 단위",
+                    "desc": "모든 생물은 세포로 이루어져 있으며, 세포는 생명 활동의 기초가 됩니다."
+                },
+                "dna": {
+                    "word": "DNA",
+                    "meaning": "유전 정보를 담고 있는 핵심 물질",
+                    "desc": "부모의 형질이 자손에게 전달되는 유전 정보를 저장하는 이중 나선 구조의 분자입니다."
+                },
+                "mitochondria": {
+                    "word": "미토콘드리아",
+                    "meaning": "세포 내 에너지 생산 공장",
+                    "desc": "세포 호흡을 통해 생명 활동에 필요한 에너지(ATP)를 생성하는 세포 소기관입니다."
+                },
+                "photosynthesis": {
+                    "word": "광합성",
+                    "meaning": "빛 에너지를 화학 에너지로 변환",
+                    "desc": "식물이 빛 에너지를 이용하여 이산화탄소와 물로부터 포도당과 산소를 만드는 과정입니다."
+                },
+                "homeostasis": {
+                    "word": "항상성",
+                    "meaning": "체내 환경을 일정하게 유지하려는 성질",
+                    "desc": "체온, 혈당량, 삼투압 등을 일정하게 유지하여 생명을 보존하려는 조절 작용입니다."
+                },
+                "chromosome": {
+                    "word": "염색체",
+                    "meaning": "유전자가 들어있는 세포핵 속의 구조물",
+                    "desc": "세포 분열 시 DNA가 응축되어 나타나며, 유전 정보를 전달하는 역할을 합니다."
+                },
+                "enzyme": {
+                    "word": "효소",
+                    "meaning": "생체 내 화학 반응의 촉매",
+                    "desc": "체내에서 일어나는 소화, 호흡 등 다양한 대사 활동의 속도를 조절하는 단백질입니다."
+                },
+                "natural_selection": {
+                    "word": "자연 선택",
+                    "meaning": "환경에 적합한 개체가 살아남는 진화 원리",
+                    "desc": "생존에 유리한 형질을 가진 개체가 더 많이 살아남아 자손을 남긴다는 진화론의 핵심 개념입니다."
+                }
+            }
+        },
+        "idiom": {
+            "title": "필수 숙어",
+            "desc": "일상 회화와 시험에 자주 나오는 영어 숙어를 확인하세요.",
+            "placeholder": "숙어 또는 뜻 검색...",
+            "item": {
+                "look_for": {
+                    "phrase": "Look for",
+                    "meaning": "~을 찾다",
+                    "example": "I am looking for my keys."
+                },
+                "wait_for": {
+                    "phrase": "Wait for",
+                    "meaning": "~을 기다리다",
+                    "example": "Please wait for me."
+                },
+                "look_after": {
+                    "phrase": "Look after",
+                    "meaning": "~을 돌보다",
+                    "example": "She looks after her little brother."
+                },
+                "get_along_with": {
+                    "phrase": "Get along with",
+                    "meaning": "~와 잘 지내다",
+                    "example": "He gets along well with his colleagues."
+                },
+                "give_up": {
+                    "phrase": "Give up",
+                    "meaning": "포기하다",
+                    "example": "Don't give up on your dreams."
+                },
+                "take_care_of": {
+                    "phrase": "Take care of",
+                    "meaning": "~을 처리하다/돌보다",
+                    "example": "I need to take care of this problem."
+                },
+                "run_out_of": {
+                    "phrase": "Run out of",
+                    "meaning": "~이 다 떨어지다",
+                    "example": "We ran out of milk."
+                },
+                "find_out": {
+                    "phrase": "Find out",
+                    "meaning": "알아내다",
+                    "example": "I will find out the truth."
+                }
+            }
+        },
+        "dynasty": {
+            "title": "왕조 계보",
+            "desc": "역대 왕들의 계보와 주요 업적을 탐색하세요.",
+            "placeholder": "왕 또는 업적 검색...",
+            "joseon": "조선",
+            "goryeo": "고려",
+            "kings": {
+                "joseon": {
+                    "taejo": {
+                        "name": "태조 (이성계)",
+                        "achievement": "조선의 건국자. 한양으로 천도."
+                    },
+                    "taejong": {
+                        "name": "태종 (이방원)",
+                        "achievement": "왕권 강화 및 6조 직계제 실시."
+                    },
+                    "sejong": {
+                        "name": "세종 (이도)",
+                        "achievement": "훈민정음 창제 및 과학 기술 비약적 발전."
+                    },
+                    "sejo": {
+                        "name": "세조 (이유)",
+                        "achievement": "경국대전 편찬 시작 및 중앙 집권 강화."
+                    },
+                    "seongjong": {
+                        "name": "성종 (이혈)",
+                        "achievement": "경국대전 완성 및 유교적 통치 규범 확립."
+                    },
+                    "seonjo": {
+                        "name": "선조 (이연)",
+                        "achievement": "임진왜란 발생 및 전후 복구 시도."
+                    },
+                    "gwanghaegun": {
+                        "name": "광해군 (이혼)",
+                        "achievement": "중립 외교 실시 및 대동법 시행."
+                    },
+                    "jeongjo": {
+                        "name": "정조 (이산)",
+                        "achievement": "규장각 설치 및 수원 화성 축조."
+                    },
+                    "gojong": {
+                        "name": "고종 (이희)",
+                        "achievement": "대한제국 선포 및 황제 즉위."
+                    }
+                },
+                "goryeo": {
+                    "taejo": {
+                        "name": "태조 (왕건)",
+                        "achievement": "고려 건국 및 북진 정책 실시."
+                    },
+                    "gwhangjong": {
+                        "name": "광종 (왕소)",
+                        "achievement": "노비안검법 및 과거제 실시."
+                    },
+                    "seongjong": {
+                        "name": "성종 (왕치)",
+                        "achievement": "유교 정치 체제 정비."
+                    },
+                    "gongmin": {
+                        "name": "공민왕 (왕전)",
+                        "achievement": "반원 자주 정책 및 전민변정도감 설치."
+                    }
+                }
+            }
+        },
+        "history": {
+            "title": "역사 연표",
+            "desc": "한국사의 흐름을 관통하는 주요 사건들을 살펴보세요.",
+            "placeholder": "사건명, 연도, 내용 검색...",
+            "cat": {
+                "ancient": "고대",
+                "nambukguk": "남북국",
+                "goryeo": "고려",
+                "joseon": "조선",
+                "modern_era": "근대",
+                "colonial": "일제강점기",
+                "modern": "현대"
+            },
+            "event": {
+                "gojoseon": {
+                    "title": "고조선 건국",
+                    "desc": "단군왕검이 아사달에 고조선을 세움."
+                },
+                "silla": {
+                    "title": "신라 건국",
+                    "desc": "박혁거세가 경주 지역에 신라를 세움."
+                },
+                "goguryeo": {
+                    "title": "고구려 건국",
+                    "desc": "주몽이 졸본 지역에 고구려를 세움."
+                },
+                "baekje": {
+                    "title": "백제 건국",
+                    "desc": "온조가 위례성에 백제를 세움."
+                },
+                "silla_update": {
+                    "title": "신라의 삼국 통일",
+                    "desc": "당나라 세력을 몰아내고 대동강 이남의 통일을 완수함."
+                },
+                "balhae": {
+                    "title": "발해 건국",
+                    "desc": "대조영이 동모산에서 발해를 세움."
+                },
+                "goryeo_found": {
+                    "title": "고려 건국",
+                    "desc": "왕건이 태봉을 무너뜨리고 고려를 세움."
+                },
+                "goryeo_unify": {
+                    "title": "고려의 후삼국 통일",
+                    "desc": "후백제를 멸망시키고 민족 재통일을 달성함."
+                },
+                "joseon_found": {
+                    "title": "조선 건국",
+                    "desc": "이성계가 위화도 회군 이후 조선을 세움."
+                },
+                "hunminjeongeum": {
+                    "title": "훈민정음 창제",
+                    "desc": "세종대왕이 우리글 한글을 창제함."
+                },
+                "imjin": {
+                    "title": "임진왜란 발발",
+                    "desc": "일본의 침략으로 7년간의 전쟁이 시작됨."
+                },
+                "empire": {
+                    "title": "대한제국 선포",
+                    "desc": "고종이 황제로 즉위하며 근대적 국가 체제를 지향함."
+                },
+                "annexation": {
+                    "title": "경술국치",
+                    "desc": "한일 합병 조약으로 일제 강점기가 시작됨."
+                },
+                "march_first": {
+                    "title": "3·1 운동 & 임시 정부 수립",
+                    "desc": "전국적인 만세 운동이 일어나고 상해에 임시 정부가 수립됨."
+                },
+                "liberation": {
+                    "title": "8·15 광복",
+                    "desc": "일본의 항복으로 민족의 해방을 맞이함."
+                },
+                "gov_est": {
+                    "title": "대한민국 정부 수립",
+                    "desc": "제헌 국회가 구성되고 대한민국 정부가 공식 출범함."
+                },
+                "korean_war": {
+                    "title": "6·25 전쟁 발발",
+                    "desc": "북한의 남침으로 동족상잔의 비극이 시작됨."
+                },
+                "april_rev": {
+                    "title": "4·19 혁명",
+                    "desc": "부정 선거에 항거하여 민주주의를 지켜낸 학생 혁명."
+                },
+                "june_struggle": {
+                    "title": "6월 민주 항쟁",
+                    "desc": "대통령 직선제 개헌을 이끌어낸 범국민적 민주화 운동."
+                }
+            }
+        },
+        "physics": {
+            "title": "물리 공식",
+            "desc": "세상을 움직이는 물리 법칙의 정수를 확인하세요.",
+            "note": "※ 물리 수식은 SI 단위를 기준으로 합니다. \n기초 물리 및 일반 물리 교육 과정에서 필수적으로 다루는 공식들입니다.",
+            "cat": {
+                "mechanics": "고전 역학",
+                "electromagnetism": "전자기학",
+                "modern": "현대 물리학"
+            },
+            "formula": {
+                "newton2": {
+                    "title": "뉴턴의 운동 제2법칙",
+                    "desc": "힘(F)은 질량(m)과 가속도(a)의 곱과 같다."
+                },
+                "kinetic": {
+                    "title": "운동 에너지",
+                    "desc": "움직이는 물체가 가지는 에너지 (v는 속도)"
+                },
+                "potential": {
+                    "title": "위치 에너지 (중력)",
+                    "desc": "높이(h)에 있는 물체가 가지는 잠재적 에너지"
+                },
+                "gravity": {
+                    "title": "만유인력의 법칙",
+                    "desc": "두 질량 사이의 끌어당기는 힘 (r은 거리)"
+                },
+                "ohm": {
+                    "title": "옴의 법칙",
+                    "desc": "전압(V)은 전류(I)와 저항(R)의 곱과 같다."
+                },
+                "power": {
+                    "title": "전력 공식",
+                    "desc": "단위 시간당 소비되는 전기 에너지"
+                },
+                "coulomb": {
+                    "title": "쿨롱의 법칙",
+                    "desc": "두 전하 사이의 상호작용하는 힘"
+                },
+                "mass_energy": {
+                    "title": "질량-에너지 등가 원리",
+                    "desc": "질량과 에너지는 서로 변환될 수 있다 (c는 광속)"
+                },
+                "photoelectric": {
+                    "title": "광전 효과 (광자 에너지)",
+                    "desc": "빛의 에너지는 진동수(f)에 비례한다"
+                }
+            }
+        },
+        "math": {
+            "title": "수학 공식",
+            "desc": "잊어버리기 쉬운 주요 수학 공식을 분야별로 확인하세요.",
+            "note": "※ 수식은 표준 LaTeX 형식을 기반으로 표현되었습니다. \n기초 교육 과정에서 가장 많이 활용되는 핵심 공식을 우선 수록했습니다.",
+            "cat": {
+                "algebra": "대수학",
+                "geometry": "기하학",
+                "calculus": "미적분학"
+            },
+            "formula": {
+                "quadratic": {
+                    "title": "이차방정식의 근의 공식",
+                    "desc": "이차방정식 ax² + bx + c = 0의 해를 구하는 공식"
+                },
+                "square": {
+                    "title": "완전제곱식",
+                    "desc": "두 항의 합의 제곱을 전개한 공식"
+                },
+                "diff_squares": {
+                    "title": "합차 공식",
+                    "desc": "두 제곱수의 차를 인수분해하는 공식"
+                },
+                "log": {
+                    "title": "로그의 기본 성질",
+                    "desc": "로그의 진수 곱은 로그의 합과 같다"
+                },
+                "pythagoras": {
+                    "title": "피타고라스의 정리",
+                    "desc": "직각삼각형의 세 변의 길이 사이의 관계"
+                },
+                "circle_area": {
+                    "title": "원의 넓이",
+                    "desc": "반지름이 r인 원의 면적"
+                },
+                "sphere_vol": {
+                    "title": "구의 부피",
+                    "desc": "반지름이 r인 구의 전체 부피"
+                },
+                "heron": {
+                    "title": "삼각형의 넓이 (헤론의 공식)",
+                    "desc": "세 변의 길이를 알 때 삼각형의 넓이를 구함 (s는 반둘레)"
+                },
+                "derivative": {
+                    "title": "미분의 정의",
+                    "desc": "함수의 순간 변화율을 구하는 극한 식"
+                },
+                "chain_rule": {
+                    "title": "연쇄 법칙 (Chain Rule)",
+                    "desc": "합성함수를 미분할 때 사용하는 법칙"
+                },
+                "integral": {
+                    "title": "적분의 기본 정리",
+                    "desc": "정적분과 부정적분의 관계를 나타내는 정리"
+                }
+            }
+        },
+        "periodic": {
+            "title": "주기율표",
+            "desc": "주요 원소들의 정보를 쉽고 빠르게 확인하세요.",
+            "placeholder": "원소 이름, 기호, 번호 검색...",
+            "cat_info": "분류 안내",
+            "cat": {
+                "non_metal": "비금속",
+                "noble_gas": "비활성 기체",
+                "alkali_metal": "알칼리 금속",
+                "alkaline_earth": "알칼리 토금속",
+                "metalloid": "준금속",
+                "halogen": "할로겐",
+                "transition_metal": "전이 금속",
+                "post_transition": "전이 후 금속",
+                "actinide": "악티늄족"
+            },
+            "name": {
+                "H": "수소",
+                "He": "헬륨",
+                "Li": "리튬",
+                "Be": "베릴륨",
+                "B": "붕소",
+                "C": "탄소",
+                "N": "질소",
+                "O": "산소",
+                "F": "플루오린",
+                "Ne": "네온",
+                "Na": "나트륨",
+                "Mg": "마그네슘",
+                "Al": "알루미늄",
+                "Si": "규소",
+                "P": "인",
+                "S": "황",
+                "Cl": "염소",
+                "Ar": "아르곤",
+                "K": "칼륨",
+                "Ca": "칼슘",
+                "Fe": "철",
+                "Cu": "구리",
+                "Ag": "은",
+                "Au": "금",
+                "Hg": "수은",
+                "Pb": "납",
+                "U": "우라늄"
+            }
+        },
+        "constitution": {
+            "title": "헌법 개요",
+            "desc": "대한민국의 근간이 되는 헌법의 핵심 조항들을 확인하세요.",
+            "note": "※ 위 내용은 헌법 전문 중 일반 국민이 꼭 알아야 할 핵심 내용을 선별한 것입니다. \n전체 조문은 국가법령정보센터에서 확인할 수 있습니다.",
+            "article": {
+                "1_1": {
+                    "number": "제1조 1항",
+                    "title": "민주공화국",
+                    "content": "대한민국은 민주공화국이다."
+                },
+                "1_2": {
+                    "number": "제1조 2항",
+                    "title": "국민주권",
+                    "content": "대한민국의 주권은 국민에게 있고, 모든 권력은 국민으로부터 나온다."
+                },
+                "3": {
+                    "number": "제3조",
+                    "title": "영토",
+                    "content": "대한민국의 영토는 한반도와 그 부속도서로 한다."
+                },
+                "10": {
+                    "number": "제10조",
+                    "title": "인간의 존엄과 가치",
+                    "content": "모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가진다."
+                },
+                "11_1": {
+                    "number": "제11조 1항",
+                    "title": "평등권",
+                    "content": "모든 국민은 법 앞에 평등하다. 누구든지 성별·종교 또는 사회적 신분에 의하여 차별을 받지 아니한다."
+                },
+                "21_1": {
+                    "number": "제21조 1항",
+                    "title": "자유권",
+                    "content": "모든 국민은 언론·출판의 자유와 집회·결사의 자유를 가진다."
+                },
+                "24": {
+                    "number": "제24조",
+                    "title": "선거권",
+                    "content": "모든 국민은 법률이 정하는 바에 의하여 선거권을 가진다."
+                },
+                "31_1": {
+                    "number": "제31조 1항",
+                    "title": "교육을 받을 권리",
+                    "content": "모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다."
+                },
+                "34_1": {
+                    "number": "제34조 1항",
+                    "title": "인간다운 생활",
+                    "content": "모든 국민은 인간다운 생활을 할 권리를 가진다."
+                },
+                "37_2": {
+                    "number": "제37조 2항",
+                    "title": "기본권 제한의 한계",
+                    "content": "국민의 모든 자유와 권리는 국가안전보장·질서유지 또는 공공복리를 위하여 필요한 경우에 한하여 법률로써 제한할 수 있으며, 제한하는 경우에도 자유와 권리의 본질적인 내용을 침해할 수 없다."
+                }
+            }
+        },
+        "grammar": {
+            "title": "영문법 기초",
+            "desc": "꼭 알아야 할 필수 영문법 핵심 규칙입니다.",
+            "cat": {
+                "tenses": "시제",
+                "modals": "조동사"
+            },
+            "rule": {
+                "present_continuous": {
+                    "title": "현재 진행형",
+                    "usage": "지금 일어나고 있는 일 (am/are/is + V-ing)",
+                    "example": "I am reading a book now."
+                },
+                "present_perfect": {
+                    "title": "현재 완료형",
+                    "usage": "과거에 시작되어 현재까지 영향을 주는 일 (have/has + p.p)",
+                    "example": "I have lived here for 10 years."
+                },
+                "past_continuous": {
+                    "title": "과거 진행형",
+                    "usage": "과거 특정 시점에 진행 중이던 일 (was/were + V-ing)",
+                    "example": "They were playing soccer at 5 PM."
+                },
+                "can": {
+                    "title": "Can (능력/허가)",
+                    "usage": "능력 (~할 수 있다) / 허가 (~해도 된다)",
+                    "example": "She can speak three languages."
+                },
+                "should": {
+                    "title": "Should (의무/조언)",
+                    "usage": "의무, 조언 (~해야 한다)",
+                    "example": "You should see a doctor."
+                },
+                "must": {
+                    "title": "Must (의무/확신)",
+                    "usage": "강한 의무 (~해야만 한다) / 확신 (~임에 틀림없다)",
+                    "example": "He must be tired after work."
+                }
+            }
+        },
+        "hanja": {
+            "title": "필수 한자",
+            "desc": "기초 급수 한자들을 학습하고 검색하세요.",
+            "placeholder": "한자, 뜻, 음 검색...",
+            "radical": "부수",
+            "items": {
+                "meaning": "나무",
+                "sound": "목"
+            },
+            "gold": {
+                "meaning": "쇠",
+                "sound": "금"
+            },
+            "earth": {
+                "meaning": "흙",
+                "sound": "토"
+            },
+            "learn": {
+                "meaning": "배울",
+                "sound": "학"
+            },
+            "school": {
+                "meaning": "학교",
+                "sound": "교"
+            },
+            "first": {
+                "meaning": "먼저",
+                "sound": "선"
+            },
+            "birth": {
+                "meaning": "날",
+                "sound": "생"
+            },
+            "people": {
+                "meaning": "백성",
+                "sound": "민"
+            },
+            "country": {
+                "meaning": "나라",
+                "sound": "국"
+            }
+        }
+    },
+    "verbs": {
+        "title": "불규칙 동사",
+        "desc": "필수 영어 불규칙 동사의 3단 변화를 확인하세요.",
+        "placeholder": "동사 원형 또는 뜻 검색...",
+        "col": {
+            "present": "현재형",
+            "past": "과거형",
+            "pp": "과거분사",
+            "meaning": "뜻"
+        },
+        "item": {
+            "be": "이다, 있다",
+            "become": "되다",
+            "begin": "시작하다",
+            "break": "부수다, 고장나다",
+            "buy": "사다",
+            "come": "오다",
+            "do": "하다",
+            "drink": "마시다",
+            "drive": "운전하다",
+            "eat": "먹다",
+            "feel": "느끼다",
+            "find": "찾다, 발견하다",
+            "get": "얻다, 되다",
+            "give": "주다",
+            "go": "가다"
+        }
+    },
+    "worldmap": {
+        "title": "세계 지도 정보",
+        "desc": "주요 국가의 위치와 핵심 정보를 학습하세요.",
+        "placeholder": "국가명, 수도 검색...",
+        "capital": "수도",
+        "cont": {
+            "all": "전체",
+            "asia": "아시아",
+            "europe": "유럽",
+            "na": "북아메리카",
+            "sa": "남아메리카",
+            "oceania": "오세아니아",
+            "africa": "아프리카"
+        },
+        "country": {
+            "korea": {
+                "name": "대한민국",
+                "desc": "동북아시아의 반도국가로 IT 강국이자 한류의 중심지."
+            },
+            "usa": {
+                "name": "미국",
+                "desc": "북미 대륙의 연방 공화국으로 세계 최대의 경제 대국."
+            },
+            "china": {
+                "name": "중국",
+                "desc": "세계 최대 인구 보유국이자 동아시아의 거대 경제체."
+            },
+            "japan": {
+                "name": "일본",
+                "desc": "동아시아의 섬나라로 고도의 기술력과 독특한 문화를 보유."
+            },
+            "uk": {
+                "name": "영국",
+                "desc": "유럽 서북부의 섬나라로 산업 혁명의 발상지."
+            },
+            "france": {
+                "name": "프랑스",
+                "desc": "예술과 미식의 나라로 유럽 역사와 문화의 중심."
+            },
+            "germany": {
+                "name": "독일",
+                "desc": "유럽 경제의 견인차 역할을 하는 제조 및 기술 강국."
+            },
+            "brazil": {
+                "name": "브라질",
+                "desc": "남미 최대 국가로 아마존 열대 우림과 삼바 축제가 유명."
+            },
+            "australia": {
+                "name": "호주",
+                "desc": "대륙 전체가 한 나라인 오세아니아의 대표 국가."
+            },
+            "egypt": {
+                "name": "이집트",
+                "desc": "피라미드와 스핑크스로 상징되는 고대 문명의 발상지."
+            }
+        },
+        "city": {
+            "seoul": "서울",
+            "washington": "워싱턴 D.C.",
+            "beijing": "베이징",
+            "tokyo": "도쿄",
+            "london": "런던",
+            "paris": "파리",
+            "berlin": "베를린",
+            "brasilia": "브라질리아",
+            "canberra": "캔버라",
+            "cairo": "카이로"
+        }
     }
 }

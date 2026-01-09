@@ -1,18 +1,21 @@
 
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Building2 } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
 import SelectModal from '../ui/SelectModal';
 
-const ownerOptions = [
-  { value: 'single', label: '1주택 (단독명의)' },
-  { value: 'multi', label: '다주택/공동명의' }
-];
-
 const ComprehensiveTaxCalculator: React.FC = () => {
+    const { t } = useTranslation();
     const [propertyValue, setPropertyValue] = useState('1500000000');
     const [isSingleOwner, setIsSingleOwner] = useState(true);
     const [result, setResult] = useState<{ tax: number } | null>(null);
+
+    // Dynamic options using translations
+    const ownerOptions = [
+        { value: 'single', label: t('finance.opt.single_owner') },
+        { value: 'multi', label: t('finance.opt.multi_owner') }
+    ];
 
     const formatNumber = (val: string) => {
         const num = Number(val.replace(/,/g, ''));
@@ -29,7 +32,7 @@ const ComprehensiveTaxCalculator: React.FC = () => {
 
         const deduction = isSingleOwner ? 1200000000 : 1800000000; // 12억, 18억
         const taxableBase = Math.max(0, value - deduction);
-        
+
         let tax = 0;
         if (taxableBase > 0) {
             // Simplified 2024 tax rates for multiple homes
@@ -37,7 +40,7 @@ const ComprehensiveTaxCalculator: React.FC = () => {
             else if (taxableBase <= 700000000) tax = 1500000 + (taxableBase - 300000000) * 0.007;
             else tax = 4300000 + (taxableBase - 700000000) * 0.01;
         }
-        
+
         setResult({ tax });
     };
 
@@ -46,27 +49,27 @@ const ComprehensiveTaxCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-violet-400 to-violet-600">
                 <div className="flex items-center space-x-3">
                     <Building2 size={28} />
-                    <h2 className="text-2xl font-bold">종합부동산세 계산기</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.comprehensive_tax')} {t('suffix.calculator')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">간이 종부세 계산</p>
+                <p className="mt-1 opacity-90">{t('finance.desc.comprehensive_tax')}</p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
                 <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">과세기준금액 (공시가격 합산)</label>
+                    <label className="block text-sm font-medium text-gray-600 mb-2">{t('finance.label.property_value_total')}</label>
                     <input type="text" value={propertyValue} onChange={e => setPropertyValue(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
                 </div>
-                
-                <SelectModal 
-                  label="보유 형태" 
-                  options={ownerOptions} 
-                  value={isSingleOwner ? 'single' : 'multi'} 
-                  onChange={(val) => setIsSingleOwner(val === 'single')}
-                  colorClass="text-violet-600"
+
+                <SelectModal
+                    label={t('finance.label.ownership_type')}
+                    options={ownerOptions}
+                    value={isSingleOwner ? 'single' : 'multi'}
+                    onChange={(val) => setIsSingleOwner(val === 'single')}
+                    colorClass="text-violet-600"
                 />
 
                 <button onClick={handleCalculate} className="w-full p-4 bg-violet-500 hover:bg-violet-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
-                    계산하기
+                    {t('common.calculate')}
                 </button>
             </div>
 
@@ -74,11 +77,11 @@ const ComprehensiveTaxCalculator: React.FC = () => {
 
             {result && (
                 <div className="p-6 bg-gray-50 rounded-xl text-center">
-                    <p className="text-sm text-gray-500">예상 종합부동산세</p>
+                    <p className="text-sm text-gray-500">{t('finance.result.expected_comprehensive_tax')}</p>
                     <p className="text-4xl font-bold text-blue-600 my-2">
-                        {Math.round(result.tax).toLocaleString()} 원
+                        {Math.round(result.tax).toLocaleString()} {t('currency.KRW')}
                     </p>
-                    <p className="text-xs text-gray-500 text-center pt-2">※ 실제 세액과 큰 차이가 있을 수 있습니다.</p>
+                    <p className="text-xs text-gray-500 text-center pt-2">{t('finance.msg.comprehensive_warning')}</p>
                 </div>
             )}
         </div>

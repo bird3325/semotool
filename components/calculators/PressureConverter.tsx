@@ -1,15 +1,10 @@
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Gauge } from 'lucide-react';
 import SingleUnitConverter from './SingleUnitConverter';
 
-const PRESSURE_UNITS = {
-  'pa': '파스칼 (Pa)',
-  'kpa': '킬로파스칼 (kPa)',
-  'bar': '바 (bar)',
-  'atm': '기압 (atm)',
-  'psi': '제곱인치당 파운드 (psi)',
-};
+
 
 const PRESSURE_CONVERSIONS_TO_PASCAL: { [key: string]: number } = {
   'pa': 1,
@@ -19,15 +14,22 @@ const PRESSURE_CONVERSIONS_TO_PASCAL: { [key: string]: number } = {
   'psi': 6894.76,
 };
 
-const CATEGORY_INFO = {
-  icon: Gauge,
-  title: '압력 변환기',
-  description: '파스칼, 바, psi를 쉽게 변환!',
-  gradient: 'bg-gradient-to-br from-emerald-400 to-emerald-600',
-  buttonColor: 'bg-emerald-500 hover:bg-emerald-600',
-};
-
 const PressureConverter: React.FC = () => {
+  const { t } = useTranslation();
+
+  const PRESSURE_UNITS = {
+    'pa': t('unit.pa'), 'kpa': t('unit.kpa'), 'bar': t('unit.bar'),
+    'atm': t('unit.atm'), 'psi': t('unit.psi')
+  };
+
+  const CATEGORY_INFO = {
+    icon: Gauge,
+    title: `${t('tool.pressure')} ${t('suffix.converter')}`,
+    description: t('desc.pressure'),
+    gradient: 'bg-gradient-to-br from-emerald-400 to-emerald-600',
+    buttonColor: 'bg-emerald-500 hover:bg-emerald-600',
+  };
+
   return (
     <SingleUnitConverter
       categoryInfo={CATEGORY_INFO}

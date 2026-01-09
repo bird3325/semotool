@@ -1,9 +1,470 @@
 {
     "footer_text": "© {{year}} Semotool. All rights reserved.",
+    "home": {
+        "reorder_mode_active": "Reorder Mode Activated"
+    },
+    "finance": {
+        "label": {
+            "loan_principal": "Loan Amount (KRW)",
+            "deposit_monthly": "Monthly Deposit (KRW)",
+            "principal": "Principal (KRW)",
+            "installment_principal": "Installment Principal (KRW)",
+            "rate_year": "Annual Rate (%)",
+            "fee_rate_year": "Annual Fee Rate (%)",
+            "period_year": "Loan Period (Years)",
+            "period_month": "Period (Months)",
+            "savings_period_month": "Savings Period (Months)",
+            "installment_month": "Installment Months",
+            "repayment_method": "Repayment Method",
+            "interest_method": "Interest Type",
+            "tax_method": "Tax Type",
+            "annual_salary": "Annual Salary (KRW)",
+            "taxable_income": "Taxable Income (KRW)",
+            "non_taxable_monthly": "Non-taxable Monthly (KRW)",
+            "dependents": "Dependents (Incl. Self)",
+            "supply_price": "Supply Price (KRW)",
+            "tax_amount_input": "Tax Amount (KRW)",
+            "total_amount_input": "Total Amount (KRW)",
+            "total_deductions": "Total Deductions (KRW)",
+            "prepaid_tax": "Prepaid Tax (KRW)",
+            "property_value_total": "Total Property Value (KRW)",
+            "ownership_type": "Ownership Type",
+            "acquisition_price": "Acquisition Price (KRW)",
+            "home_count": "Number of Homes",
+            "purchase_price": "Purchase Price (KRW)",
+            "sale_price": "Sale Price (KRW)",
+            "holding_period_year": "Holding Period (Years)",
+            "gift_asset_value": "Gift Asset Value (KRW)",
+            "recipient": "Recipient",
+            "inheritance_asset_value": "Total Inheritance Value (KRW)",
+            "deduction_total": "Total Deductions (KRW)",
+            "official_property_price": "Official Property Price (KRW)"
+        },
+        "result": {
+            "title_expected_repayment": "Expected Repayment",
+            "title_expected_payout": "Expected Payout",
+            "title_calc_result": "Calculation Result",
+            "title_expected_net_salary": "Expected Net Salary",
+            "monthly_payment": "Monthly Payment",
+            "total_loan_principal": "Total Principal",
+            "total_interest": "Total Interest",
+            "total_repayment": "Total Repayment",
+            "total_principal_paid": "Total Principal Paid",
+            "pre_tax_interest": "Pre-tax Interest",
+            "tax_amount": "Tax Amount",
+            "tax_amount_rate": "Tax Amount (15.4%)",
+            "after_tax_payout": "After-tax Payout",
+            "after_tax_interest": "After-tax Interest",
+            "final_payout": "Final Payout",
+            "monthly_bill": "Monthly Bill",
+            "total_fee": "Total Fee",
+            "total_bill": "Total Payment",
+            "monthly_gross_pre_tax": "Est. Monthly Income (Pre-tax)",
+            "net_salary_monthly": "Est. Monthly Net Salary",
+            "expected_tax": "Expected Tax Amount",
+            "effective_rate": "Effective Tax Rate",
+            "supply_price": "Supply Price",
+            "vat_tax": "VAT",
+            "total_sum": "Total Amount",
+            "expected_refund": "Expected Refund",
+            "expected_additional_pay": "Additional Payment Needed",
+            "expected_comprehensive_tax": "Expected Comprehensive Real Estate Tax",
+            "expected_acquisition_tax": "Expected Acquisition Tax (Inc. VAT)",
+            "expected_capital_gains_tax": "Expected Capital Gains Tax",
+            "capital_gain": "Capital Gain",
+            "expected_gift_tax": "Expected Gift Tax",
+            "expected_inheritance_tax": "Expected Inheritance Tax",
+            "expected_property_tax": "Expected Property Tax"
+        },
+        "deduction": {
+            "title": "Deductions",
+            "national_pension": "National Pension",
+            "health_insurance": "Health Insurance",
+            "long_term_care": "Long-term Care",
+            "employment_insurance": "Employment Insurance",
+            "income_tax": "Income Tax",
+            "local_tax": "Local Income Tax",
+            "total": "Total Deductions"
+        },
+        "desc": {
+            "loan": "Check monthly payments and total interest.",
+            "savings": "How much will you save monthly?",
+            "interest": "Calculate savings interest easily!",
+            "installment": "Calculate total cost for installments.",
+            "salary": "How much is my actual take-home pay?",
+            "income_tax": "Estimate tax based on taxable income.",
+            "vat": "Calculate Supply Price, VAT, and Total.",
+            "year_end_tax": "Estimate refund or additional payment.",
+            "comprehensive_tax": "Calculate Comprehensive Real Estate Tax.",
+            "acquisition_tax": "Apply rates by home/land type.",
+            "capital_gains_tax": "Consider holding period and residence.",
+            "gift_tax": "Simplified calculation of estimated tax.",
+            "inheritance_tax": "Simplified calculation of estimated tax.",
+            "property_tax": "Simplified calc based on official price."
+        },
+        "msg": {
+            "local_tax_excluded": "* Local tax (10%) excluded. Deductions not applied.",
+            "simple_calc_warning": "* Calculated results may differ from actual tax.",
+            "comprehensive_warning": "* Actual tax may vary significantly.",
+            "capital_gains_warning": "* Highly simplified calculation.",
+            "gift_warning": "* Based on 10-year aggregate. Actual tax may differ.",
+            "property_warning": "* Actual tax may differ."
+        },
+        "jeonse": {
+            "label_loan_amount": "Loan Amount",
+            "label_interest_rate": "Interest Rate (%)",
+            "label_period": "Loan Period",
+            "opt_1_year": "1 Year",
+            "opt_2_years": "2 Years (Default)",
+            "opt_3_years": "3 Years",
+            "opt_4_years": "4 Years",
+            "opt_5_years": "5 Years",
+            "opt_10_years": "10 Years",
+            "result_monthly_payment": "Monthly Interest",
+            "result_total_interest": "Total Interest",
+            "desc": "Calculate monthly interest payments."
+        },
+        "mortgage": {
+            "label_principal": "Loan Principal",
+            "label_rate": "Annual Rate (%)",
+            "label_period": "Loan Period (Years)",
+            "label_method": "Repayment Method",
+            "opt_equal_principal_interest": "Equal Principal & Interest",
+            "opt_equal_principal": "Equal Principal",
+            "result_monthly_payment": "Monthly Payment",
+            "result_total_principal": "Total Principal",
+            "result_total_repayment": "Total Repayment",
+            "desc": "Check monthly payments and total interest."
+        },
+        "rent_conversion": {
+            "label_jeonse_deposit": "Current Jeonse Deposit",
+            "label_monthly_deposit": "New Monthly Deposit",
+            "label_rate": "Conversion Rate (%)",
+            "result_monthly_rent": "Converted Monthly Rent",
+            "desc": "Calculate rent amount when converting deposit."
+        },
+        "rental_yield": {
+            "label_purchase_price": "Purchase Price",
+            "label_deposit": "Deposit",
+            "label_monthly_rent": "Monthly Rent",
+            "label_expenses": "Annual Expenses",
+            "result_yield": "Annual Rental Yield (Pre-tax)",
+            "result_net_income": "Annual Net Income",
+            "desc": "Calculate rental investment yield."
+        },
+        "retirement": {
+            "label_start_date": "Start Date",
+            "label_end_date": "End Date",
+            "label_salary_3m": "Total Salary (Last 3 Months)",
+            "label_bonus": "Annual Bonus",
+            "result_days": "Employment Days",
+            "result_daily_wage": "Avg Daily Wage",
+            "result_severance": "Expected Severance Pay",
+            "msg_disclaimer": "* Actual severance may vary.",
+            "desc": "Calculate expected severance pay."
+        },
+        "opt": {
+            "equal_principal_interest": "Equal P & I",
+            "equal_principal": "Equal Principal",
+            "bullet_repayment": "Bullet Repayment",
+            "simple": "Simple",
+            "compound": "Compound",
+            "single_owner": "Single Owner",
+            "joint_owner": "Joint Owner",
+            "one_home": "1 Home",
+            "multi_home": "2+ Homes",
+            "spouse": "Spouse",
+            "child": "Child (Adult)",
+            "minor_child": "Child (Minor)",
+            "result_sum": "Sum: {{sum}}",
+            "result_count": "Count: {{count}}"
+        }
+    },
+    "school": {
+        "gpa": {
+            "desc": "Calculate your expected GPA easily!",
+            "label_course_name": "Course Name (Optional)",
+            "placeholder_course_name": "Enter course name",
+            "label_credits": "Credits",
+            "label_grade": "Grade",
+            "btn_add_course": "Add Course",
+            "btn_calculate_gpa": "Calculate GPA",
+            "header_course_list": "Course List",
+            "count_course": "{{count}} Courses",
+            "result_header": "GPA Calculation Result",
+            "result_total_credits": "Total {{credits}} credits completed",
+            "msg_disclaimer": "* The result is an arithmetic mean based on entered grades."
+        },
+        "grade_converter": {
+            "desc": "Convert score to Grade/GPA.",
+            "label_score": "Score (out of 100)",
+            "placeholder_score": "e.g. 95",
+            "btn_convert": "Convert",
+            "result_header": "Conversion Result",
+            "result_gpa": "GPA: {{gpa}} / 4.5"
+        },
+        "grade_predictor": {
+            "desc": "Calculate required final exam score for target grade.",
+            "label_current_score": "Current Average Score (%)",
+            "label_current_weight": "Weight of Current Score (%)",
+            "label_target_score": "Target Final Grade (%)",
+            "result_required_score": "Required Score for Remaining Exam/Task",
+            "result_remaining_weight": "(Remaining Weight: {{weight}}%)",
+            "msg_hard": "It might be difficult to achieve the target.",
+            "msg_achieved": "Target already achieved!"
+        }
+    },
+    "health": {
+        "label": {
+            "height": "Height (cm)",
+            "weight": "Weight (kg)",
+            "age": "Age",
+            "gender": "Gender",
+            "waist": "Waist Circumference (cm)",
+            "neck": "Neck Circumference (cm)",
+            "hip": "Hip Circumference (cm)",
+            "activity_level": "Activity Level",
+            "smoking": "Do you currently smoke?",
+            "exercise_freq": "Exercises 30+ mins/week (times)?",
+            "diet_freq": "Daily fruit/veg servings?",
+            "bmi": "BMI",
+            "family_history": "Family history of heart disease/diabetes?"
+        },
+        "opt": {
+            "male": "Male",
+            "female": "Female",
+            "yes": "Yes",
+            "no": "No",
+            "sedentary": "Sedentary",
+            "light": "Lightly Active (1-3 days/week)",
+            "moderate": "Moderately Active (3-5 days/week)",
+            "active": "Active (6-7 days/week)",
+            "very_active": "Very Active"
+        },
+        "result": {
+            "body_fat": "Estimated Body Fat %",
+            "bmr": "BMR",
+            "tdee": "TDEE",
+            "risk_level": "Health Risk Level",
+            "visceral_fat_risk": "Visceral Fat Risk",
+            "ideal_weight_range": "Ideal Weight Range",
+            "bmi_index": "Your BMI"
+        },
+        "level": {
+            "low": "Low",
+            "caution": "Caution",
+            "warning": "Warning",
+            "danger": "Danger",
+            "essential_fat": "Essential Fat",
+            "athlete": "Athlete",
+            "healthy": "Healthy",
+            "average": "Average",
+            "obese": "Obese",
+            "underweight": "Underweight",
+            "normal": "Normal",
+            "overweight": "Overweight",
+            "severely_obese": "Severely Obese"
+        },
+        "desc": {
+            "health_risk": "Simple health risk assessment based on lifestyle.",
+            "body_fat": "Estimate body fat based on measurements.",
+            "metabolism": "Calculate daily calorie needs (BMR, TDEE).",
+            "ideal_weight": "Find your ideal weight for your height.",
+            "visceral_fat": "Check visceral fat risk by waist circumference."
+        },
+        "msg": {
+            "navy_method": "* Based on US Navy method. Results may vary.",
+            "medical_disclaimer": "* Not a medical diagnosis. For reference only."
+        },
+        "bio_age": {
+            "label_current_age": "Current Age",
+            "label_smoking": "Smoking Status",
+            "label_exercise": "Exercise Habit",
+            "label_diet": "Diet Habit",
+            "label_stress": "Stress Level",
+            "label_sleep": "Avg Sleep Hours",
+            "opt_smoker": "Smoker",
+            "opt_non_smoker": "Non-smoker",
+            "opt_exercise_regular": "Regular (3+ times/week)",
+            "opt_exercise_moderate": "Moderate (1-2 times/week)",
+            "opt_exercise_low": "Rarely",
+            "opt_diet_good": "Healthy",
+            "opt_diet_average": "Average",
+            "opt_diet_poor": "Poor",
+            "opt_sleep_over_8": "Over 8 hours",
+            "opt_sleep_7_8": "7-8 hours",
+            "opt_sleep_under_6": "Under 6 hours",
+            "result_title": "Predicted Biological Age",
+            "msg_younger": "{{diff}} years younger than actual age!",
+            "msg_older": "{{diff}} years older than actual age.",
+            "msg_same": "Same as actual age.",
+            "disclaimer": "* Fun prediction only, lacks medical basis."
+        },
+        "sleep": {
+            "label_hours": "Hours slept last night?",
+            "label_fall_asleep": "Time to fall asleep?",
+            "label_wake_ups": "Wake-ups during night?",
+            "label_feeling": "Feeling upon waking?",
+            "opt_less_15": "Less than 15 min",
+            "opt_15_30": "15-30 min",
+            "opt_30_60": "30-60 min",
+            "opt_over_60": "Over 60 min",
+            "opt_very_tired": "Very Tired",
+            "opt_tired": "Tired",
+            "opt_average": "Average",
+            "opt_refreshed": "Refreshed",
+            "result_title": "Your Sleep Score",
+            "level_best": "Best Sleep",
+            "level_good": "Good Sleep",
+            "level_avg": "Average Sleep",
+            "level_poor": "Needs Improvement"
+        },
+        "stress": {
+            "q1": "Control over important things?",
+            "q2": "Felt lack of confidence?",
+            "q3": "Thinks not going your way?",
+            "q4": "Angry at uncontrollable events?",
+            "q5": "Difficulties piling up high?",
+            "opt_0": "Never (0)",
+            "opt_1": "Almost Never (1)",
+            "opt_2": "Sometimes (2)",
+            "opt_3": "Fairly Often (3)",
+            "opt_4": "Very Often (4)",
+            "result_title": "Your Stress Score",
+            "level_low": "Low Stress",
+            "level_moderate": "Moderate Stress",
+            "level_high": "High Stress",
+            "level_very_high": "Very High Stress"
+        },
+        "vo2": {
+            "label_resting_hr": "Resting Heart Rate (bpm)",
+            "result_title": "Estimated VO2 Max",
+            "level_very_low": "Very Low",
+            "level_low": "Low",
+            "level_fair": "Fair",
+            "level_good": "Good",
+            "level_excellent": "Excellent",
+            "msg_no_data": "No data for this age"
+        },
+        "water": {
+            "opt_normal": "Normal",
+            "opt_active": "Athlete/Active",
+            "result_title": "Daily Water Intake"
+        }
+    },
     "nav": {
         "home": "Home",
         "favorites": "Favorites",
         "recent": "Recent"
+    },
+    "common": {
+        "convert": "Convert",
+        "calculate": "Calculate",
+        "result": "Result",
+        "calculation_result": "Result",
+        "from": "From",
+        "to": "To",
+        "input_value": "Value to Convert",
+        "enter_amount": "Enter amount",
+        "invalid_number": "Please enter a valid number.",
+        "cannot_convert": "Cannot perform conversion.",
+        "send_amount": "Amount to Send",
+        "from_currency": "From Currency",
+        "to_currency": "To Currency",
+        "based_on": "Based on",
+        "total_amount": "Total Amount",
+        "num_people": "Number of People",
+        "per_person_amount": "Amount per Person",
+        "people_count": "people"
+    },
+    "currency": {
+        "KRW": "South Korean Won",
+        "USD": "US Dollar",
+        "EUR": "Euro",
+        "JPY": "Japanese Yen",
+        "CNY": "Chinese Yuan",
+        "KRW_symbol": "KRW"
+    },
+    "unit": {
+        "mm": "Millimeter (mm)",
+        "cm": "Centimeter (cm)",
+        "m": "Meter (m)",
+        "km": "Kilometer (km)",
+        "inch": "Inch (in)",
+        "ft": "Feet (ft)",
+        "yard": "Yard (yd)",
+        "mile": "Mile (mile)",
+        "g": "Gram (g)",
+        "kg": "Kilogram (kg)",
+        "t": "Ton (t)",
+        "oz": "Ounce (oz)",
+        "lb": "Pound (lb)",
+        "m2": "Square Meter (m²)",
+        "km2": "Square Kilometer (km²)",
+        "pyeong": "Pyeong (py)",
+        "acre": "Acre (ac)",
+        "s": "Second (s)",
+        "min": "Minute (min)",
+        "h": "Hour (h)",
+        "d": "Day (d)",
+        "m/s": "Meter/Second (m/s)",
+        "km/h": "Kilometer/Hour (km/h)",
+        "mph": "Mile/Hour (mph)",
+        "ft/s": "Feet/Second (ft/s)",
+        "knot": "Knot (knot)",
+        "byte": "Byte (B)",
+        "kb": "Kilobyte (KB)",
+        "mb": "Megabyte (MB)",
+        "gb": "Gigabyte (GB)",
+        "tb": "Terabyte (TB)",
+        "j": "Joule (J)",
+        "kj": "Kilojoule (kJ)",
+        "cal": "Calorie (cal)",
+        "kcal": "Kilocalorie (kcal)",
+        "wh": "Watt-hour (Wh)",
+        "pa": "Pascal (Pa)",
+        "kpa": "Kilopascal (kPa)",
+        "bar": "Bar (bar)",
+        "atm": "Atmosphere (atm)",
+        "psi": "PSI",
+        "deg": "Degree (°)",
+        "rad": "Radian (rad)",
+        "grad": "Gradian (grad)",
+        "mrad": "Milliradian (mrad)",
+        "n": "Newton (N)",
+        "kgf": "Kilogram-force (kgf)",
+        "lbf": "Pound-force (lbf)",
+        "w": "Watt (W)",
+        "kw": "Kilowatt (kW)",
+        "hp": "Horsepower (hp)",
+        "hz": "Hertz (Hz)",
+        "khz": "Kilohertz (kHz)",
+        "mhz": "Megahertz (MHz)",
+        "ghz": "Gigahertz (GHz)",
+        "rpm": "RPM",
+        "ml": "Milliliter (ml)",
+        "l": "Liter (l)",
+        "gal": "Gallon (gal)",
+        "cup": "Cup (cup)",
+        "floz": "Fluid Ounce (fl oz)",
+        "doe": "Doe"
+    },
+    "desc": {
+        "length": "Convert Meter, Inch, Feet easily!",
+        "weight": "Convert Gram, Kilogram, Pound easily!",
+        "exchange": "Accurate real-time exchange rates!",
+        "dutch-pay": "Split bills easily!",
+        "area": "Convert Area units like Square Meter, Acre!",
+        "time": "Convert Time units like Second, Hour!",
+        "speed": "Convert Speed units like m/s, mph!",
+        "data-storage": "Convert Data units like Byte, GB!",
+        "energy": "Convert Energy units like Joule, Calorie!",
+        "pressure": "Convert Pressure units like Pascal, Bar!",
+        "angle": "Convert Angle units like Degree, Radian!",
+        "force": "Convert Force units like Newton, kgf!",
+        "power": "Convert Power units like Watt, Horsepower!",
+        "frequency": "Convert Frequency units like Hertz, RPM!",
+        "volume": "Convert Volume units like Liter, Gallon!"
     },
     "category": {
         "unit-conversion": "Unit Converter",
@@ -86,5 +547,690 @@
         "world-map-info": "World Map",
         "constitution-summary": "Constitution",
         "dynasty-kings": "Dynasty Kings"
+    },
+    "ref": {
+        "bio": {
+            "title": "Biology Terms",
+            "desc": "Explore key terms and concepts in biology.",
+            "placeholder": "Search term or meaning...",
+            "term": {
+                "cell": {
+                    "word": "Cell",
+                    "meaning": "Basic structural and functional unit of life",
+                    "desc": "All living things are made of cells, which are the basis of life activities."
+                },
+                "dna": {
+                    "word": "DNA",
+                    "meaning": "Key material containing genetic information",
+                    "desc": "Double helix molecule that stores genetic information passed from parents to offspring."
+                },
+                "mitochondria": {
+                    "word": "Mitochondria",
+                    "meaning": "Cellular power plant",
+                    "desc": "Organelle that generates energy (ATP) needed for life activities through cellular respiration."
+                },
+                "photosynthesis": {
+                    "word": "Photosynthesis",
+                    "meaning": "Converting light energy to chemical energy",
+                    "desc": "Process where plants use light energy to create glucose and oxygen from carbon dioxide and water."
+                },
+                "homeostasis": {
+                    "word": "Homeostasis",
+                    "meaning": "Maintaining constant internal environment",
+                    "desc": "Regulation mechanism to maintain body temperature, blood sugar, etc., to preserve life."
+                },
+                "chromosome": {
+                    "word": "Chromosome",
+                    "meaning": "Structure inside cell nucleus containing genes",
+                    "desc": "Appears condensed during cell division and carries genetic information."
+                },
+                "enzyme": {
+                    "word": "Enzyme",
+                    "meaning": "Catalyst for biochemical reactions",
+                    "desc": "Protein that regulates speed of metabolic activities like digestion and respiration."
+                },
+                "natural_selection": {
+                    "word": "Natural Selection",
+                    "meaning": "Evolutionary principle where fit individuals survive",
+                    "desc": "Core concept of evolution where traits advantageous for survival are passed to offspring."
+                }
+            }
+        },
+        "idiom": {
+            "title": "Common Idioms",
+            "desc": "Check out frequently used English idioms.",
+            "placeholder": "Search idiom or meaning...",
+            "item": {
+                "look_for": {
+                    "phrase": "Look for",
+                    "meaning": "Search for",
+                    "example": "I am looking for my keys."
+                },
+                "wait_for": {
+                    "phrase": "Wait for",
+                    "meaning": "Await",
+                    "example": "Please wait for me."
+                },
+                "look_after": {
+                    "phrase": "Look after",
+                    "meaning": "Take care of",
+                    "example": "She looks after her little brother."
+                },
+                "get_along_with": {
+                    "phrase": "Get along with",
+                    "meaning": "Have good relationship with",
+                    "example": "He gets along well with his colleagues."
+                },
+                "give_up": {
+                    "phrase": "Give up",
+                    "meaning": "Quit",
+                    "example": "Don't give up on your dreams."
+                },
+                "take_care_of": {
+                    "phrase": "Take care of",
+                    "meaning": "Handle/Care for",
+                    "example": "I need to take care of this problem."
+                },
+                "run_out_of": {
+                    "phrase": "Run out of",
+                    "meaning": "Use up supply",
+                    "example": "We ran out of milk."
+                },
+                "find_out": {
+                    "phrase": "Find out",
+                    "meaning": "Discover",
+                    "example": "I will find out the truth."
+                }
+            }
+        },
+        "dynasty": {
+            "title": "Dynasty Kings",
+            "desc": "Explore the lineage and major achievements of past kings.",
+            "placeholder": "Search king or achievement...",
+            "joseon": "Joseon",
+            "goryeo": "Goryeo",
+            "kings": {
+                "joseon": {
+                    "taejo": {
+                        "name": "Taejo (Yi Seong-gye)",
+                        "achievement": "Founder of Joseon. Moved capital to Hanyang."
+                    },
+                    "taejong": {
+                        "name": "Taejong (Yi Bang-won)",
+                        "achievement": "Strengthened royal power and implemented Six Ministries system."
+                    },
+                    "sejong": {
+                        "name": "Sejong (Yi Do)",
+                        "achievement": "Created Hunminjeongeum (Hangul) and advanced science and technology."
+                    },
+                    "sejo": {
+                        "name": "Sejo (Yi Yu)",
+                        "achievement": "Started compilation of Gyeongguk Daejeon and strengthened central power."
+                    },
+                    "seongjong": {
+                        "name": "Seongjong (Yi Hyeol)",
+                        "achievement": "Completed Gyeongguk Daejeon and established Confucian rule."
+                    },
+                    "seonjo": {
+                        "name": "Seonjo (Yi Yeon)",
+                        "achievement": "Imjin War occurred; attempted post-war recovery."
+                    },
+                    "gwanghaegun": {
+                        "name": "Gwanghaegun (Yi Hon)",
+                        "achievement": "Implemented neutral diplomacy and Daedong Law."
+                    },
+                    "jeongjo": {
+                        "name": "Jeongjo (Yi San)",
+                        "achievement": "Established Gyujanggak and built Hwaseong Fortress."
+                    },
+                    "gojong": {
+                        "name": "Gojong (Yi Hui)",
+                        "achievement": "Proclaimed Korean Empire and became Emperor."
+                    }
+                },
+                "goryeo": {
+                    "taejo": {
+                        "name": "Taejo (Wang Geon)",
+                        "achievement": "Founded Goryeo and implemented northern expansion policy."
+                    },
+                    "gwhangjong": {
+                        "name": "Gwangjong (Wang So)",
+                        "achievement": "Implemented Slave Emancipation Act and Civil Service Exam."
+                    },
+                    "seongjong": {
+                        "name": "Seongjong (Wang Chi)",
+                        "achievement": "Established Confucian political system."
+                    },
+                    "gongmin": {
+                        "name": "King Gongmin (Wang Jeon)",
+                        "achievement": "Anti-Yuan reform policy and restored sovereignty."
+                    }
+                }
+            }
+        },
+        "history": {
+            "title": "History Timeline",
+            "desc": "Explore major events throughout Korean history.",
+            "placeholder": "Search event, year, or description...",
+            "cat": {
+                "ancient": "Ancient",
+                "nambukguk": "North-South States",
+                "goryeo": "Goryeo",
+                "joseon": "Joseon",
+                "modern_era": "Modern Era",
+                "colonial": "Colonial Period",
+                "modern": "Modern History"
+            },
+            "event": {
+                "gojoseon": {
+                    "title": "Founding of Gojoseon",
+                    "desc": "Dangun Wanggeom founded Gojoseon in Asadal."
+                },
+                "silla": {
+                    "title": "Founding of Silla",
+                    "desc": "Park Hyeokgeose founded Silla in the Gyeongju area."
+                },
+                "goguryeo": {
+                    "title": "Founding of Goguryeo",
+                    "desc": "Jumong founded Goguryeo in the Jolbon area."
+                },
+                "baekje": {
+                    "title": "Founding of Baekje",
+                    "desc": "Onjo founded Baekje in Wiryeseong."
+                },
+                "silla_update": {
+                    "title": "Unification of Three Kingdoms",
+                    "desc": "Silla drove out Tang forces and unified the peninsula south of the Daedong River."
+                },
+                "balhae": {
+                    "title": "Founding of Balhae",
+                    "desc": "Dae Jo-yeong founded Balhae on Dongmo Mountain."
+                },
+                "goryeo_found": {
+                    "title": "Founding of Goryeo",
+                    "desc": "Wang Geon overthrew Taebong and founded Goryeo."
+                },
+                "goryeo_unify": {
+                    "title": "Unification of Later Three Kingdoms",
+                    "desc": "Goryeo defeated Later Baekje and achieved national reunification."
+                },
+                "joseon_found": {
+                    "title": "Founding of Joseon",
+                    "desc": "Yi Seong-gye founded Joseon after retreating from Wihwado."
+                },
+                "hunminjeongeum": {
+                    "title": "Creation of Hunminjeongeum",
+                    "desc": "King Sejong the Great created the Korean alphabet, Hangul."
+                },
+                "imjin": {
+                    "title": "Outbreak of Imjin War",
+                    "desc": "A seven-year war began with the Japanese invasion."
+                },
+                "empire": {
+                    "title": "Proclamation of Korean Empire",
+                    "desc": "Gojong ascended as Emperor, aiming for a modern state system."
+                },
+                "annexation": {
+                    "title": "Japan-Korea Annexation Treaty",
+                    "desc": "The Japanese colonial period began with the annexation treaty."
+                },
+                "march_first": {
+                    "title": "March 1st Movement & Provisional Gov",
+                    "desc": "Nationwide independence movement and establishment of Provisional Government in Shanghai."
+                },
+                "liberation": {
+                    "title": "Liberation (Aug 15)",
+                    "desc": "Korea achieved liberation with Japan's surrender."
+                },
+                "gov_est": {
+                    "title": "Establishment of Govt",
+                    "desc": "Constituent Assembly formed and Republic of Korea government officially launched."
+                },
+                "korean_war": {
+                    "title": "Korean War",
+                    "desc": "The tragedy of fratricidal war began with North Korea's invasion."
+                },
+                "april_rev": {
+                    "title": "April Revolution",
+                    "desc": "Student revolution that defended democracy against election fraud."
+                },
+                "june_struggle": {
+                    "title": "June Democratic Struggle",
+                    "desc": "Nationwide democratic movement that led to direct presidential elections."
+                }
+            }
+        },
+        "physics": {
+            "title": "Physics Formulas",
+            "desc": "Check out the essence of physical laws that move the world.",
+            "note": "※ Physics formulas are based on SI units. \nEssential formulas covered in basic and general physics courses.",
+            "cat": {
+                "mechanics": "Classical Mechanics",
+                "electromagnetism": "Electromagnetism",
+                "modern": "Modern Physics"
+            },
+            "formula": {
+                "newton2": {
+                    "title": "Newton's Second Law",
+                    "desc": "Force (F) equals mass (m) times acceleration (a)."
+                },
+                "kinetic": {
+                    "title": "Kinetic Energy",
+                    "desc": "Energy possessed by a moving object (v is velocity)."
+                },
+                "potential": {
+                    "title": "Potential Energy (Gravity)",
+                    "desc": "Potential energy possessed by an object at height (h)."
+                },
+                "gravity": {
+                    "title": "Law of Universal Gravitation",
+                    "desc": "Attractive force between two masses (r is distance)."
+                },
+                "ohm": {
+                    "title": "Ohm's Law",
+                    "desc": "Voltage (V) equals current (I) times resistance (R)."
+                },
+                "power": {
+                    "title": "Electric Power",
+                    "desc": "Electric energy consumed per unit time."
+                },
+                "coulomb": {
+                    "title": "Coulomb's Law",
+                    "desc": "Interaction force between two electric charges."
+                },
+                "mass_energy": {
+                    "title": "Mass-Energy Equivalence",
+                    "desc": "Mass and energy can be converted into each other (c is speed of light)."
+                },
+                "photoelectric": {
+                    "title": "Photoelectric Effect",
+                    "desc": "Energy of light is proportional to frequency (f)."
+                }
+            }
+        },
+        "math": {
+            "title": "Math Formulas",
+            "desc": "Check major math formulas by category.",
+            "note": "※ Formulas are expressed in standard LaTeX format. \n Key formulas used in basic education are listed first.",
+            "cat": {
+                "algebra": "Algebra",
+                "geometry": "Geometry",
+                "calculus": "Calculus"
+            },
+            "formula": {
+                "quadratic": {
+                    "title": "Quadratic Formula",
+                    "desc": "Formula to find the roots of quadratic equation ax² + bx + c = 0"
+                },
+                "square": {
+                    "title": "Perfect Square Formula",
+                    "desc": "Expansion of the square of the sum of two terms"
+                },
+                "diff_squares": {
+                    "title": "Difference of Squares",
+                    "desc": "Factoring the difference of two squares"
+                },
+                "log": {
+                    "title": "Basic Properties of Logarithms",
+                    "desc": "Product of arguments is sum of logarithms"
+                },
+                "pythagoras": {
+                    "title": "Pythagorean Theorem",
+                    "desc": "Relation between the three sides of a right triangle"
+                },
+                "circle_area": {
+                    "title": "Area of a Circle",
+                    "desc": "Area of a circle with radius r"
+                },
+                "sphere_vol": {
+                    "title": "Volume of a Sphere",
+                    "desc": "Total volume of a sphere with radius r"
+                },
+                "heron": {
+                    "title": "Heron's Formula",
+                    "desc": "Area of a triangle given the length of three sides (s is semi-perimeter)"
+                },
+                "derivative": {
+                    "title": "Definition of Derivative",
+                    "desc": "Limit expression to find instantaneous rate of change"
+                },
+                "chain_rule": {
+                    "title": "Chain Rule",
+                    "desc": "Rule for differentiating composite functions"
+                },
+                "integral": {
+                    "title": "Fundamental Theorem of Calculus",
+                    "desc": "Theorem relating definite and indefinite integrals"
+                }
+            }
+        },
+        "periodic": {
+            "title": "Periodic Table",
+            "desc": "Quickly check information on major elements.",
+            "placeholder": "Search element name, symbol, number...",
+            "cat_info": "Category Info",
+            "cat": {
+                "non_metal": "Non-metal",
+                "noble_gas": "Noble Gas",
+                "alkali_metal": "Alkali Metal",
+                "alkaline_earth": "Alkaline Earth",
+                "metalloid": "Metalloid",
+                "halogen": "Halogen",
+                "transition_metal": "Transition Metal",
+                "post_transition": "Post-transition",
+                "actinide": "Actinide"
+            },
+            "name": {
+                "H": "Hydrogen",
+                "He": "Helium",
+                "Li": "Lithium",
+                "Be": "Beryllium",
+                "B": "Boron",
+                "C": "Carbon",
+                "N": "Nitrogen",
+                "O": "Oxygen",
+                "F": "Fluorine",
+                "Ne": "Neon",
+                "Na": "Sodium",
+                "Mg": "Magnesium",
+                "Al": "Aluminum",
+                "Si": "Silicon",
+                "P": "Phosphorus",
+                "S": "Sulfur",
+                "Cl": "Chlorine",
+                "Ar": "Argon",
+                "K": "Potassium",
+                "Ca": "Calcium",
+                "Fe": "Iron",
+                "Cu": "Copper",
+                "Ag": "Silver",
+                "Au": "Gold",
+                "Hg": "Mercury",
+                "Pb": "Lead",
+                "U": "Uranium"
+            }
+        },
+        "constitution": {
+            "title": "Constitution Summary",
+            "desc": "Check the key articles of the Constitution that are the foundation of the Republic of Korea.",
+            "note": "※ The above is a selection of key contents from the preamble of the Constitution that the general public should know. \nThe full text can be found at the National Law Information Center.",
+            "article": {
+                "1_1": {
+                    "number": "Article 1 Para 1",
+                    "title": "Democratic Republic",
+                    "content": "The Republic of Korea shall be a democratic republic."
+                },
+                "1_2": {
+                    "number": "Article 1 Para 2",
+                    "title": "Popular Sovereignty",
+                    "content": "The sovereignty of the Republic of Korea shall reside in the people, and all state authority shall emanate from the people."
+                },
+                "3": {
+                    "number": "Article 3",
+                    "title": "Territory",
+                    "content": "The territory of the Republic of Korea shall consist of the Korean Peninsula and its adjacent islands."
+                },
+                "10": {
+                    "number": "Article 10",
+                    "title": "Human Dignity",
+                    "content": "All citizens shall be assured of human worth and dignity and have the right to pursue happiness."
+                },
+                "11_1": {
+                    "number": "Article 11 Para 1",
+                    "title": "Equality",
+                    "content": "All citizens shall be equal before the law. No one shall be discriminated against on account of sex, religion or social status."
+                },
+                "21_1": {
+                    "number": "Article 21 Para 1",
+                    "title": "Freedom of Speech",
+                    "content": "All citizens shall enjoy freedom of speech and the press, and freedom of assembly and association."
+                },
+                "24": {
+                    "number": "Article 24",
+                    "title": "Right to Vote",
+                    "content": "All citizens shall have the right to vote under the conditions as prescribed by Act."
+                },
+                "31_1": {
+                    "number": "Article 31 Para 1",
+                    "title": "Right to Education",
+                    "content": "All citizens shall have an equal right to receive an education corresponding to their abilities."
+                },
+                "34_1": {
+                    "number": "Article 34 Para 1",
+                    "title": "Right to Decent Life",
+                    "content": "All citizens shall be entitled to a life worthy of human beings."
+                },
+                "37_2": {
+                    "number": "Article 37 Para 2",
+                    "title": "Limitation of Rights",
+                    "content": "The freedoms and rights of citizens may be restricted by Act only when necessary for national security, the maintenance of law and order or for public welfare. Even when such restriction is imposed, no essential aspect of the freedom or right shall be violated."
+                }
+            }
+        },
+        "grammar": {
+            "title": "Basic English Grammar",
+            "desc": "Essential English grammar rules you must know.",
+            "cat": {
+                "tenses": "Tenses",
+                "modals": "Modals"
+            },
+            "rule": {
+                "present_continuous": {
+                    "title": "Present Continuous",
+                    "usage": "Actions happening right now (am/are/is + V-ing)",
+                    "example": "I am reading a book now."
+                },
+                "present_perfect": {
+                    "title": "Present Perfect",
+                    "usage": "Actions started in past affecting present (have/has + p.p)",
+                    "example": "I have lived here for 10 years."
+                },
+                "past_continuous": {
+                    "title": "Past Continuous",
+                    "usage": "Actions in progress at a specific past time (was/were + V-ing)",
+                    "example": "They were playing soccer at 5 PM."
+                },
+                "can": {
+                    "title": "Can (Ability/Permission)",
+                    "usage": "Ability / Permission",
+                    "example": "She can speak three languages."
+                },
+                "should": {
+                    "title": "Should (Advice/Obligation)",
+                    "usage": "Advice, Obligation",
+                    "example": "You should see a doctor."
+                },
+                "must": {
+                    "title": "Must (Strong Obligation)",
+                    "usage": "Strong Obligation / Certainty",
+                    "example": "He must be tired after work."
+                }
+            }
+        },
+        "hanja": {
+            "title": "Essential Hanja",
+            "desc": "Learn and search for basic level Hanja characters.",
+            "placeholder": "Search Hanja, meaning, sound...",
+            "radical": "Radical",
+            "items": {
+                "big": {
+                    "meaning": "Big",
+                    "sound": "Dae",
+                    "level": "Lev 8"
+                },
+                "middle": {
+                    "meaning": "Middle",
+                    "sound": "Jung",
+                    "level": "Lev 8"
+                },
+                "small": {
+                    "meaning": "Small",
+                    "sound": "So",
+                    "level": "Lev 8"
+                },
+                "day": {
+                    "meaning": "Day/Sun",
+                    "sound": "Il",
+                    "level": "Lev 8"
+                },
+                "moon": {
+                    "meaning": "Moon",
+                    "sound": "Wol",
+                    "level": "Lev 8"
+                },
+                "fire": {
+                    "meaning": "Fire",
+                    "sound": "Hwa",
+                    "level": "Lev 8"
+                },
+                "water": {
+                    "meaning": "Water",
+                    "sound": "Su",
+                    "level": "Lev 8"
+                },
+                "tree": {
+                    "meaning": "Tree",
+                    "sound": "Mok",
+                    "level": "Lev 8"
+                },
+                "gold": {
+                    "meaning": "Gold/Metal",
+                    "sound": "Geum",
+                    "level": "Lev 8"
+                },
+                "earth": {
+                    "meaning": "Earth/Soil",
+                    "sound": "To",
+                    "level": "Lev 8"
+                },
+                "learn": {
+                    "meaning": "Learn",
+                    "sound": "Hak",
+                    "level": "Lev 7"
+                },
+                "school": {
+                    "meaning": "School",
+                    "sound": "Gyo",
+                    "level": "Lev 7"
+                },
+                "first": {
+                    "meaning": "First/Before",
+                    "sound": "Seon",
+                    "level": "Lev 7"
+                },
+                "birth": {
+                    "meaning": "Birth/Life",
+                    "sound": "Saeng",
+                    "level": "Lev 7"
+                },
+                "people": {
+                    "meaning": "People",
+                    "sound": "Min",
+                    "level": "Lev 6"
+                },
+                "country": {
+                    "meaning": "Country",
+                    "sound": "Guk",
+                    "level": "Lev 6"
+                }
+            }
+        },
+        "verbs": {
+            "title": "Irregular Verbs",
+            "desc": "Check the 3 forms of essential English irregular verbs.",
+            "placeholder": "Search verb or meaning...",
+            "col": {
+                "present": "Present",
+                "past": "Past",
+                "pp": "Past Participle",
+                "meaning": "Meaning"
+            },
+            "item": {
+                "be": "be, exist",
+                "become": "become",
+                "begin": "begin",
+                "break": "break",
+                "buy": "buy",
+                "come": "come",
+                "do": "do",
+                "drink": "drink",
+                "drive": "drive",
+                "eat": "eat",
+                "feel": "feel",
+                "find": "find",
+                "get": "get",
+                "give": "give",
+                "go": "go"
+            }
+        },
+        "worldmap": {
+            "title": "World Map Info",
+            "desc": "Learn the location and key information of major countries.",
+            "placeholder": "Search country, capital...",
+            "capital": "Capital",
+            "cont": {
+                "all": "All",
+                "asia": "Asia",
+                "europe": "Europe",
+                "na": "North America",
+                "sa": "South America",
+                "oceania": "Oceania",
+                "africa": "Africa"
+            },
+            "country": {
+                "korea": {
+                    "name": "South Korea",
+                    "desc": "Peninsula country in East Asia, IT powerhouse and center of Hallyu."
+                },
+                "usa": {
+                    "name": "USA",
+                    "desc": "Federal republic in North America, world's largest economy."
+                },
+                "china": {
+                    "name": "China",
+                    "desc": "Most populous country and economic giant in East Asia."
+                },
+                "japan": {
+                    "name": "Japan",
+                    "desc": "Island country in East Asia with advanced technology and unique culture."
+                },
+                "uk": {
+                    "name": "UK",
+                    "desc": "Island nation in NW Europe, birthplace of Industrial Revolution."
+                },
+                "france": {
+                    "name": "France",
+                    "desc": "Country of art and gastronomy, center of European history and culture."
+                },
+                "germany": {
+                    "name": "Germany",
+                    "desc": "Manufacturing and tech powerhouse driving European economy."
+                },
+                "brazil": {
+                    "name": "Brazil",
+                    "desc": "Largest country in South America, famous for Amazon rainforest and Samba."
+                },
+                "australia": {
+                    "name": "Australia",
+                    "desc": "Representative country of Oceania, entire continent is one nation."
+                },
+                "egypt": {
+                    "name": "Egypt",
+                    "desc": "Birthplace of ancient civilization symbolized by Pyramids and Sphinx."
+                }
+            },
+            "city": {
+                "seoul": "Seoul",
+                "washington": "Washington D.C.",
+                "beijing": "Beijing",
+                "tokyo": "Tokyo",
+                "london": "London",
+                "paris": "Paris",
+                "berlin": "Berlin",
+                "brasilia": "Brasilia",
+                "canberra": "Canberra",
+                "cairo": "Cairo"
+            }
+        }
     }
 }

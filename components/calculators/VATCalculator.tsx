@@ -1,17 +1,19 @@
 
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { FileDigit } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
 import AmountUnit from '../ui/AmountUnit';
 
 const VATCalculator: React.FC = () => {
+    const { t } = useTranslation();
     const [supplyPrice, setSupplyPrice] = useState('100000');
     const [vat, setVat] = useState('10000');
     const [totalPrice, setTotalPrice] = useState('110000');
 
     const formatNumber = (val: string) => val.replace(/,/g, '');
     const displayFormatted = (val: string) => Number(val).toLocaleString();
-    
+
     const handleSupplyPriceChange = (value: string) => {
         const price = parseFloat(formatNumber(value));
         setSupplyPrice(formatNumber(value));
@@ -24,7 +26,7 @@ const VATCalculator: React.FC = () => {
             setTotalPrice('');
         }
     };
-    
+
     const handleTotalPriceChange = (value: string) => {
         const total = parseFloat(formatNumber(value));
         setTotalPrice(formatNumber(value));
@@ -43,24 +45,24 @@ const VATCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-amber-400 to-amber-600">
                 <div className="flex items-center space-x-3">
                     <FileDigit size={28} />
-                    <h2 className="text-2xl font-bold">부가가치세 계산기</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.vat')} {t('suffix.calculator')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">공급가액, 부가세, 합계금액을 계산합니다.</p>
+                <p className="mt-1 opacity-90">{t('finance.desc.vat')}</p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
                 <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">공급가액</label>
+                    <label className="block text-sm font-medium text-gray-600 mb-2">{t('finance.result.supply_price')}</label>
                     <input type="text" value={displayFormatted(supplyPrice)} onChange={e => handleSupplyPriceChange(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
                     <AmountUnit value={supplyPrice} />
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">부가세 (10%)</label>
+                    <label className="block text-sm font-medium text-gray-600 mb-2">{t('finance.result.vat_tax')} (10%)</label>
                     <input type="text" value={displayFormatted(vat)} readOnly className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right bg-gray-100" />
                     <AmountUnit value={vat} />
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">합계금액</label>
+                    <label className="block text-sm font-medium text-gray-600 mb-2">{t('finance.result.total_sum')}</label>
                     <input type="text" value={displayFormatted(totalPrice)} onChange={e => handleTotalPriceChange(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
                     <AmountUnit value={totalPrice} />
                 </div>

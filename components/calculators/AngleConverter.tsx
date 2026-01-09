@@ -1,14 +1,10 @@
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Compass } from 'lucide-react';
 import SingleUnitConverter from './SingleUnitConverter';
 
-const ANGLE_UNITS = {
-  'deg': '도 (°)',
-  'rad': '라디안 (rad)',
-  'grad': '그라디안 (grad)',
-  'mrad': '밀리라디안 (mrad)',
-};
+
 
 const ANGLE_CONVERSIONS_TO_RADIAN: { [key: string]: number } = {
   'deg': Math.PI / 180,
@@ -17,15 +13,22 @@ const ANGLE_CONVERSIONS_TO_RADIAN: { [key: string]: number } = {
   'mrad': 0.001,
 };
 
-const CATEGORY_INFO = {
-  icon: Compass,
-  title: '각도 변환기',
-  description: '도, 라디안, 그라디안을 쉽게 변환!',
-  gradient: 'bg-gradient-to-br from-emerald-400 to-emerald-600',
-  buttonColor: 'bg-emerald-500 hover:bg-emerald-600',
-};
-
 const AngleConverter: React.FC = () => {
+  const { t } = useTranslation();
+
+  const ANGLE_UNITS = {
+    'deg': t('unit.deg'), 'rad': t('unit.rad'), 'grad': t('unit.grad'),
+    'mrad': t('unit.mrad')
+  };
+
+  const CATEGORY_INFO = {
+    icon: Compass,
+    title: `${t('tool.angle')} ${t('suffix.converter')}`,
+    description: t('desc.angle'),
+    gradient: 'bg-gradient-to-br from-emerald-400 to-emerald-600',
+    buttonColor: 'bg-emerald-500 hover:bg-emerald-600',
+  };
+
   return (
     <SingleUnitConverter
       categoryInfo={CATEGORY_INFO}

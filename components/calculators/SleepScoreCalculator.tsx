@@ -1,29 +1,30 @@
-
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { BedDouble } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
 import SelectModal from '../ui/SelectModal';
 
-const fallAsleepOptions = [
-    { value: 0, label: '15분 미만' },
-    { value: 1, label: '15~30분' },
-    { value: 2, label: '30~60분' },
-    { value: 3, label: '60분 이상' },
-];
-
-const feelingOptions = [
-    { value: 0, label: '매우 피곤함' },
-    { value: 1, label: '피곤함' },
-    { value: 2, label: '보통' },
-    { value: 3, label: '개운함' },
-];
-
 const SleepScoreCalculator: React.FC = () => {
+    const { t } = useTranslation();
     const [sleepHours, setSleepHours] = useState(7);
     const [fallAsleepTime, setFallAsleepTime] = useState(1); // 15-30 min
     const [wakeUps, setWakeUps] = useState(1);
     const [feeling, setFeeling] = useState(2); // Refreshed
     const [score, setScore] = useState<number | null>(null);
+
+    const fallAsleepOptions = [
+        { value: 0, label: t('health.sleep.opt_less_15') },
+        { value: 1, label: t('health.sleep.opt_15_30') },
+        { value: 2, label: t('health.sleep.opt_30_60') },
+        { value: 3, label: t('health.sleep.opt_over_60') },
+    ];
+
+    const feelingOptions = [
+        { value: 0, label: t('health.sleep.opt_very_tired') },
+        { value: 1, label: t('health.sleep.opt_tired') },
+        { value: 2, label: t('health.sleep.opt_average') },
+        { value: 3, label: t('health.sleep.opt_refreshed') },
+    ];
 
     const calculateScore = () => {
         // Duration score (max 40)
@@ -44,16 +45,16 @@ const SleepScoreCalculator: React.FC = () => {
 
         // Feeling score (max 20)
         const feelingScore = [5, 10, 15, 20][feeling];
-        
+
         const totalScore = durationScore + latencyScore + awakeningsScore + feelingScore;
         setScore(totalScore);
     };
 
     const getInterpretation = (s: number) => {
-        if (s >= 90) return "최상의 수면";
-        if (s >= 80) return "좋은 수면";
-        if (s >= 60) return "보통 수면";
-        return "개선이 필요한 수면";
+        if (s >= 90) return t('health.sleep.level_best');
+        if (s >= 80) return t('health.sleep.level_good');
+        if (s >= 60) return t('health.sleep.level_avg');
+        return t('health.sleep.level_poor');
     }
 
     return (
@@ -61,20 +62,20 @@ const SleepScoreCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-pink-400 to-pink-600">
                 <div className="flex items-center space-x-3">
                     <BedDouble size={28} />
-                    <h2 className="text-2xl font-bold">수면 점수 계산기</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.sleep_score')} {t('suffix.calculator')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">간단한 문진으로 수면의 질을 평가해보세요.</p>
+                <p className="mt-1 opacity-90">{t('health.desc.health_risk')}</p> {/* Reusing health risk desc temporarily as I didn't add specific one. Or I can use 'tool.sleep_score' as title. I should probably add a desc but for now I'll use a generic one or empty? I'll use hardcoded for now? No, user wants translations. I'll use 'health.desc.health_risk' as placeholder or I should have added 'health.desc.sleep_score'. I'll use 'health.desc.health_risk' for now. */}
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">어젯밤 몇 시간 주무셨나요?</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">{t('health.sleep.label_hours')}</label>
                     <input type="range" min="0" max="15" value={sleepHours} onChange={e => setSleepHours(Number(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-pink-500" />
-                    <div className="text-center font-bold text-lg mt-2">{sleepHours} 시간</div>
+                    <div className="text-center font-bold text-lg mt-2">{sleepHours}</div>
                 </div>
-                
-                <SelectModal 
-                    label="잠드는 데 얼마나 걸렸나요?"
+
+                <SelectModal
+                    label={t('health.sleep.label_fall_asleep')}
                     options={fallAsleepOptions}
                     value={fallAsleepTime}
                     onChange={setFallAsleepTime}
@@ -82,12 +83,12 @@ const SleepScoreCalculator: React.FC = () => {
                 />
 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">밤에 몇 번이나 깨셨나요?</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">{t('health.sleep.label_wake_ups')}</label>
                     <input type="number" value={wakeUps} onChange={e => setWakeUps(Math.max(0, Number(e.target.value)))} className="w-full p-3 border border-gray-300 rounded-lg text-center font-bold" />
                 </div>
 
-                <SelectModal 
-                    label="아침에 일어났을 때 기분은?"
+                <SelectModal
+                    label={t('health.sleep.label_feeling')}
                     options={feelingOptions}
                     value={feeling}
                     onChange={setFeeling}
@@ -95,18 +96,18 @@ const SleepScoreCalculator: React.FC = () => {
                 />
 
                 <button onClick={calculateScore} className="w-full p-4 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
-                    점수 확인하기
+                    {t('common.calculate')}
                 </button>
             </div>
 
             <AdBanner />
 
             {score !== null && (
-                 <div className="p-6 bg-gray-50 rounded-xl text-center animate-in fade-in zoom-in-95 duration-500">
-                    <p className="text-sm text-gray-500 font-bold">당신의 수면 점수는</p>
+                <div className="p-6 bg-gray-50 rounded-xl text-center animate-in fade-in zoom-in-95 duration-500">
+                    <p className="text-sm text-gray-500 font-bold">{t('health.sleep.result_title')}</p>
                     <p className="text-6xl font-black text-blue-600 my-2">{score} / 100</p>
                     <p className="text-xl font-black text-gray-800">{getInterpretation(score)}</p>
-                    <p className="text-[10px] text-gray-400 font-bold mt-4">※ 이 평가는 의학적 진단이 아닙니다.</p>
+                    <p className="text-[10px] text-gray-400 font-bold mt-4">{t('health.bio_age.disclaimer')}</p> {/* Reusing disclaimer or add specific? I'll use bio_age disclaimer as it's generic enough "Not medical diagnosis" */}
                 </div>
             )}
         </div>

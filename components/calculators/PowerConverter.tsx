@@ -1,13 +1,10 @@
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Power } from 'lucide-react';
 import SingleUnitConverter from './SingleUnitConverter';
 
-const POWER_UNITS = {
-  'w': '와트 (W)',
-  'kw': '킬로와트 (kW)',
-  'hp': '마력 (hp)',
-};
+
 
 const POWER_CONVERSIONS_TO_WATT: { [key: string]: number } = {
   'w': 1,
@@ -15,15 +12,21 @@ const POWER_CONVERSIONS_TO_WATT: { [key: string]: number } = {
   'hp': 745.7,
 };
 
-const CATEGORY_INFO = {
-  icon: Power,
-  title: '전력 변환기',
-  description: '와트, 킬로와트, 마력을 쉽게 변환!',
-  gradient: 'bg-gradient-to-br from-emerald-400 to-emerald-600',
-  buttonColor: 'bg-emerald-500 hover:bg-emerald-600',
-};
-
 const PowerConverter: React.FC = () => {
+  const { t } = useTranslation();
+
+  const POWER_UNITS = {
+    'w': t('unit.w'), 'kw': t('unit.kw'), 'hp': t('unit.hp')
+  };
+
+  const CATEGORY_INFO = {
+    icon: Power,
+    title: `${t('tool.power')} ${t('suffix.converter')}`,
+    description: t('desc.power'),
+    gradient: 'bg-gradient-to-br from-emerald-400 to-emerald-600',
+    buttonColor: 'bg-emerald-500 hover:bg-emerald-600',
+  };
+
   return (
     <SingleUnitConverter
       categoryInfo={CATEGORY_INFO}

@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { LucideIcon } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
 import SelectModal from '../ui/SelectModal';
@@ -26,34 +27,35 @@ const formatNumber = (num: number): string => {
 
 
 const SingleUnitConverter: React.FC<SingleUnitConverterProps> = ({ categoryInfo, units, baseUnitConversions }) => {
+  const { t } = useTranslation();
   const [value, setValue] = useState('1');
   const [fromUnit, setFromUnit] = useState(Object.keys(units)[0]);
   const [toUnit, setToUnit] = useState(Object.keys(units)[1] || Object.keys(units)[0]);
   const [result, setResult] = useState<string | null>(null);
-  
+
   const handleConvert = () => {
     const numericValue = parseFloat(value);
     if (isNaN(numericValue)) {
-      setResult('유효한 숫자를 입력하세요.');
+      setResult(t('common.invalid_number'));
       return;
     }
-    
+
     const fromRate = baseUnitConversions[fromUnit];
     const toRate = baseUnitConversions[toUnit];
-    
-    if(fromRate === undefined || toRate === undefined) {
-      setResult('변환을 수행할 수 없습니다.');
+
+    if (fromRate === undefined || toRate === undefined) {
+      setResult(t('common.cannot_convert'));
       return;
     }
 
     const valueInBase = numericValue * fromRate;
     const convertedValue = valueInBase / toRate;
-    
+
     setResult(`${formatNumber(convertedValue)}`);
   };
 
   const { icon: Icon, title, description, gradient, buttonColor } = categoryInfo;
-  
+
   const options = Object.entries(units).map(([key, name]) => ({
     value: key,
     label: name
@@ -71,7 +73,7 @@ const SingleUnitConverter: React.FC<SingleUnitConverterProps> = ({ categoryInfo,
 
       <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
         <div>
-          <label className="block text-sm font-medium text-gray-600 mb-2">변환할 값</label>
+          <label className="block text-sm font-medium text-gray-600 mb-2">{t('common.input_value')}</label>
           <input
             type="number"
             inputMode="decimal"
@@ -82,30 +84,30 @@ const SingleUnitConverter: React.FC<SingleUnitConverterProps> = ({ categoryInfo,
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <SelectModal 
-              label="변환 전"
-              options={options}
-              value={fromUnit}
-              onChange={setFromUnit}
-            />
-            <SelectModal 
-              label="변환 후"
-              options={options}
-              value={toUnit}
-              onChange={setToUnit}
-            />
+          <SelectModal
+            label={t('common.from')}
+            options={options}
+            value={fromUnit}
+            onChange={setFromUnit}
+          />
+          <SelectModal
+            label={t('common.to')}
+            options={options}
+            value={toUnit}
+            onChange={setToUnit}
+          />
         </div>
 
         <button onClick={handleConvert} className={`w-full p-4 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105 ${buttonColor}`}>
-          변환하기
+          {t('common.convert')}
         </button>
       </div>
-      
+
       <AdBanner />
 
       {result !== null && (
         <div className="p-6 bg-gray-50 rounded-xl text-center">
-          <p className="text-sm text-gray-500">변환 결과</p>
+          <p className="text-sm text-gray-500">{t('common.result')}</p>
           <p className="text-3xl font-bold text-blue-600 my-2">
             {result} <span className="text-xl text-gray-700">{units[toUnit].split(' ')[1] || toUnit}</span>
           </p>
