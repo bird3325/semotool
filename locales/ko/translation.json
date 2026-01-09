@@ -1,7 +1,21 @@
 {
     "footer_text": "© {{year}} Semotool. 모든 권리 보유.",
+    "app": {
+        "title": "세모툴 - 세상의 모든 툴",
+        "name": "세모툴"
+    },
     "home": {
-        "reorder_mode_active": "순서 변경 모드 활성화됨"
+        "reorder_mode_active": "순서 변경 모드 활성화됨",
+        "banner_title": "세모툴",
+        "banner_desc": "세상의 모든 툴로 해결하세요"
+    },
+    "search": {
+        "placeholder": "계산툴 검색...",
+        "empty_title": "어떤 계산기가 필요하세요?",
+        "empty_desc": "계산기 이름을 입력하여 검색해보세요.",
+        "no_results_title": "검색 결과가 없습니다",
+        "no_results_desc": "다른 검색어를 입력해보세요.",
+        "result_count": "검색 결과: {{count}}개"
     },
     "finance": {
         "label": {
@@ -381,7 +395,9 @@
         "total_amount": "총 금액",
         "num_people": "인원 수",
         "per_person_amount": "1인당 부담할 금액",
-        "people_count": "명"
+        "people_count": "명",
+        "show_more": "더보기",
+        "show_less": "간략히"
     },
     "currency": {
         "KRW": "대한민국 원",

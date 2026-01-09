@@ -21,6 +21,12 @@ const Footer = () => {
 };
 
 export default function App() {
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    document.title = t('app.title');
+  }, [t]);
+
   const [favorites, setFavorites] = useState<string[]>(() => {
     try {
       const savedFavorites = localStorage.getItem('favorites');

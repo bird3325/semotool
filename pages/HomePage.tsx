@@ -31,7 +31,7 @@ const Header: React.FC<{ openMenu: () => void }> = ({ openMenu }) => {
           <Menu className="text-gray-600" />
         </button>
       </div>
-      <h1 className="text-xl font-bold text-gray-800">세모툴</h1>
+      <h1 className="text-xl font-bold text-gray-800">{t('app.name')}</h1>
       <div className="w-10 flex justify-end">
         <Link to="/search" className="p-2 -mr-2" aria-label="Search">
           <Search className="text-gray-500" />
@@ -41,12 +41,15 @@ const Header: React.FC<{ openMenu: () => void }> = ({ openMenu }) => {
   );
 };
 
-const Banner = () => (
-  <div className="m-4 md:m-6 p-6 rounded-2xl bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 text-white shadow-lg">
-    <h2 className="text-2xl font-bold">세모툴</h2>
-    <p className="mt-1 opacity-90">세상의 모든 툴로 해결하세요</p>
-  </div>
-);
+const Banner = () => {
+  const { t } = useTranslation();
+  return (
+    <div className="m-4 md:m-6 p-6 rounded-2xl bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 text-white shadow-lg">
+      <h2 className="text-2xl font-bold">{t('home.banner_title')}</h2>
+      <p className="mt-1 opacity-90">{t('home.banner_desc')}</p>
+    </div>
+  );
+};
 
 const CategorySection: React.FC<{
   category: Category;

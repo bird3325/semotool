@@ -66,7 +66,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose, favorites, toggleF
                                 }}
                             />
                         </div>
-                        <h2 id="menu-title" className="text-lg font-bold text-gray-800 tracking-tight">세모툴</h2>
+                        <h2 id="menu-title" className="text-lg font-bold text-gray-800 tracking-tight">{t('app.name')}</h2>
                     </div>
                     <button onClick={onClose} className="p-2" aria-label="Close menu">
                         <X size={24} className="text-gray-600" />

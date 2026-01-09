@@ -1,7 +1,21 @@
 {
     "footer_text": "© {{year}} Semotool. All rights reserved.",
+    "app": {
+        "title": "Semotool - All Tools in the World",
+        "name": "Semotool"
+    },
     "home": {
-        "reorder_mode_active": "Reorder Mode Activated"
+        "reorder_mode_active": "Reorder Mode Activated",
+        "banner_title": "Semotool",
+        "banner_desc": "Solve it with all the tools in the world"
+    },
+    "search": {
+        "placeholder": "Search calculator...",
+        "empty_title": "Which calculator do you need?",
+        "empty_desc": "Enter a calculator name to search.",
+        "no_results_title": "No results found",
+        "no_results_desc": "Try entering a different keyword.",
+        "result_count": "Search results: {{count}}"
     },
     "finance": {
         "label": {
@@ -375,7 +389,9 @@
         "total_amount": "Total Amount",
         "num_people": "Number of People",
         "per_person_amount": "Amount per Person",
-        "people_count": "people"
+        "people_count": "people",
+        "show_more": "Show More",
+        "show_less": "Show Less"
     },
     "currency": {
         "KRW": "South Korean Won",

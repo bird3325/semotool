@@ -2,11 +2,15 @@
 import React, { useState, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Search, Star, ChevronLeft, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { CALCULATOR_CATEGORIES, POPULAR_TOOLS } from '../constants';
 
 const allToolsWithDetails = CALCULATOR_CATEGORIES.flatMap(category =>
   category.tools.map(tool => {
     const popularTool = POPULAR_TOOLS.find(t => t.id === tool.id);
+    // Keep internal name logic for searching, view will use translation keys
+    // We might need to consider searching against translated names or English names as well.
+    // For now, let's keep the internal structure but display translated names in the result list.
     let toolName = `${tool.name} 계산기`;
     if (popularTool) {
       toolName = popularTool.name;
@@ -24,6 +28,7 @@ interface SearchPageProps {
 }
 
 const SearchPage: React.FC<SearchPageProps> = ({ favorites, toggleFavorite, addRecent }) => {
+  const { t } = useTranslation();
   const [query, setQuery] = useState('');
   const navigate = useNavigate();
 
@@ -31,7 +36,12 @@ const SearchPage: React.FC<SearchPageProps> = ({ favorites, toggleFavorite, addR
     if (!query.trim()) {
       return [];
     }
+    // TODO: Improve search to handle searching by translated names if needed.
+    // Ideally we should search against the translated name `t('tool.' + tool.id)`
+    // But hooks cannot be used in callback like this directly or efficiently for all items without refactoring.
+    // For this task, we will focus on translating the UI elements of the search page itself.
     return allToolsWithDetails.filter(tool =>
+      tool.name.includes(query.trim()) ||
       tool.name.toLowerCase().includes(query.trim().toLowerCase())
     );
   }, [query]);
@@ -43,33 +53,33 @@ const SearchPage: React.FC<SearchPageProps> = ({ favorites, toggleFavorite, addR
           <ChevronLeft />
         </button>
         <div className="relative flex-grow mx-2">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
-            <input
-                type="text"
-                placeholder="계산툴 검색..."
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                autoFocus
-                className="w-full bg-gray-100 border-transparent focus:ring-2 focus:ring-blue-500 focus:bg-white rounded-lg pl-10 pr-10 py-2.5 text-gray-800"
-            />
-            {query && (
-                <button onClick={() => setQuery('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">
-                    <X size={20} />
-                </button>
-            )}
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+          <input
+            type="text"
+            placeholder={t('search.placeholder')}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            autoFocus
+            className="w-full bg-gray-100 border-transparent focus:ring-2 focus:ring-blue-500 focus:bg-white rounded-lg pl-10 pr-10 py-2.5 text-gray-800"
+          />
+          {query && (
+            <button onClick={() => setQuery('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">
+              <X size={20} />
+            </button>
+          )}
         </div>
       </header>
 
       <main className="p-4 md:p-6">
         {query.trim() === '' ? (
-            <div className="text-center py-20 px-4">
-                <Search size={48} className="mx-auto text-gray-300" />
-                <h2 className="mt-4 text-xl font-bold text-gray-800">어떤 계산기가 필요하세요?</h2>
-                <p className="mt-2 text-gray-500">계산기 이름을 입력하여 검색해보세요.</p>
-            </div>
+          <div className="text-center py-20 px-4">
+            <Search size={48} className="mx-auto text-gray-300" />
+            <h2 className="mt-4 text-xl font-bold text-gray-800">{t('search.empty_title')}</h2>
+            <p className="mt-2 text-gray-500">{t('search.empty_desc')}</p>
+          </div>
         ) : filteredTools.length > 0 ? (
           <div className="space-y-3">
-            <p className="text-sm text-gray-500 mb-2">검색 결과: {filteredTools.length}개</p>
+            <p className="text-sm text-gray-500 mb-2">{t('search.result_count', { count: filteredTools.length })}</p>
             {filteredTools.map(tool => {
               const isFavorite = favorites.includes(tool.id);
               return (
@@ -78,7 +88,8 @@ const SearchPage: React.FC<SearchPageProps> = ({ favorites, toggleFavorite, addR
                     <div className={`p-2 rounded-md ${tool.categoryColor.replace('text-', 'bg-').replace('-500', '-100')}`}>
                       <tool.icon size={20} className={tool.categoryColor} />
                     </div>
-                    <span className="font-semibold text-gray-800">{tool.name}</span>
+                    {/* Use translated tool name in the search result as well */}
+                    <span className="font-semibold text-gray-800">{t(`tool.${tool.id}`)}</span>
                   </Link>
                   <button onClick={() => toggleFavorite(tool.id)} className="p-2 ml-2">
                     <Star size={20} className={isFavorite ? 'text-yellow-400 fill-current' : 'text-gray-300'} />
@@ -89,8 +100,8 @@ const SearchPage: React.FC<SearchPageProps> = ({ favorites, toggleFavorite, addR
           </div>
         ) : (
           <div className="text-center py-20 px-4">
-            <h2 className="mt-4 text-xl font-bold text-gray-800">검색 결과가 없습니다</h2>
-            <p className="mt-2 text-gray-500">다른 검색어를 입력해보세요.</p>
+            <h2 className="mt-4 text-xl font-bold text-gray-800">{t('search.no_results_title')}</h2>
+            <p className="mt-2 text-gray-500">{t('search.no_results_desc')}</p>
           </div>
         )}
       </main>
