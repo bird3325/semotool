@@ -45,14 +45,14 @@ const DdayCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-cyan-400 to-cyan-600">
                 <div className="flex items-center space-x-3">
                     <CalendarDays size={28} />
-                    <h2 className="text-2xl font-bold">{t('tool.d_day')} {t('suffix.calculator')}</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.d-day')} {t('suffix.calculator')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">{t('date.d_day.desc')}</p>
+                <p className="mt-1 opacity-90">{t('lifestyle.d_day.desc')}</p>
             </div>
 
             <div className="bg-white p-8 rounded-3xl shadow-md border border-gray-100">
                 <DatePicker
-                    label={t('date.label_target_date')}
+                    label={t('lifestyle.d_day.label_target_date')}
                     value={targetDate}
                     onChange={setTargetDate}
                     colorClass="text-cyan-600"
@@ -69,9 +69,9 @@ const DdayCalculator: React.FC = () => {
                     </p>
                     <div className="inline-block px-4 py-2 bg-cyan-50 rounded-full border border-cyan-100">
                         <p className="text-sm font-bold text-cyan-700">
-                            {result.type === 'D-' && t('date.d_day.msg_remaining', { days: result.days })}
-                            {result.type === 'D+' && t('date.d_day.msg_passed', { days: result.days })}
-                            {result.type === 'D-day' && t('date.d_day.msg_today')}
+                            {result.type === 'D-' && t('lifestyle.d_day.msg_remaining', { days: result.days })}
+                            {result.type === 'D+' && t('lifestyle.d_day.msg_passed', { days: result.days })}
+                            {result.type === 'D-day' && t('lifestyle.d_day.msg_today')}
                         </p>
                     </div>
                 </div>

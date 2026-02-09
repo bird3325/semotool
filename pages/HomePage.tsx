@@ -100,7 +100,7 @@ const CategorySection: React.FC<{
             </button>
           )}
           {isAnyDragging && (
-            <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{category.tools.length} Tools</div>
+            <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{t('common.tools_count', { count: category.tools.length })}</div>
           )}
         </div>
 

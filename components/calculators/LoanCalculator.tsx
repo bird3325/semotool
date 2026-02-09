@@ -18,8 +18,8 @@ const LoanCalculator: React.FC = () => {
   const [result, setResult] = useState<{ monthlyPayment: string; totalInterest: number; totalRepayment: number } | null>(null);
 
   const repaymentOptions = [
-    { value: 'equal-principal-interest', label: t('finance.opt.equal_principal_interest') },
-    { value: 'equal-principal', label: t('finance.opt.equal_principal') }
+    { value: 'equal-principal-interest', label: t('finance.loan.opt_equal_principal_interest') },
+    { value: 'equal-principal', label: t('finance.loan.opt_equal_principal') }
   ];
 
   const formatNumber = (val: string) => {

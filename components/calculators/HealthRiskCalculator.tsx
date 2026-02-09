@@ -43,7 +43,7 @@ const HealthRiskCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-pink-400 to-pink-600">
                 <div className="flex items-center space-x-3">
                     <ShieldAlert size={28} />
-                    <h2 className="text-2xl font-bold">{t('tool.health_risk')} {t('suffix.calculator')}</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.health-risk')} {t('suffix.calculator')}</h2>
                 </div>
                 <p className="mt-1 opacity-90">{t('health.desc.health_risk')}</p>
             </div>

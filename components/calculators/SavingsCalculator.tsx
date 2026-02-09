@@ -21,13 +21,13 @@ const SavingsCalculator: React.FC = () => {
     const [result, setResult] = useState<{ principal: number; preTaxInterest: number; tax: number; netInterest: number; totalAmount: number } | null>(null);
 
     const interestOptions = [
-        { value: 'simple', label: t('finance.opt.simple') },
-        { value: 'compound', label: t('finance.opt.compound') }
+        { value: 'simple', label: t('finance.savings.opt_simple') },
+        { value: 'compound', label: t('finance.savings.opt_compound') }
     ];
 
     const taxOptions = [
-        { value: 'general', label: t('finance.opt.general_tax') },
-        { value: 'tax-free', label: t('finance.opt.tax_free') }
+        { value: 'general', label: t('finance.savings.opt_general_tax') },
+        { value: 'tax-free', label: t('finance.savings.opt_tax_free') }
     ];
 
     const formatNumber = (val: string) => {

@@ -17,8 +17,8 @@ const InterestCalculator: React.FC = () => {
   const [result, setResult] = useState<{ totalInterest: number; tax: number; netInterest: number; totalAmount: number; } | null>(null);
 
   const interestOptions = [
-    { value: 'simple', label: t('finance.opt.simple') },
-    { value: 'compound', label: t('finance.opt.compound') }
+    { value: 'simple', label: t('finance.interest.opt_simple') },
+    { value: 'compound', label: t('finance.interest.opt_compound') }
   ];
 
   const formatNumber = (val: string) => {

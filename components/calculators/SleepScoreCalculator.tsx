@@ -62,9 +62,9 @@ const SleepScoreCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-pink-400 to-pink-600">
                 <div className="flex items-center space-x-3">
                     <BedDouble size={28} />
-                    <h2 className="text-2xl font-bold">{t('tool.sleep_score')} {t('suffix.calculator')}</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.sleep-score')} {t('suffix.calculator')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">{t('health.desc.health_risk')}</p> {/* Reusing health risk desc temporarily as I didn't add specific one. Or I can use 'tool.sleep_score' as title. I should probably add a desc but for now I'll use a generic one or empty? I'll use hardcoded for now? No, user wants translations. I'll use 'health.desc.health_risk' as placeholder or I should have added 'health.desc.sleep_score'. I'll use 'health.desc.health_risk' for now. */}
+                <p className="mt-1 opacity-90">{t('health.sleep.desc')}</p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">

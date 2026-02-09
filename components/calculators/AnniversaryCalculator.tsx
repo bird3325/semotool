@@ -62,12 +62,12 @@ const AnniversaryCalculator: React.FC = () => {
                     <PartyPopper size={28} />
                     <h2 className="text-2xl font-bold">{t('tool.anniversary')} {t('suffix.calculator')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">{t('date.anniversary.desc')}</p>
+                <p className="mt-1 opacity-90">{t('lifestyle.anniversary.desc')}</p>
             </div>
 
             <div className="bg-white p-8 rounded-3xl shadow-md border border-gray-100">
                 <DatePicker
-                    label={t('date.label_target_date')}
+                    label={t('lifestyle.anniversary.label_target_date')}
                     value={startDate}
                     onChange={setStartDate}
                     colorClass="text-cyan-600"
@@ -77,7 +77,7 @@ const AnniversaryCalculator: React.FC = () => {
             <AdBanner />
 
             <div className="p-6 bg-white border border-gray-100 rounded-3xl shadow-xl space-y-4">
-                <h3 className="text-sm font-black text-gray-400 uppercase tracking-widest px-2">{t('date.anniversary.timeline')}</h3>
+                <h3 className="text-sm font-black text-gray-400 uppercase tracking-widest px-2">{t('lifestyle.anniversary.label_timeline')}</h3>
                 <div className="space-y-3">
                     {anniversaries.map(ann => (
                         <div key={ann.label} className="flex justify-between items-center p-4 bg-gray-50 rounded-2xl border border-gray-100 hover:border-cyan-200 transition-colors group">

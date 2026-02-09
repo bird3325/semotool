@@ -41,7 +41,7 @@ const GradePredictor: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-rose-400 to-rose-600">
                 <div className="flex items-center space-x-3">
                     <ClipboardEdit size={28} />
-                    <h2 className="text-2xl font-bold">{t('tool.grade_predictor')} {t('suffix.calculator')}</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.grade-predictor')} {t('suffix.calculator')}</h2>
                 </div>
                 <p className="mt-1 opacity-90">{t('school.grade_predictor.desc')}</p>
             </div>

@@ -71,16 +71,16 @@ const RetirementCalculator: React.FC = () => {
           <div>
             <label className="block text-sm font-black text-gray-500 uppercase tracking-wider mb-2">{t('finance.retirement.label_salary_3m')}</label>
             <div className="relative group">
-              <input type="text" value={last3MonthsSalary} onChange={e => setLast3MonthsSalary(formatNumber(e.target.value))} className="w-full py-4 bg-gray-50/50 border-b-2 border-gray-100 focus:border-amber-500 outline-none text-right font-black text-2xl text-gray-900 pr-10" />
-              <span className="absolute right-0 top-1/2 -translate-y-1/2 text-gray-500 font-bold text-lg">{t('currency.KRW')}</span>
+              <input type="text" value={last3MonthsSalary} onChange={e => setLast3MonthsSalary(formatNumber(e.target.value))} className="w-full py-4 bg-gray-50/50 border-b-2 border-gray-100 focus:border-amber-500 outline-none text-right font-black text-2xl text-gray-900 pr-16" />
+              <span className="absolute right-0 top-1/2 -translate-y-1/2 text-gray-500 font-bold text-lg">{t('currency.KRW_symbol')}</span>
             </div>
             <AmountUnit value={last3MonthsSalary} />
           </div>
           <div>
             <label className="block text-sm font-black text-gray-500 uppercase tracking-wider mb-2">{t('finance.retirement.label_bonus')}</label>
             <div className="relative group">
-              <input type="text" value={annualBonus} onChange={e => setAnnualBonus(formatNumber(e.target.value))} className="w-full py-4 bg-gray-50/50 border-b-2 border-gray-100 focus:border-amber-500 outline-none text-right font-black text-2xl text-gray-900 pr-10" />
-              <span className="absolute right-0 top-1/2 -translate-y-1/2 text-gray-500 font-bold text-lg">{t('currency.KRW')}</span>
+              <input type="text" value={annualBonus} onChange={e => setAnnualBonus(formatNumber(e.target.value))} className="w-full py-4 bg-gray-50/50 border-b-2 border-gray-100 focus:border-amber-500 outline-none text-right font-black text-2xl text-gray-900 pr-16" />
+              <span className="absolute right-0 top-1/2 -translate-y-1/2 text-gray-500 font-bold text-lg">{t('currency.KRW_symbol')}</span>
             </div>
             <AmountUnit value={annualBonus} />
           </div>

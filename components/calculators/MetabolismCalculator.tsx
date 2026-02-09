@@ -17,16 +17,16 @@ const MetabolismCalculator: React.FC = () => {
     const [result, setResult] = useState<{ bmr: number; tdee: number } | null>(null);
 
     const genderOptions = [
-        { value: 'male', label: t('health.opt.male') },
-        { value: 'female', label: t('health.opt.female') }
+        { value: 'male', label: t('health.metabolism.opt_male') },
+        { value: 'female', label: t('health.metabolism.opt_female') }
     ];
 
     const activityLevels: { key: ActivityLevel, name: string, multiplier: number }[] = [
-        { key: 'sedentary', name: t('health.opt.sedentary'), multiplier: 1.2 },
-        { key: 'light', name: t('health.opt.light'), multiplier: 1.375 },
-        { key: 'moderate', name: t('health.opt.moderate'), multiplier: 1.55 },
-        { key: 'active', name: t('health.opt.active'), multiplier: 1.725 },
-        { key: 'veryActive', name: t('health.opt.very_active'), multiplier: 1.9 },
+        { key: 'sedentary', name: t('health.metabolism.opt_sedentary'), multiplier: 1.2 },
+        { key: 'light', name: t('health.metabolism.opt_light'), multiplier: 1.375 },
+        { key: 'moderate', name: t('health.metabolism.opt_moderate'), multiplier: 1.55 },
+        { key: 'active', name: t('health.metabolism.opt_active'), multiplier: 1.725 },
+        { key: 'veryActive', name: t('health.metabolism.opt_very_active'), multiplier: 1.9 },
     ];
 
     const activityOptions = activityLevels.map(level => ({
@@ -63,7 +63,7 @@ const MetabolismCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-pink-400 to-pink-600">
                 <div className="flex items-center space-x-3">
                     <Flame size={28} />
-                    <h2 className="text-2xl font-bold">{t('tool.metabolism')} {t('suffix.calculator')}</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.calorie')} {t('suffix.calculator')}</h2>
                 </div>
                 <p className="mt-1 opacity-90">{t('health.desc.metabolism')}</p>
             </div>

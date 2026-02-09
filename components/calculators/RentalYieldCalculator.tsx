@@ -47,7 +47,7 @@ const RentalYieldCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-violet-400 to-violet-600">
                 <div className="flex items-center space-x-3">
                     <LineChart size={28} />
-                    <h2 className="text-2xl font-bold">{t('tool.rental_yield')} {t('suffix.calculator')}</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.rental-yield')} {t('suffix.calculator')}</h2>
                 </div>
                 <p className="mt-1 opacity-90">{t('finance.rental_yield.desc')}</p>
             </div>

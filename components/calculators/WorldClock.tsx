@@ -8,12 +8,12 @@ const WorldClock: React.FC = () => {
     const [time, setTime] = useState(new Date());
 
     const cities = [
-        { name: t('date.city.seoul'), timeZone: 'Asia/Seoul', country: t('date.country.south_korea') },
-        { name: t('date.city.new_york'), timeZone: 'America/New_York', country: t('date.country.usa') },
-        { name: t('date.city.london'), timeZone: 'Europe/London', country: t('date.country.uk') },
-        { name: t('date.city.tokyo'), timeZone: 'Asia/Tokyo', country: t('date.country.japan') },
-        { name: t('date.city.paris'), timeZone: 'Europe/Paris', country: t('date.country.france') },
-        { name: t('date.city.sydney'), timeZone: 'Australia/Sydney', country: t('date.country.australia') },
+        { name: t('lifestyle.city.seoul'), timeZone: 'Asia/Seoul', country: t('lifestyle.country.south_korea') },
+        { name: t('lifestyle.city.new_york'), timeZone: 'America/New_York', country: t('lifestyle.country.usa') },
+        { name: t('lifestyle.city.london'), timeZone: 'Europe/London', country: t('lifestyle.country.uk') },
+        { name: t('lifestyle.city.tokyo'), timeZone: 'Asia/Tokyo', country: t('lifestyle.country.japan') },
+        { name: t('lifestyle.city.paris'), timeZone: 'Europe/Paris', country: t('lifestyle.country.france') },
+        { name: t('lifestyle.city.sydney'), timeZone: 'Australia/Sydney', country: t('lifestyle.country.australia') },
     ];
 
     useEffect(() => {
@@ -59,9 +59,9 @@ const WorldClock: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-cyan-400 to-cyan-600">
                 <div className="flex items-center space-x-3">
                     <Globe size={28} />
-                    <h2 className="text-2xl font-bold">{t('tool.world_clock')}</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.world-clock')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">{t('date.world_clock.desc')}</p>
+                <p className="mt-1 opacity-90">{t('lifestyle.world_clock.desc')}</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

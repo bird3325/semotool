@@ -13,8 +13,8 @@ const AcquisitionTaxCalculator: React.FC = () => {
   const [result, setResult] = useState<{ tax: number; total: number } | null>(null);
 
   const homeOptions = [
-    { value: 'primary', label: t('finance.opt.primary_home') },
-    { value: 'multi', label: t('finance.opt.multi_home') }
+    { value: 'primary', label: t('finance.acquisition.opt_primary_home') },
+    { value: 'multi', label: t('finance.acquisition.opt_multi_home') }
   ];
 
   const formatNumber = (val: string) => {
@@ -55,7 +55,7 @@ const AcquisitionTaxCalculator: React.FC = () => {
       <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-violet-400 to-violet-600">
         <div className="flex items-center space-x-3">
           <FileText size={28} />
-          <h2 className="text-2xl font-bold">{t('tool.acquisition_tax')} {t('suffix.calculator')}</h2>
+          <h2 className="text-2xl font-bold">{t('tool.acquisition-tax')} {t('suffix.calculator')}</h2>
         </div>
         <p className="mt-1 opacity-90">{t('finance.desc.acquisition_tax')}</p>
       </div>

@@ -38,7 +38,7 @@ const RentConversionCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-violet-400 to-violet-600">
                 <div className="flex items-center space-x-3">
                     <ArrowRightLeft size={28} />
-                    <h2 className="text-2xl font-bold">{t('tool.rent_conversion')} {t('suffix.calculator')}</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.rent-conversion')} {t('suffix.calculator')}</h2>
                 </div>
                 <p className="mt-1 opacity-90">{t('finance.rent_conversion.desc')}</p>
             </div>

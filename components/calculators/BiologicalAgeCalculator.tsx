@@ -71,9 +71,9 @@ const BiologicalAgeCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-pink-400 to-pink-600">
                 <div className="flex items-center space-x-3">
                     <Cake size={28} />
-                    <h2 className="text-2xl font-bold">{t('tool.biological_age')} {t('suffix.calculator')}</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.biological-age')} {t('suffix.calculator')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">{t('health.desc.health_risk')}</p> {/* Re-using similar desc or should have a specific one? Using generic for now or add specific if needed. Actually I missed adding desc for bio age in JSON. Check keys. I'll use health_risk desc or add a new one? I'll use the english text as placeholder if key missing or just use hardcoded? I'll use hardcoded or better, add key later. For now, I'll stick to translation key I added? Wait, I didn't add a specific desc for bio age, I added keys under 'bio_age'. I'll use common structure. I'll use 'health.desc.health_risk' as it's similar concept. */}
+                <p className="mt-1 opacity-90">{t('health.bio_age.desc')}</p>
                 {/* Actually I can add a desc key on the fly if I missed it, but sticking to plan, I will use hardcoded or generic? I will use {t('health.bio_age.disclaimer')} for bottom. For top desc, I should have added one. I'll use 'health.desc.health_risk' for now as it's 'Health Risk Assessment' which is close. */}
             </div>
 

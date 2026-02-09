@@ -32,11 +32,11 @@ const IdealWeightCalculator: React.FC = () => {
   };
 
   const interpretBmi = (bmiValue: number) => {
-    if (bmiValue < 18.5) setInterpretation(t('health.level.underweight'));
-    else if (bmiValue < 23) setInterpretation(t('health.level.normal'));
-    else if (bmiValue < 25) setInterpretation(t('health.level.overweight'));
-    else if (bmiValue < 30) setInterpretation(t('health.level.obese'));
-    else setInterpretation(t('health.level.severely_obese'));
+    if (bmiValue < 18.5) setInterpretation(t('health.ideal_weight.level_underweight'));
+    else if (bmiValue < 23) setInterpretation(t('health.ideal_weight.level_normal'));
+    else if (bmiValue < 25) setInterpretation(t('health.ideal_weight.level_overweight'));
+    else if (bmiValue < 30) setInterpretation(t('health.ideal_weight.level_obese'));
+    else setInterpretation(t('health.ideal_weight.level_severely_obese'));
   };
 
   return (
@@ -44,7 +44,7 @@ const IdealWeightCalculator: React.FC = () => {
       <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-pink-400 to-pink-600">
         <div className="flex items-center space-x-3">
           <Scale size={28} />
-          <h2 className="text-2xl font-bold">{t('tool.ideal_weight')} {t('suffix.calculator')}</h2>
+          <h2 className="text-2xl font-bold">{t('tool.bmi')} {t('suffix.calculator')}</h2>
         </div>
         <p className="mt-1 opacity-90">{t('health.desc.ideal_weight')}</p>
       </div>

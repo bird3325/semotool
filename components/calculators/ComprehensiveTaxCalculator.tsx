@@ -13,8 +13,8 @@ const ComprehensiveTaxCalculator: React.FC = () => {
 
     // Dynamic options using translations
     const ownerOptions = [
-        { value: 'single', label: t('finance.opt.single_owner') },
-        { value: 'multi', label: t('finance.opt.multi_owner') }
+        { value: 'single', label: t('finance.comprehensive.opt_single_owner') },
+        { value: 'multi', label: t('finance.comprehensive.opt_multi_owner') }
     ];
 
     const formatNumber = (val: string) => {
@@ -49,19 +49,19 @@ const ComprehensiveTaxCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-violet-400 to-violet-600">
                 <div className="flex items-center space-x-3">
                     <Building2 size={28} />
-                    <h2 className="text-2xl font-bold">{t('tool.comprehensive_tax')} {t('suffix.calculator')}</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.comprehensive-tax')} {t('suffix.calculator')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">{t('finance.desc.comprehensive_tax')}</p>
+                <p className="mt-1 opacity-90">{t('finance.comprehensive.desc')}</p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
                 <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">{t('finance.label.property_value_total')}</label>
+                    <label className="block text-sm font-medium text-gray-600 mb-2">{t('finance.comprehensive.label_property_value_total')}</label>
                     <input type="text" value={propertyValue} onChange={e => setPropertyValue(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
                 </div>
 
                 <SelectModal
-                    label={t('finance.label.ownership_type')}
+                    label={t('finance.comprehensive.label_ownership_type')}
                     options={ownerOptions}
                     value={isSingleOwner ? 'single' : 'multi'}
                     onChange={(val) => setIsSingleOwner(val === 'single')}
@@ -77,11 +77,11 @@ const ComprehensiveTaxCalculator: React.FC = () => {
 
             {result && (
                 <div className="p-6 bg-gray-50 rounded-xl text-center">
-                    <p className="text-sm text-gray-500">{t('finance.result.expected_comprehensive_tax')}</p>
+                    <p className="text-sm text-gray-500">{t('finance.comprehensive.result_tax')}</p>
                     <p className="text-4xl font-bold text-blue-600 my-2">
                         {Math.round(result.tax).toLocaleString()} {t('currency.KRW')}
                     </p>
-                    <p className="text-xs text-gray-500 text-center pt-2">{t('finance.msg.comprehensive_warning')}</p>
+                    <p className="text-xs text-gray-500 text-center pt-2">{t('finance.comprehensive.msg_warning')}</p>
                 </div>
             )}
         </div>

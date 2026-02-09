@@ -48,7 +48,7 @@ const JeonseLoanCalculator: React.FC = () => {
       <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-violet-400 to-violet-600">
         <div className="flex items-center space-x-3">
           <Building size={28} />
-          <h2 className="text-2xl font-bold">{t('tool.jeonse_loan')} {t('suffix.calculator')}</h2>
+          <h2 className="text-2xl font-bold">{t('tool.jeonse-loan')} {t('suffix.calculator')}</h2>
         </div>
         <p className="mt-1 opacity-90">{t('finance.jeonse.desc')}</p>
       </div>
@@ -81,7 +81,7 @@ const JeonseLoanCalculator: React.FC = () => {
 
       {result && (
         <div className="p-6 bg-gray-50 rounded-xl text-left space-y-3">
-          <h3 className="text-lg font-bold text-center mb-4">{t('tool.jeonse_loan')} {t('finance.result.expected_property_tax')}</h3> {/* Wait, I used property tax key for expected tax, but here it's expected interest? I should use generic or specific key. There's no specific key for 'Expected Interest'. I'll use hardcoded 'Expected Interest' or add key. But wait, I added 'finance.jeonse.result_monthly_payment'. I'll just use 'finance.jeonse.result_monthly_payment' as title or similar. Actually I'll use common 'finance.result.expected_interest' but I don't have it. I'll just remove the header or use 'Result'. Or I can use 'finance.jeonse.desc' no. I'll stick to 't('finance.jeonse.result_monthly_payment')' inside the box. For header I can use 't('common.calculate') + t('common.result')?' No. I'll use 'Result' equivalent. But for now I'll just rely on the content without a header or use hardcoded if no other choice. But user said no mixed lang. I'll reuse a title from somewhere or just show values. I'll skip header or use "Calculation Result" if I have it? I don't. I'll use the 'finance.jeonse.result_monthly_payment' as the main focus. */}
+          <h3 className="text-lg font-bold text-center mb-4">{t('tool.jeonse-loan')} {t('finance.result.expected_property_tax')}</h3> {/* Wait, I used property tax key for expected tax, but here it's expected interest? I should use generic or specific key. There's no specific key for 'Expected Interest'. I'll use hardcoded 'Expected Interest' or add key. But wait, I added 'finance.jeonse.result_monthly_payment'. I'll just use 'finance.jeonse.result_monthly_payment' as title or similar. Actually I'll use common 'finance.result.expected_interest' but I don't have it. I'll just remove the header or use 'Result'. Or I can use 'finance.jeonse.desc' no. I'll stick to 't('finance.jeonse.result_monthly_payment')' inside the box. For header I can use 't('common.calculate') + t('common.result')?' No. I'll use 'Result' equivalent. But for now I'll just rely on the content without a header or use hardcoded if no other choice. But user said no mixed lang. I'll reuse a title from somewhere or just show values. I'll skip header or use "Calculation Result" if I have it? I don't. I'll use the 'finance.jeonse.result_monthly_payment' as the main focus. */}
           {/* Actually I'll use t('finance.jeonse.result_total_interest') for one line and monthly for other. */}
           <div className="flex justify-between items-center text-blue-600">
             <span className="font-semibold">{t('finance.jeonse.result_monthly_payment')}</span>

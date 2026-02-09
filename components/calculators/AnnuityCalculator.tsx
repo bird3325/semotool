@@ -1,10 +1,12 @@
 
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { CalendarClock } from 'lucide-react';
 import AdBanner from '../ui/AdBanner';
 import AmountUnit from '../ui/AmountUnit';
 
 const AnnuityCalculator: React.FC = () => {
+    const { t } = useTranslation();
     const [totalAnnuity, setTotalAnnuity] = useState('300000000');
     const [rate, setRate] = useState('4');
     const [years, setYears] = useState('20');
@@ -35,7 +37,7 @@ const AnnuityCalculator: React.FC = () => {
         } else {
             monthlyPayout = PV * (r_monthly * Math.pow(1 + r_monthly, n)) / (Math.pow(1 + r_monthly, n) - 1);
         }
-        
+
         const totalPayout = monthlyPayout * n;
 
         setResult({ monthlyPayout, totalPayout });
@@ -46,44 +48,47 @@ const AnnuityCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-amber-400 to-amber-600">
                 <div className="flex items-center space-x-3">
                     <CalendarClock size={28} />
-                    <h2 className="text-2xl font-bold">연금 계산기</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.annuity')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">매월 얼마씩 받을 수 있을까요?</p>
+                <p className="mt-1 opacity-90">{t('finance.annuity.desc')}</p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
                 <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">연금 총액 (원)</label>
+                    <label className="block text-sm font-medium text-gray-600 mb-2">{t('finance.annuity.label_total_annuity')} ({t('currency.symbol')})</label>
                     <input type="text" value={totalAnnuity} onChange={e => setTotalAnnuity(formatNumber(e.target.value))} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
                     <AmountUnit value={totalAnnuity} />
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">예상 수익률 (연 %)</label>
+                    <label className="block text-sm font-medium text-gray-600 mb-2">{t('finance.annuity.label_rate')} ({t('unit.percent')})</label>
                     <input type="number" value={rate} onChange={e => setRate(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
                 </div>
+
                 <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">수령 기간 (년)</label>
+                    <label className="block text-sm font-medium text-gray-600 mb-2">{t('finance.annuity.label_years')} ({t('unit.year')})</label>
                     <input type="number" value={years} onChange={e => setYears(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg text-lg text-right" />
                 </div>
                 <button onClick={handleCalculate} className="w-full p-4 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-lg text-lg transition-transform hover:scale-105">
-                    계산하기
+                    {t('common.calculate')}
                 </button>
             </div>
 
             <AdBanner />
 
-            {result && (
-                <div className="p-6 bg-gray-50 rounded-xl text-center">
-                    <p className="text-sm text-gray-500">예상 월 수령액</p>
-                    <p className="text-4xl font-bold text-blue-600 my-2">
-                        {Math.round(result.monthlyPayout).toLocaleString()} 원
-                    </p>
-                    <p className="text-md text-gray-700">
-                        총 수령액: {Math.round(result.totalPayout).toLocaleString()} 원
-                    </p>
-                </div>
-            )}
-        </div>
+            {
+                result && (
+                    <div className="p-6 bg-gray-50 rounded-xl text-center">
+                        <p className="text-sm text-gray-500">{t('finance.annuity.result_monthly_payout')}</p>
+                        <p className="text-4xl font-bold text-blue-600 my-2">
+                            {Math.round(result.monthlyPayout).toLocaleString()} {t('currency.symbol')}
+                        </p>
+                        <p className="text-md text-gray-700">
+                            {t('finance.annuity.result_total_payout')}: {Math.round(result.totalPayout).toLocaleString()} {t('currency.symbol')}
+                        </p>
+                    </div>
+                )
+            }
+        </div >
     );
 };
 

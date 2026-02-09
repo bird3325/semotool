@@ -44,14 +44,14 @@ const InheritanceTaxCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-violet-400 to-violet-600">
                 <div className="flex items-center space-x-3">
                     <Network size={28} />
-                    <h2 className="text-2xl font-bold">{t('tool.inheritance_tax')} {t('suffix.calculator')}</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.inheritance-tax')} {t('suffix.calculator')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">{t('finance.desc.inheritance_tax')}</p>
+                <p className="mt-1 opacity-90">{t('finance.inheritance.desc')}</p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
                 <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">{t('finance.label.inheritance_asset_value')}</label>
+                    <label className="block text-sm font-medium text-gray-600 mb-2">{t('finance.inheritance.label_asset_value')}</label>
                     <input
                         type="text"
                         value={assetValue}
@@ -61,7 +61,7 @@ const InheritanceTaxCalculator: React.FC = () => {
                     <AmountUnit value={assetValue} />
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">{t('finance.label.deduction_total')}</label>
+                    <label className="block text-sm font-medium text-gray-600 mb-2">{t('finance.inheritance.label_deduction')}</label>
                     <input
                         type="text"
                         value={deduction}
@@ -79,11 +79,11 @@ const InheritanceTaxCalculator: React.FC = () => {
 
             {result && (
                 <div className="p-6 bg-gray-50 rounded-xl text-center">
-                    <p className="text-sm text-gray-500">{t('finance.result.expected_inheritance_tax')}</p>
+                    <p className="text-sm text-gray-500">{t('finance.inheritance.result_tax')}</p>
                     <p className="text-4xl font-bold text-blue-600 my-2">
                         {Math.round(result.tax).toLocaleString()} {t('currency.KRW')}
                     </p>
-                    <p className="text-xs text-gray-500 text-center pt-2">{t('finance.msg.simple_calc_warning')}</p>
+                    <p className="text-xs text-gray-500 text-center pt-2">{t('finance.inheritance.msg_warning')}</p>
                 </div>
             )}
         </div>

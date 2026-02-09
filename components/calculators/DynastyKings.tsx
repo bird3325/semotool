@@ -80,7 +80,7 @@ const DynastyKings: React.FC = () => {
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-rose-500 transition-colors" size={20} />
         <input
           type="text"
-          placeholder={t('common.search_placeholder')}
+          placeholder={t('ref.dynasty.placeholder')}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className="w-full py-4 pl-12 pr-12 bg-white border-2 border-gray-100 rounded-2xl outline-none focus:border-rose-400 transition-all font-bold text-gray-800 shadow-sm"

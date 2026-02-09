@@ -116,6 +116,19 @@
             "inheritance_tax": "Simplified calculation of estimated tax.",
             "property_tax": "Simplified calc based on official price."
         },
+        "tool": {
+            "bmi": "BMI / Ideal Weight",
+            "calorie": "BMR / TDEE",
+            "body-fat": "Body Fat Percentage",
+            "visceral-fat": "Visceral Fat",
+            "water-intake": "Water Intake",
+            "vo2-max": "VO2 Max",
+            "sleep-score": "Sleep Score",
+            "stress-level": "Stress Level",
+            "health-risk": "Health Risk",
+            "biological-age": "Biological Age",
+            "annuity": "Annuity Calculator"
+        },
         "msg": {
             "local_tax_excluded": "* Local tax (10%) excluded. Deductions not applied.",
             "simple_calc_warning": "* Calculated results may differ from actual tax.",
@@ -192,6 +205,203 @@
             "minor_child": "Child (Minor)",
             "result_sum": "Sum: {{sum}}",
             "result_count": "Count: {{count}}"
+        },
+        "interest": {
+            "opt_simple": "Simple",
+            "opt_compound": "Compound"
+        },
+        "savings": {
+            "opt_simple": "Simple",
+            "opt_compound": "Compound",
+            "opt_general_tax": "General Tax (15.4%)",
+            "opt_tax_free": "Tax Free (0%)"
+        },
+        "investment": {
+            "opt_simple": "Simple",
+            "opt_compound": "Compound",
+            "desc": "Calculate how your assets grow with compound interest.",
+            "label_initial": "Initial Amount",
+            "label_monthly": "Monthly Contribution",
+            "label_years": "Period (Years)",
+            "label_rate": "Annual Interest Rate (%)",
+            "label_type": "Interest Type",
+            "result_header": "Expected Assets After {{years}} Years",
+            "result_total_principal": "Total Principal",
+            "result_total_interest": "Total Interest",
+            "result_final": "Final Asset Value"
+        },
+        "goal": {
+            "desc": "Calculate monthly savings needed to reach your financial goal.",
+            "label_target": "Target Amount",
+            "label_initial": "Initial Amount",
+            "label_years": "Savings Period (Years)",
+            "label_rate": "Annual Interest Rate (%)",
+            "result_monthly_saving": "Monthly Savings Needed"
+        },
+        "holiday_allowance": {
+            "desc": "Check eligibility and calculate expected holiday allowance.",
+            "label_hourly_wage": "Hourly Wage",
+            "label_weekly_hours": "Weekly Working Hours",
+            "msg_disclaimer": "* Eligible if working 15+ hours/week on average over 4 weeks.",
+            "msg_ineligible": "Workers with less than 15 hours/week are not eligible.",
+            "result_allowance": "Expected Holiday Allowance (Weekly)",
+            "result_total_weekly": "(Total Weekly Pay: approx {{total}} KRW)"
+        },
+        "loan": {
+            "opt_equal_principal_interest": "Equal P & I",
+            "opt_equal_principal": "Equal Principal"
+        },
+        "compound": {
+            "opt_yearly": "Yearly",
+            "opt_biannually": "Biannually (Every 6 months)",
+            "opt_quarterly": "Quarterly (Every 3 months)",
+            "opt_monthly": "Monthly",
+            "desc": "Calculate how your assets grow with compound interest.",
+            "label_principal": "Initial Investment (Principal)",
+            "label_rate": "Annual Interest Rate (%)",
+            "label_years": "Period (Years)",
+            "label_compounding": "Compounding Frequency",
+            "result_header": "Calculation Result",
+            "result_principal": "Principal",
+            "result_interest": "Total Interest",
+            "result_total": "Future Value"
+        },
+        "commission": {
+            "opt_house": "House",
+            "opt_officetel": "Officetel",
+            "opt_other": "Land/Commercial",
+            "opt_sell": "Sell/Exchange",
+            "opt_jeonse": "Jeonse",
+            "opt_monthly": "Monthly Rent",
+            "desc": "Calculate real estate brokerage fees. (Based on legal max)",
+            "label_property_type": "Property Type",
+            "label_transaction_type": "Transaction Type",
+            "label_price": "Transaction Amount",
+            "label_deposit": "Deposit",
+            "label_monthly_rent": "Monthly Rent",
+            "label_negotiated_rate": "Negotiated Rate (%)",
+            "placeholder_negotiated_rate": "Enter if negotiated (e.g. 0.4)",
+            "msg_rate_warning": "* Max legal rate applies if empty.",
+            "result_commission": "Estimated Fee (Max)",
+            "result_vat_included": "(With VAT: approx {{amount}} KRW)",
+            "result_applied_rate": "Applied Rate (Max)",
+            "result_transaction_amount": "Reference Amount",
+            "msg_disclaimer": "* Above is the max legal fee. Actual fee is negotiated with the agent. VAT is separate."
+        },
+        "acquisition": {
+            "opt_primary_home": "Primary Home",
+            "opt_multi_home": "Multi-Home",
+            "desc": "Calculate the expected acquisition tax when purchasing real estate.",
+            "label_acquisition_price": "Acquisition Price",
+            "label_home_count": "Number of Homes Owned",
+            "result_expected_acquisition_tax": "Expected Acquisition Tax",
+            "msg_simple_calc_warning": "* This is a rough estimate. Actual tax may vary based on property type, area, and location."
+        },
+        "capital_gains": {
+            "desc": "Calculate Capital Gains Tax for real estate transactions. (Simplified)",
+            "label_purchase_price": "Purchase Price",
+            "label_sale_price": "Sale Price",
+            "label_holding_period": "Holding Period (Years)",
+            "result_tax": "Expected Capital Gains Tax",
+            "result_gain": "Capital Gain",
+            "msg_warning": "* Basic deductions and expenses are not included. Consult a tax professional for accuracy."
+        },
+        "comprehensive": {
+            "opt_single_owner": "Single Owner (1 Home)",
+            "opt_multi_owner": "Joint Owner / Multi-Home",
+            "desc": "Calculate the expected Comprehensive Real Estate Tax on owned properties.",
+            "label_property_value_total": "Total Assessed Value",
+            "label_ownership_type": "Ownership Type",
+            "result_tax": "Expected Comprehensive Tax",
+            "msg_warning": "* This is an estimate based on simplified rules. Actual tax may differ due to property tax deductions, etc."
+        },
+        "property": {
+            "desc": "Calculate Property Tax for home ownership. (Simplified)",
+            "label_official_price": "Official Post Price",
+            "result_tax": "Expected Property Tax",
+            "msg_warning": "* This is a rough estimate excluding city planning tax. Actual tax bill may vary."
+        },
+        "inheritance": {
+            "desc": "Calculate expected Inheritance Tax on assets.",
+            "label_asset_value": "Inheritance Asset Value",
+            "label_deduction": "Total Deduction",
+            "result_tax": "Expected Inheritance Tax",
+            "msg_warning": "* This is a rough estimate. Consult a tax expert for accurate calculation."
+        },
+        "annuity": {
+            "desc": "How much can I receive monthly?",
+            "label_total_annuity": "Total Annuity",
+            "label_rate": "Expected Rate",
+            "label_years": "Payout Period",
+            "result_monthly_payout": "Expected Monthly Payout",
+            "result_total_payout": "Total Payout"
+        }
+    },
+    "lifestyle": {
+        "dutch_pay": {
+            "desc": "Calculate the amount per person by dividing the total amount by the number of people.",
+            "label_people_count": "Number of People",
+            "result_per_person": "Amount Per Person",
+            "msg_detail": "Result of dividing {{total}} KRW by {{count}} people."
+        },
+        "d_day": {
+            "desc": "Calculate remaining days (D-day) to a target date or check past dates.",
+            "label_target_date": "Target Date",
+            "msg_remaining": "{{days}} days remaining until target.",
+            "msg_passed": "{{days}} days passed since target.",
+            "msg_today": "Today is the D-Day!"
+        },
+        "world_clock": {
+            "desc": "Check current time in major cities in real-time."
+        },
+        "city": {
+            "seoul": "Seoul",
+            "new_york": "New York",
+            "london": "London",
+            "tokyo": "Tokyo",
+            "paris": "Paris",
+            "sydney": "Sydney"
+        },
+        "country": {
+            "south_korea": "South Korea",
+            "usa": "USA",
+            "uk": "UK",
+            "japan": "Japan",
+            "france": "France",
+            "australia": "Australia"
+        },
+        "discount": {
+            "desc": "Calculate final price and saved amount by applying discount rate.",
+            "label_original_price": "Original Price",
+            "label_discount_rate": "Discount Rate (%)",
+            "result_final_price": "Final Price",
+            "result_saved": "Saved {{amount}} KRW!"
+        },
+        "tip": {
+            "desc": "Calculate tip amount and total payment based on tip percentage.",
+            "label_tip_percent": "Tip Percent (%)",
+            "label_people_count": "Number of People",
+            "result_tip": "Tip Amount",
+            "result_total_with_tip": "Total Payment",
+            "result_per_person": "Amount Per Person"
+        },
+        "anniversary": {
+            "desc": "Calculate major anniversaries like 100 days, 1 year from a base date.",
+            "label_target_date": "Base Date",
+            "label_timeline": "Anniversary Timeline"
+        },
+        "timer": {
+            "desc": "Countdown for a set amount of time.",
+            "hours": "Hours",
+            "mins": "Mins",
+            "secs": "Secs",
+            "start": "Start Timer"
+        },
+        "stopwatch": {
+            "desc": "Precisely measure elapsed time and record laps.",
+            "lap_records": "Lap Records",
+            "lap_count": "{{count}} laps",
+            "total": "Total Time"
         }
     },
     "school": {
@@ -209,12 +419,25 @@
             "result_total_credits": "Total {{credits}} credits completed",
             "msg_disclaimer": "* The result is an arithmetic mean based on entered grades."
         },
+        "gpa_converter": {
+            "title": "GPA Change",
+            "desc": "Change between GPA scales",
+            "label_gpa": "GPA to Change",
+            "placeholder_gpa": "e.g. 3.7 ( / {{scale}})",
+            "label_current_scale": "Current GPA Scale",
+            "label_target_scale": "Target GPA Scale",
+            "result": "Change Result",
+            "scale_4_5": "4.5 Scale",
+            "scale_4_3": "4.3 Scale",
+            "scale_4_0": "4.0 Scale",
+            "scale_100": "100 Point Scale"
+        },
         "grade_converter": {
-            "desc": "Convert score to Grade/GPA.",
+            "desc": "Change score to Grade/GPA.",
             "label_score": "Score (out of 100)",
             "placeholder_score": "e.g. 95",
-            "btn_convert": "Convert",
-            "result_header": "Conversion Result",
+            "btn_convert": "Change",
+            "result_header": "Change Result",
             "result_gpa": "GPA: {{gpa}} / 4.5"
         },
         "grade_predictor": {
@@ -290,35 +513,12 @@
             "navy_method": "* Based on US Navy method. Results may vary.",
             "medical_disclaimer": "* Not a medical diagnosis. For reference only."
         },
-        "bio_age": {
-            "label_current_age": "Current Age",
-            "label_smoking": "Smoking Status",
-            "label_exercise": "Exercise Habit",
-            "label_diet": "Diet Habit",
-            "label_stress": "Stress Level",
-            "label_sleep": "Avg Sleep Hours",
-            "opt_smoker": "Smoker",
-            "opt_non_smoker": "Non-smoker",
-            "opt_exercise_regular": "Regular (3+ times/week)",
-            "opt_exercise_moderate": "Moderate (1-2 times/week)",
-            "opt_exercise_low": "Rarely",
-            "opt_diet_good": "Healthy",
-            "opt_diet_average": "Average",
-            "opt_diet_poor": "Poor",
-            "opt_sleep_over_8": "Over 8 hours",
-            "opt_sleep_7_8": "7-8 hours",
-            "opt_sleep_under_6": "Under 6 hours",
-            "result_title": "Predicted Biological Age",
-            "msg_younger": "{{diff}} years younger than actual age!",
-            "msg_older": "{{diff}} years older than actual age.",
-            "msg_same": "Same as actual age.",
-            "disclaimer": "* Fun prediction only, lacks medical basis."
-        },
         "sleep": {
-            "label_hours": "Hours slept last night?",
-            "label_fall_asleep": "Time to fall asleep?",
-            "label_wake_ups": "Wake-ups during night?",
-            "label_feeling": "Feeling upon waking?",
+            "desc": "Calculate sleep score based on duration and quality.",
+            "label_hours": "Sleep Hours",
+            "label_fall_asleep": "Time to Fall Asleep",
+            "label_wake_ups": "Number of Wake-ups",
+            "label_feeling": "Feeling upon Waking",
             "opt_less_15": "Less than 15 min",
             "opt_15_30": "15-30 min",
             "opt_30_60": "30-60 min",
@@ -331,14 +531,15 @@
             "level_best": "Best Sleep",
             "level_good": "Good Sleep",
             "level_avg": "Average Sleep",
-            "level_poor": "Needs Improvement"
+            "level_poor": "Poor Sleep"
         },
         "stress": {
-            "q1": "Control over important things?",
-            "q2": "Felt lack of confidence?",
-            "q3": "Thinks not going your way?",
-            "q4": "Angry at uncontrollable events?",
-            "q5": "Difficulties piling up high?",
+            "desc": "Self-diagnose current stress level with a simple test.",
+            "q1": "How often have you felt unable to control important things?",
+            "q2": "How often have you felt confident about your ability to handle things?",
+            "q3": "How often have you felt that things were not going your way?",
+            "q4": "How often have you felt angry because of things that were outside of your control?",
+            "q5": "How often have you felt difficulties were piling up so high that you could not overcome them?",
             "opt_0": "Never (0)",
             "opt_1": "Almost Never (1)",
             "opt_2": "Sometimes (2)",
@@ -350,7 +551,41 @@
             "level_high": "High Stress",
             "level_very_high": "Very High Stress"
         },
-        "vo2": {
+        "body_fat": {
+            "desc": "Estimate body fat percentage based on body measurements.",
+            "opt_male": "Male",
+            "opt_female": "Female",
+            "level_essential_fat": "Essential Fat",
+            "level_athlete": "Athlete",
+            "level_healthy": "Healthy",
+            "level_average": "Average",
+            "level_obese": "Obese"
+        },
+        "visceral_fat": {
+            "desc": "Assess visceral fat risk based on waist circumference.",
+            "opt_male": "Male",
+            "opt_female": "Female",
+            "level_healthy": "Healthy",
+            "level_caution": "Caution",
+            "level_danger": "Danger"
+        },
+        "ideal_weight": {
+            "desc": "Calculate BMI and check ideal weight range based on height and weight.",
+            "level_underweight": "Underweight",
+            "level_normal": "Normal",
+            "level_overweight": "Overweight",
+            "level_obese": "Obese",
+            "level_severely_obese": "Severely Obese"
+        },
+        "water_intake": {
+            "desc": "Calculate recommended daily water intake based on weight and activity level.",
+            "opt_normal": "Normal Activity",
+            "opt_active": "High Activity (Exercise)",
+            "activity_multiplier": "Activity Level",
+            "result_title": "Recommended Daily Intake"
+        },
+        "vo2_max": {
+            "desc": "Estimate VO2 Max using resting heart rate.",
             "label_resting_hr": "Resting Heart Rate (bpm)",
             "result_title": "Estimated VO2 Max",
             "level_very_low": "Very Low",
@@ -358,13 +593,52 @@
             "level_fair": "Fair",
             "level_good": "Good",
             "level_excellent": "Excellent",
-            "msg_no_data": "No data for this age"
+            "msg_no_data": "No data for this age range.",
+            "opt_male": "Male",
+            "opt_female": "Female"
         },
-        "water": {
-            "opt_normal": "Normal",
-            "opt_active": "Athlete/Active",
-            "result_title": "Daily Water Intake"
+        "bio_age": {
+            "desc": "Estimate biological age based on lifestyle habits.",
+            "label_current_age": "Current Age",
+            "label_smoking": "Smoking",
+            "label_exercise": "Exercise",
+            "label_diet": "Diet",
+            "label_stress": "Stress Level",
+            "label_sleep": "Sleep Hours",
+            "opt_smoker": "Smoker",
+            "opt_non_smoker": "Non-smoker",
+            "opt_exercise_regular": "Regular (3+ times/week)",
+            "opt_exercise_moderate": "Moderate (1-2 times/week)",
+            "opt_exercise_low": "Rarely",
+            "opt_diet_good": "Good (Veggie/Fruit)",
+            "opt_diet_average": "Average",
+            "opt_diet_poor": "Poor (Instant food)",
+            "stress_low": "Low",
+            "stress_medium": "Medium",
+            "stress_high": "High",
+            "opt_sleep_over_8": "Over 8 hours",
+            "opt_sleep_7_8": "7-8 hours",
+            "opt_sleep_under_6": "Under 6 hours",
+            "result_title": "Estimated Biological Age",
+            "msg_younger": "{{diff}} years younger than actual age!",
+            "msg_older": "{{diff}} years older than actual age.",
+            "msg_same": "Same as actual age.",
+            "disclaimer": "※ For entertainment purposes only."
+        },
+        "metabolism": {
+            "desc": "Calculate BMR and TDEE to check daily calorie needs.",
+            "opt_male": "Male",
+            "opt_female": "Female",
+            "opt_sedentary": "Sedentary (Office work)",
+            "opt_light": "Lightly Active (Exercise 1-3 days/week)",
+            "opt_moderate": "Moderately Active (Exercise 3-5 days/week)",
+            "opt_active": "Active (Exercise 6-7 days/week)",
+            "opt_very_active": "Very Active (Hard exercise/labor)"
         }
+    },
+    "suffix": {
+        "calculator": "Calculator",
+        "converter": "Change"
     },
     "nav": {
         "home": "Home",
@@ -372,36 +646,43 @@
         "recent": "Recent"
     },
     "common": {
-        "convert": "Convert",
+        "convert": "Change",
         "calculate": "Calculate",
         "result": "Result",
         "calculation_result": "Result",
         "from": "From",
         "to": "To",
-        "input_value": "Value to Convert",
+        "input_value": "Value to Change",
+        "reset": "Reset",
         "enter_amount": "Enter amount",
         "invalid_number": "Please enter a valid number.",
-        "cannot_convert": "Cannot perform conversion.",
+        "cannot_convert": "Cannot perform change.",
         "send_amount": "Amount to Send",
         "from_currency": "From Currency",
-        "to_currency": "To Currency",
+        "to_currency": "Currency After Change",
         "based_on": "Based on",
+        "select_option": "Select an option",
         "total_amount": "Total Amount",
         "num_people": "Number of People",
         "per_person_amount": "Amount per Person",
         "people_count": "people",
         "show_more": "Show More",
-        "show_less": "Show Less"
+        "show_less": "Show Less",
+        "tools_count": "{{count}} Tools"
     },
     "currency": {
-        "KRW": "South Korean Won",
+        "KRW": "USD",
         "USD": "US Dollar",
         "EUR": "Euro",
         "JPY": "Japanese Yen",
         "CNY": "Chinese Yuan",
-        "KRW_symbol": "KRW"
+        "KRW_symbol": "$",
+        "symbol": "$"
     },
     "unit": {
+        "percent": "%",
+        "year": "Years",
+        "age": "(years)",
         "mm": "Millimeter (mm)",
         "cm": "Centimeter (cm)",
         "m": "Meter (m)",
@@ -455,6 +736,9 @@
         "hp": "Horsepower (hp)",
         "hz": "Hertz (Hz)",
         "khz": "Kilohertz (kHz)",
+        "people": " people",
+        "day": " Days",
+        "year_anniversary": " Year Anniversary",
         "mhz": "Megahertz (MHz)",
         "ghz": "Gigahertz (GHz)",
         "rpm": "RPM",
@@ -466,29 +750,43 @@
         "doe": "Doe"
     },
     "desc": {
-        "length": "Convert Meter, Inch, Feet easily!",
-        "weight": "Convert Gram, Kilogram, Pound easily!",
+        "length": "Change Meter, Inch, Feet easily!",
+        "weight": "Change Gram, Kilogram, Pound easily!",
         "exchange": "Accurate real-time exchange rates!",
         "dutch-pay": "Split bills easily!",
-        "area": "Convert Area units like Square Meter, Acre!",
-        "time": "Convert Time units like Second, Hour!",
-        "speed": "Convert Speed units like m/s, mph!",
-        "data-storage": "Convert Data units like Byte, GB!",
-        "energy": "Convert Energy units like Joule, Calorie!",
-        "pressure": "Convert Pressure units like Pascal, Bar!",
-        "angle": "Convert Angle units like Degree, Radian!",
-        "force": "Convert Force units like Newton, kgf!",
-        "power": "Convert Power units like Watt, Horsepower!",
-        "frequency": "Convert Frequency units like Hertz, RPM!",
-        "volume": "Convert Volume units like Liter, Gallon!"
+        "area": "Change Area units like Square Meter, Acre!",
+        "time": "Change Time units like Second, Hour!",
+        "speed": "Change Speed units like m/s, mph!",
+        "data-storage": "Change Data units like Byte, GB!",
+        "energy": "Change Energy units like Joule, Calorie!",
+        "pressure": "Change Pressure units like Pascal, Bar!",
+        "angle": "Change Angle units like Degree, Radian!",
+        "force": "Change Force units like Newton, kgf!",
+        "power": "Change Power units like Watt, Horsepower!",
+        "frequency": "Change Frequency units like Hertz, RPM!",
+        "volume": "Change Volume units like Liter, Gallon!"
     },
     "category": {
-        "unit-conversion": "Unit Converter",
+        "unit-conversion": "Unit Change",
         "finance": "Finance",
         "real-estate": "Real Estate",
         "lifestyle": "Lifestyle",
         "health": "Health/Fitness",
         "education": "Education"
+    },
+    "math": {
+        "average": {
+            "desc": "Calculate the average of entered numbers.",
+            "placeholder_number": "Enter number (e.g. 85)",
+            "result_average": "Average",
+            "result_sum": "Sum: {{sum}}",
+            "result_count": "Count: {{count}}"
+        },
+        "percentage": {
+            "desc": "Calculate percentage by entering total value and rate.",
+            "label_total": "Total Value",
+            "label_rate": "Rate (%)"
+        }
     },
     "tool": {
         "length": "Length",
@@ -1150,103 +1448,121 @@
                     "level": "Lev 6"
                 }
             }
-        },
-        "verbs": {
-            "title": "Irregular Verbs",
-            "desc": "Check the 3 forms of essential English irregular verbs.",
-            "placeholder": "Search verb or meaning...",
-            "col": {
-                "present": "Present",
-                "past": "Past",
-                "pp": "Past Participle",
-                "meaning": "Meaning"
-            },
-            "item": {
-                "be": "be, exist",
-                "become": "become",
-                "begin": "begin",
-                "break": "break",
-                "buy": "buy",
-                "come": "come",
-                "do": "do",
-                "drink": "drink",
-                "drive": "drive",
-                "eat": "eat",
-                "feel": "feel",
-                "find": "find",
-                "get": "get",
-                "give": "give",
-                "go": "go"
-            }
-        },
-        "worldmap": {
-            "title": "World Map Info",
-            "desc": "Learn the location and key information of major countries.",
-            "placeholder": "Search country, capital...",
-            "capital": "Capital",
-            "cont": {
-                "all": "All",
-                "asia": "Asia",
-                "europe": "Europe",
-                "na": "North America",
-                "sa": "South America",
-                "oceania": "Oceania",
-                "africa": "Africa"
-            },
-            "country": {
-                "korea": {
-                    "name": "South Korea",
-                    "desc": "Peninsula country in East Asia, IT powerhouse and center of Hallyu."
-                },
-                "usa": {
-                    "name": "USA",
-                    "desc": "Federal republic in North America, world's largest economy."
-                },
-                "china": {
-                    "name": "China",
-                    "desc": "Most populous country and economic giant in East Asia."
-                },
-                "japan": {
-                    "name": "Japan",
-                    "desc": "Island country in East Asia with advanced technology and unique culture."
-                },
-                "uk": {
-                    "name": "UK",
-                    "desc": "Island nation in NW Europe, birthplace of Industrial Revolution."
-                },
-                "france": {
-                    "name": "France",
-                    "desc": "Country of art and gastronomy, center of European history and culture."
-                },
-                "germany": {
-                    "name": "Germany",
-                    "desc": "Manufacturing and tech powerhouse driving European economy."
-                },
-                "brazil": {
-                    "name": "Brazil",
-                    "desc": "Largest country in South America, famous for Amazon rainforest and Samba."
-                },
-                "australia": {
-                    "name": "Australia",
-                    "desc": "Representative country of Oceania, entire continent is one nation."
-                },
-                "egypt": {
-                    "name": "Egypt",
-                    "desc": "Birthplace of ancient civilization symbolized by Pyramids and Sphinx."
-                }
-            },
-            "city": {
-                "seoul": "Seoul",
-                "washington": "Washington D.C.",
-                "beijing": "Beijing",
-                "tokyo": "Tokyo",
-                "london": "London",
-                "paris": "Paris",
-                "berlin": "Berlin",
-                "brasilia": "Brasilia",
-                "canberra": "Canberra",
-                "cairo": "Cairo"
-            }
         }
+    },
+    "verbs": {
+        "title": "Irregular Verbs",
+        "desc": "Check the 3 forms of essential English irregular verbs.",
+        "placeholder": "Search verb or meaning...",
+        "col": {
+            "present": "Present",
+            "past": "Past",
+            "pp": "Past Participle",
+            "meaning": "Meaning"
+        },
+        "item": {
+            "be": "be, exist",
+            "become": "become",
+            "begin": "begin",
+            "break": "break",
+            "buy": "buy",
+            "come": "come",
+            "do": "do",
+            "drink": "drink",
+            "drive": "drive",
+            "eat": "eat",
+            "feel": "feel",
+            "find": "find",
+            "get": "get",
+            "give": "give",
+            "go": "go"
+        }
+    },
+    "worldmap": {
+        "title": "World Map",
+        "desc": "Learn the location and key information of major countries.",
+        "placeholder": "Search country, capital...",
+        "capital": "Capital",
+        "cont": {
+            "all": "All",
+            "asia": "Asia",
+            "europe": "Europe",
+            "na": "North America",
+            "sa": "South America",
+            "oceania": "Oceania",
+            "africa": "Africa"
+        },
+        "country": {
+            "korea": {
+                "name": "South Korea",
+                "desc": "Peninsula country in East Asia, IT powerhouse and center of Hallyu."
+            },
+            "usa": {
+                "name": "USA",
+                "desc": "Federal republic in North America, world's largest economy."
+            },
+            "china": {
+                "name": "China",
+                "desc": "Most populous country and economic giant in East Asia."
+            },
+            "japan": {
+                "name": "Japan",
+                "desc": "Island country in East Asia with advanced technology and unique culture."
+            },
+            "uk": {
+                "name": "UK",
+                "desc": "Island nation in NW Europe, birthplace of Industrial Revolution."
+            },
+            "france": {
+                "name": "France",
+                "desc": "Country of art and gastronomy, center of European history and culture."
+            },
+            "germany": {
+                "name": "Germany",
+                "desc": "Manufacturing and tech powerhouse driving European economy."
+            },
+            "brazil": {
+                "name": "Brazil",
+                "desc": "Largest country in South America, famous for Amazon rainforest and Samba."
+            },
+            "australia": {
+                "name": "Australia",
+                "desc": "Representative country of Oceania, entire continent is one nation."
+            },
+            "egypt": {
+                "name": "Egypt",
+                "desc": "Birthplace of ancient civilization symbolized by Pyramids and Sphinx."
+            }
+        },
+        "city": {
+            "seoul": "Seoul",
+            "washington": "Washington D.C.",
+            "beijing": "Beijing",
+            "tokyo": "Tokyo",
+            "london": "London",
+            "paris": "Paris",
+            "berlin": "Berlin",
+            "brasilia": "Brasilia",
+            "canberra": "Canberra",
+            "cairo": "Cairo"
+        }
+    },
+    "date": {
+        "select_date": "Select Date",
+        "select_month": "Select Month",
+        "select_year": "Select Year",
+        "days": [
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat"
+        ],
+        "year_suffix": "",
+        "month_suffix": "",
+        "day_suffix": "",
+        "confirm_selection": "Select {{year}}-{{month}}-{{day}}"
     }
 }

@@ -49,9 +49,9 @@ const StressLevelCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-pink-400 to-pink-600">
                 <div className="flex items-center space-x-3">
                     <BrainCircuit size={28} />
-                    <h2 className="text-2xl font-bold">{t('tool.stress_level')} {t('suffix.calculator')}</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.stress-level')} {t('suffix.calculator')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">{t('health.desc.health_risk')}</p>
+                <p className="mt-1 opacity-90">{t('health.stress.desc')}</p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md space-y-8">

@@ -13,19 +13,19 @@ const VisceralFatCalculator: React.FC = () => {
     const [result, setResult] = useState<{ level: string; color: string } | null>(null);
 
     const genderOptions = [
-        { value: 'male', label: t('health.opt.male') },
-        { value: 'female', label: t('health.opt.female') }
+        { value: 'male', label: t('health.visceral_fat.opt_male') },
+        { value: 'female', label: t('health.visceral_fat.opt_female') }
     ];
 
     const getInterpretation = (waistCm: number, gender: Gender) => {
         if (gender === 'male') {
-            if (waistCm < 90) return { level: t('health.level.healthy'), color: "text-green-600" };
-            if (waistCm < 100) return { level: t('health.level.caution'), color: "text-yellow-600" };
-            return { level: t('health.level.danger'), color: "text-red-600" };
+            if (waistCm < 90) return { level: t('health.visceral_fat.level_healthy'), color: "text-green-600" };
+            if (waistCm < 100) return { level: t('health.visceral_fat.level_caution'), color: "text-yellow-600" };
+            return { level: t('health.visceral_fat.level_danger'), color: "text-red-600" };
         } else { // female
-            if (waistCm < 85) return { level: t('health.level.healthy'), color: "text-green-600" };
-            if (waistCm < 90) return { level: t('health.level.caution'), color: "text-yellow-600" };
-            return { level: t('health.level.danger'), color: "text-red-600" };
+            if (waistCm < 85) return { level: t('health.visceral_fat.level_healthy'), color: "text-green-600" };
+            if (waistCm < 90) return { level: t('health.visceral_fat.level_caution'), color: "text-yellow-600" };
+            return { level: t('health.visceral_fat.level_danger'), color: "text-red-600" };
         }
     };
 
@@ -43,7 +43,7 @@ const VisceralFatCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-pink-400 to-pink-600">
                 <div className="flex items-center space-x-3">
                     <ClipboardCheck size={28} />
-                    <h2 className="text-2xl font-bold">{t('tool.visceral_fat')} {t('suffix.calculator')}</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.visceral-fat')} {t('suffix.calculator')}</h2>
                 </div>
                 <p className="mt-1 opacity-90">{t('health.desc.visceral_fat')}</p>
             </div>

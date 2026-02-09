@@ -38,12 +38,12 @@ const DiscountCalculator: React.FC = () => {
           <Tag size={28} />
           <h2 className="text-2xl font-bold">{t('tool.discount')} {t('suffix.calculator')}</h2>
         </div>
-        <p className="mt-1 opacity-90">{t('math.discount.desc')}</p>
+        <p className="mt-1 opacity-90">{t('lifestyle.discount.desc')}</p>
       </div>
 
       <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
         <div>
-          <label className="block text-sm font-medium text-gray-600 mb-2">{t('math.discount.label_original_price')} ({t('currency.KRW')})</label>
+          <label className="block text-sm font-medium text-gray-600 mb-2">{t('lifestyle.discount.label_original_price')} ({t('currency.KRW')})</label>
           <input
             type="text"
             inputMode="numeric"
@@ -55,7 +55,7 @@ const DiscountCalculator: React.FC = () => {
           <AmountUnit value={originalPrice} />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-600 mb-2">{t('math.discount.label_discount_rate')}</label>
+          <label className="block text-sm font-medium text-gray-600 mb-2">{t('lifestyle.discount.label_discount_rate')}</label>
           <input
             type="number"
             inputMode="decimal"
@@ -75,12 +75,12 @@ const DiscountCalculator: React.FC = () => {
 
       {result && (
         <div className="p-6 bg-gray-50 rounded-xl text-center space-y-2">
-          <p className="text-sm text-gray-500">{t('math.discount.result_final_price')}</p>
+          <p className="text-sm text-gray-500">{t('lifestyle.discount.result_final_price')}</p>
           <p className="text-4xl font-bold text-blue-600">
             {Math.round(result.finalPrice).toLocaleString()}{t('currency.KRW')}
           </p>
           <p className="text-green-600 font-semibold">
-            {t('math.discount.result_saved', { amount: Math.round(result.savedAmount).toLocaleString() })}
+            {t('lifestyle.discount.result_saved', { amount: Math.round(result.savedAmount).toLocaleString() })}
           </p>
         </div>
       )}

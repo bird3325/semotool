@@ -47,7 +47,7 @@ const YearEndTaxCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-amber-400 to-amber-600">
                 <div className="flex items-center space-x-3">
                     <FileCheck size={28} />
-                    <h2 className="text-2xl font-bold">{t('tool.year_end_tax')} {t('suffix.calculator')}</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.year-end-tax')} {t('suffix.calculator')}</h2>
                 </div>
                 <p className="mt-1 opacity-90">{t('finance.desc.year_end_tax')}</p>
             </div>

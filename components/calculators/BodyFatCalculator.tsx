@@ -16,23 +16,23 @@ const BodyFatCalculator: React.FC = () => {
     const [result, setResult] = useState<{ bodyFat: number; interpretation: string } | null>(null);
 
     const genderOptions = [
-        { value: 'male', label: t('health.opt.male') },
-        { value: 'female', label: t('health.opt.female') }
+        { value: 'male', label: t('health.body_fat.opt_male') },
+        { value: 'female', label: t('health.body_fat.opt_female') }
     ];
 
     const getInterpretation = (bfp: number, gender: Gender) => {
         if (gender === 'male') {
-            if (bfp < 6) return t('health.level.essential_fat');
-            if (bfp < 14) return t('health.level.athlete');
-            if (bfp < 18) return t('health.level.healthy');
-            if (bfp < 25) return t('health.level.average');
-            return t('health.level.obese');
+            if (bfp < 6) return t('health.body_fat.level_essential_fat');
+            if (bfp < 14) return t('health.body_fat.level_athlete');
+            if (bfp < 18) return t('health.body_fat.level_healthy');
+            if (bfp < 25) return t('health.body_fat.level_average');
+            return t('health.body_fat.level_obese');
         } else {
-            if (bfp < 14) return t('health.level.essential_fat');
-            if (bfp < 21) return t('health.level.athlete');
-            if (bfp < 25) return t('health.level.healthy');
-            if (bfp < 32) return t('health.level.average');
-            return t('health.level.obese');
+            if (bfp < 14) return t('health.body_fat.level_essential_fat');
+            if (bfp < 21) return t('health.body_fat.level_athlete');
+            if (bfp < 25) return t('health.body_fat.level_healthy');
+            if (bfp < 32) return t('health.body_fat.level_average');
+            return t('health.body_fat.level_obese');
         }
     };
 
@@ -70,7 +70,7 @@ const BodyFatCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-pink-400 to-pink-600">
                 <div className="flex items-center space-x-3">
                     <PersonStanding size={28} />
-                    <h2 className="text-2xl font-bold">{t('tool.body_fat')} {t('suffix.calculator')}</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.body-fat')} {t('suffix.calculator')}</h2>
                 </div>
                 <p className="mt-1 opacity-90">{t('health.desc.body_fat')}</p>
             </div>

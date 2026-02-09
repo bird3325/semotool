@@ -39,7 +39,7 @@ const TipCalculator: React.FC = () => {
                     <HandCoins size={28} />
                     <h2 className="text-2xl font-bold">{t('tool.tip')} {t('suffix.calculator')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">{t('math.tip.desc')}</p>
+                <p className="mt-1 opacity-90">{t('lifestyle.tip.desc')}</p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
@@ -56,7 +56,7 @@ const TipCalculator: React.FC = () => {
                     <AmountUnit value={billAmount} />
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">{t('math.tip.label_tip_percent')}</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">{t('lifestyle.tip.label_tip_percent')}</label>
                     <div className="grid grid-cols-4 gap-2">
                         {['10', '15', '18', '20'].map(p => (
                             <button key={p} onClick={() => setTipPercent(p)} className={`p-2 rounded-lg font-semibold ${tipPercent === p ? 'bg-cyan-500 text-white' : 'bg-gray-100'}`}>{p}%</button>
@@ -70,7 +70,7 @@ const TipCalculator: React.FC = () => {
                     />
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">{t('common.num_people')}</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">{t('lifestyle.tip.label_people_count')}</label>
                     <div className="flex items-center justify-between p-2 border border-gray-300 rounded-lg">
                         <button onClick={() => setNumPeople(p => Math.max(1, p - 1))} className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"><Minus size={20} /></button>
                         <span className="text-2xl font-bold w-16 text-center">{numPeople}{t('unit.people')}</span>
@@ -88,16 +88,16 @@ const TipCalculator: React.FC = () => {
                 <div className="p-6 bg-gray-50 rounded-xl text-left space-y-3">
                     <h3 className="text-lg font-bold text-center mb-4">{t('common.calculation_result')}</h3>
                     <div className="flex justify-between items-center text-gray-600">
-                        <span>{t('math.tip.result_tip')}</span>
+                        <span>{t('lifestyle.tip.result_tip')}</span>
                         <span className="font-semibold">{result.tipAmount.toLocaleString('en-US', { maximumFractionDigits: 0 })} {t('currency.KRW')}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                        <span>{t('math.tip.result_total_with_tip')}</span>
+                        <span>{t('lifestyle.tip.result_total_with_tip')}</span>
                         <span className="font-semibold">{result.totalAmount.toLocaleString('en-US', { maximumFractionDigits: 0 })} {t('currency.KRW')}</span>
                     </div>
                     <hr className="my-2" />
                     <div className="flex justify-between items-center text-blue-600">
-                        <span className="text-lg font-bold">{t('math.tip.result_per_person')}</span>
+                        <span className="text-lg font-bold">{t('lifestyle.tip.result_per_person')}</span>
                         <span className="font-bold text-2xl">{Math.ceil(result.perPersonAmount).toLocaleString()} {t('currency.KRW')}</span>
                     </div>
                 </div>

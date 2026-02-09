@@ -116,6 +116,19 @@
             "inheritance_tax": "매우 간소화된 예상 세액 계산",
             "property_tax": "주택 공시가격 기준 간이 계산"
         },
+        "tool": {
+            "bmi": "표준/이상 체중",
+            "calorie": "기초/활동대사량",
+            "body-fat": "체지방률",
+            "visceral-fat": "내장 지방",
+            "water-intake": "물 섭취량",
+            "vo2-max": "최대산소섭취량",
+            "sleep-score": "수면 점수",
+            "stress-level": "스트레스 수치",
+            "health-risk": "건강 위험도",
+            "biological-age": "생체 나이",
+            "annuity": "연금 계산기"
+        },
         "msg": {
             "local_tax_excluded": "※ 지방소득세 10% 별도. 각종 공제 미반영.",
             "simple_calc_warning": "※ 간이 계산 결과로 실제와 차이가 있을 수 있습니다.",
@@ -192,6 +205,203 @@
             "minor_child": "자녀 (미성년)",
             "parent": "직계존속 (부모, 조부모 등)",
             "relative": "기타 친족"
+        },
+        "interest": {
+            "opt_simple": "단리",
+            "opt_compound": "복리"
+        },
+        "savings": {
+            "opt_simple": "단리",
+            "opt_compound": "복리",
+            "opt_general_tax": "일반 과세 (15.4%)",
+            "opt_tax_free": "비과세 (0%)"
+        },
+        "investment": {
+            "opt_simple": "단리",
+            "opt_compound": "복리",
+            "desc": "복리 효과로 불어나는 자산을 계산해보세요.",
+            "label_initial": "초기 투자금",
+            "label_monthly": "월 적립액",
+            "label_years": "투자 기간 (년)",
+            "label_rate": "연 이자율 (수익률)",
+            "label_type": "이자 계산 방식",
+            "result_header": "{{years}}년 후 예상 자산",
+            "result_total_principal": "원금 합계",
+            "result_total_interest": "총 수익 (이자)",
+            "result_final": "최종 자산"
+        },
+        "goal": {
+            "desc": "목표 금액을 모으기 위해 매월 얼마를 저축해야 할지 계산합니다.",
+            "label_target": "목표 금액",
+            "label_initial": "초기 자금",
+            "label_years": "저축 기간 (년)",
+            "label_rate": "연 이자율 (%)",
+            "result_monthly_saving": "매월 저축해야 할 금액"
+        },
+        "holiday_allowance": {
+            "desc": "주휴수당 지급 조건을 확인하고 예상 수당을 계산합니다.",
+            "label_hourly_wage": "시급",
+            "label_weekly_hours": "주당 근무시간",
+            "msg_disclaimer": "※ 4주 동안을 평균하여 1주 소정근로시간이 15시간 이상인 경우 주휴수당 대상입니다.",
+            "msg_ineligible": "주 15시간 미만 근로자는 주휴수당 지급 대상이 아닙니다.",
+            "result_allowance": "예상 주휴수당 (주)",
+            "result_total_weekly": "(주급 합계: 약 {{total}}원)"
+        },
+        "loan": {
+            "opt_equal_principal_interest": "원리금균등",
+            "opt_equal_principal": "원금균등"
+        },
+        "compound": {
+            "opt_yearly": "연복리 (1년마다)",
+            "opt_biannually": "6개월 복리",
+            "opt_quarterly": "분기 복리 (3개월마다)",
+            "opt_monthly": "월복리 (매달)",
+            "desc": "복리 효과로 불어나는 자산을 계산해보세요.",
+            "label_principal": "초기 투자금 (원금)",
+            "label_rate": "연 이자율 (수익률)",
+            "label_years": "투자 기간 (년)",
+            "label_compounding": "복리 계산 주기",
+            "result_header": "복리 계산 결과",
+            "result_principal": "원금",
+            "result_interest": "총 이자 (수익)",
+            "result_total": "최종 금액"
+        },
+        "commission": {
+            "opt_house": "주택",
+            "opt_officetel": "오피스텔",
+            "opt_other": "토지/상가 등",
+            "opt_sell": "매매/교환",
+            "opt_jeonse": "전세 임대차",
+            "opt_monthly": "월세 임대차",
+            "desc": "부동산 거래 시 발생하는 중개수수료를 계산합니다. (법정 상한요율 기준)",
+            "label_property_type": "물건 종류",
+            "label_transaction_type": "거래 유형",
+            "label_price": "거래 금액",
+            "label_deposit": "보증금",
+            "label_monthly_rent": "월세",
+            "label_negotiated_rate": "협의 요율 (%)",
+            "placeholder_negotiated_rate": "요율 협의 시 입력 (예: 0.4)",
+            "msg_rate_warning": "※ 입력하지 않으면 법정 상한요율이 자동 적용됩니다.",
+            "result_commission": "예상 중개보수 (최대)",
+            "result_vat_included": "(부가세 포함 시: 약 {{amount}}원)",
+            "result_applied_rate": "적용 요율 (상한)",
+            "result_transaction_amount": "거래 기준 금액",
+            "msg_disclaimer": "※ 위 계산 결과는 법정 상한요율 기준 최대 금액입니다. 실제 중개보수는 개업공인중개사와 협의하여 결정하며, 부가세는 별도입니다."
+        },
+        "acquisition": {
+            "opt_primary_home": "1주택 (실거주)",
+            "opt_multi_home": "다주택 (2주택 이상)",
+            "desc": "부동산 취득 시 납부해야 할 예상 취득세를 계산합니다.",
+            "label_acquisition_price": "취득 가액 (매매가)",
+            "label_home_count": "보유 주택 수",
+            "result_expected_acquisition_tax": "예상 취득세 (지방교육세 등 포함)",
+            "msg_simple_calc_warning": "※ 위 계산은 개략적인 추산치이며, 실제 세액은 취득 물권의 종류, 면적, 조정대상지역 여부 등에 따라 달라질 수 있습니다."
+        },
+        "capital_gains": {
+            "desc": "부동산 양도 시 발생하는 양도소득세를 계산합니다. (약식 계산)",
+            "label_purchase_price": "취득 가액 (매수 금액)",
+            "label_sale_price": "양도 가액 (매도 금액)",
+            "label_holding_period": "보유 기간 (년)",
+            "result_tax": "예상 양도소득세 (지방소득세 별도)",
+            "result_gain": "양도 차익",
+            "msg_warning": "※ 필요경비, 기본공제 등은 고려되지 않은 단순 추정치입니다. 정확한 세액은 세무사와 상담하세요."
+        },
+        "comprehensive": {
+            "opt_single_owner": "단독 명의 (1세대 1주택)",
+            "opt_multi_owner": "공동 명의 / 다주택",
+            "desc": "보유 부동산에 대한 예상 종합부동산세를 계산합니다.",
+            "label_property_value_total": "보유 주택 공시가격 합계",
+            "label_ownership_type": "명의 구분",
+            "result_tax": "예상 종합부동산세 (농어촌특별세 별도)",
+            "msg_warning": "※ 공제금액 등 단순화된 기준으로 계산된 추정치입니다. 실제 세액은 재산세 공제 등을 반영하여야 하므로 차이가 있을 수 있습니다."
+        },
+        "property": {
+            "desc": "주택 보유 시 납부하는 재산세를 계산합니다. (1세대 1주택 특례 적용 가능)",
+            "label_official_price": "공시가격",
+            "result_tax": "예상 재산세 (지방교육세 등 포함)",
+            "msg_warning": "※ 위 계산은 도시지역분 등을 제외한 개략적인 추산치입니다. 실제 고지 세액과 차이가 있을 수 있습니다."
+        },
+        "inheritance": {
+            "desc": "상속 재산에 대한 예상 상속세를 계산합니다. (일괄공제 등 적용)",
+            "label_asset_value": "상속 재산 가액",
+            "label_deduction": "공제 합계 (기본+배우자 등)",
+            "result_tax": "예상 상속세",
+            "msg_warning": "※ 위 계산은 개략적인 추산치입니다. 정확한 상속세는 세무 전문가와 상담하세요."
+        },
+        "annuity": {
+            "desc": "매월 얼마씩 받을 수 있을까요?",
+            "label_total_annuity": "연금 총액",
+            "label_rate": "예상 수익률",
+            "label_years": "수령 기간",
+            "result_monthly_payout": "예상 월 수령액",
+            "result_total_payout": "총 수령액"
+        }
+    },
+    "lifestyle": {
+        "dutch_pay": {
+            "desc": "총 금액을 인원수로 나누어 1인당 부담금액을 계산합니다.",
+            "label_people_count": "인원 수",
+            "result_per_person": "1인당 부담 금액",
+            "msg_detail": "총 {{total}}원을 {{count}}명이서 나눈 결과입니다."
+        },
+        "d_day": {
+            "desc": "목표 날짜까지 남은 날짜(D-day)를 계산하거나, 지난 날짜를 확인합니다.",
+            "label_target_date": "목표 날짜",
+            "msg_remaining": "목표일까지 {{days}}일 남았습니다.",
+            "msg_passed": "목표일로부터 {{days}}일 지났습니다.",
+            "msg_today": "오늘은 목표 당일(D-Day)입니다!"
+        },
+        "world_clock": {
+            "desc": "주요 도시의 현재 시간을 실시간으로 확인합니다."
+        },
+        "city": {
+            "seoul": "서울",
+            "new_york": "뉴욕",
+            "london": "런던",
+            "tokyo": "도쿄",
+            "paris": "파리",
+            "sydney": "시드니"
+        },
+        "country": {
+            "south_korea": "대한민국",
+            "usa": "미국",
+            "uk": "영국",
+            "japan": "일본",
+            "france": "프랑스",
+            "australia": "호주"
+        },
+        "discount": {
+            "desc": "할인율을 적용하여 최종 가격과 절약된 금액을 계산합니다.",
+            "label_original_price": "원래 가격",
+            "label_discount_rate": "할인율 (%)",
+            "result_final_price": "최종 가격",
+            "result_saved": "{{amount}}원 절약!"
+        },
+        "tip": {
+            "desc": "팁 비율에 따른 팁 금액과 총 지불 금액을 계산합니다.",
+            "label_tip_percent": "팁 비율 (%)",
+            "label_people_count": "인원 수",
+            "result_tip": "팁 금액",
+            "result_total_with_tip": "총 지불 금액",
+            "result_per_person": "1인당 지불 금액"
+        },
+        "anniversary": {
+            "desc": "기준일로부터 100일, 1주년 등 주요 기념일을 계산합니다.",
+            "label_target_date": "기준일",
+            "label_timeline": "기념일 타임라인"
+        },
+        "timer": {
+            "desc": "설정한 시간만큼 카운트다운합니다.",
+            "hours": "시간",
+            "mins": "분",
+            "secs": "초",
+            "start": "타이머 시작"
+        },
+        "stopwatch": {
+            "desc": "경과 시간을 정밀하게 측정하고 기록(Lap)합니다.",
+            "lap_records": "구간 기록",
+            "lap_count": "{{count}}개",
+            "total": "전체 시간"
         }
     },
     "health": {
@@ -256,12 +466,100 @@
             "navy_method": "※ 미 해군 방식 계산법으로, 실제와 차이가 있을 수 있습니다.",
             "medical_disclaimer": "※ 의학적 진단이 아니며, 건강 관리를 위한 참고 자료입니다."
         },
+        "sleep": {
+            "desc": "수면 시간과 질을 분석하여 수면 점수를 계산합니다.",
+            "label_hours": "수면 시간 (시간)",
+            "label_fall_asleep": "잠들기까지 걸린 시간",
+            "label_wake_ups": "자다가 깬 횟수",
+            "label_feeling": "기상 후 기분",
+            "opt_less_15": "15분 미만",
+            "opt_15_30": "15~30분",
+            "opt_30_60": "30~60분",
+            "opt_over_60": "60분 이상",
+            "opt_very_tired": "매우 피곤함",
+            "opt_tired": "피곤함",
+            "opt_average": "보통",
+            "opt_refreshed": "개운함",
+            "result_title": "당신의 수면 점수는",
+            "level_best": "최상의 수면",
+            "level_good": "좋은 수면",
+            "level_avg": "보통 수면",
+            "level_poor": "개선이 필요한 수면"
+        },
+        "stress": {
+            "desc": "간단한 질문을 통해 현재 스트레스 수준을 자가 진단합니다.",
+            "q1": "중요한 일을 통제할 수 없다고 느낀 적이 얼마나 있었나요?",
+            "q2": "자신감을 잃은 적이 얼마나 있었나요?",
+            "q3": "일이 당신의 뜻대로 진행되지 않는다고 느낀 적이 얼마나 있었나요?",
+            "q4": "당신의 통제 범위를 벗어난 일 때문에 화가 난 적이 얼마나 있었나요?",
+            "q5": "어려움이 너무 많이 쌓여 극복할 수 없다고 느낀 적이 얼마나 있었나요?",
+            "opt_0": "전혀 없음 (0점)",
+            "opt_1": "거의 없음 (1점)",
+            "opt_2": "때때로 (2점)",
+            "opt_3": "자주 (3점)",
+            "opt_4": "매우 자주 (4점)",
+            "result_title": "당신의 스트레스 점수는",
+            "level_low": "낮은 스트레스",
+            "level_moderate": "보통 스트레스",
+            "level_high": "높은 스트레스",
+            "level_very_high": "매우 높은 스트레스"
+        },
+        "body_fat": {
+            "desc": "신체 치수를 입력하여 체지방률을 추정하고 건강 상태를 확인합니다.",
+            "opt_male": "남성",
+            "opt_female": "여성",
+            "level_essential_fat": "필수 지방",
+            "level_athlete": "운동선수",
+            "level_healthy": "건강함",
+            "level_average": "보통",
+            "level_obese": "비만"
+        },
+        "visceral_fat": {
+            "desc": "허리 둘레를 기준으로 내장 지방 위험도를 평가합니다.",
+            "opt_male": "남성",
+            "opt_female": "여성",
+            "level_healthy": "정상 (건강함)",
+            "level_caution": "주의",
+            "level_danger": "위험"
+        },
+        "ideal_weight": {
+            "desc": "키와 체중을 기반으로 BMI를 계산하고 이상적인 체중 범위를 확인합니다.",
+            "level_underweight": "저체중",
+            "level_normal": "정상",
+            "level_overweight": "과체중",
+            "level_obese": "비만",
+            "level_severely_obese": "고도비만"
+        },
+        "water_intake": {
+            "desc": "체중과 활동량을 고려하여 하루 권장 수분 섭취량을 계산합니다.",
+            "opt_normal": "보통 활동",
+            "opt_active": "많은 활동 (운동 등)",
+            "activity_multiplier": "활동량",
+            "result_title": "하루 권장 수분 섭취량"
+        },
+        "vo2_max": {
+            "desc": "심박수를 이용하여 최대 산소 섭취량(VO2 Max)을 추정합니다.",
+            "label_resting_hr": "안정 시 심박수 (bpm)",
+            "result_title": "추정 VO2 Max",
+            "level_very_low": "매우 낮음",
+            "level_low": "낮음",
+            "level_fair": "보통",
+            "level_good": "좋음",
+            "level_excellent": "매우 좋음",
+            "msg_no_data": "해당 연령대의 데이터가 없습니다.",
+            "opt_male": "남성",
+            "opt_female": "여성"
+        },
         "bio_age": {
+            "desc": "생활 습관을 바탕으로 생체 나이를 추정합니다.",
             "label_current_age": "현재 나이",
             "label_smoking": "흡연 여부",
             "label_exercise": "운동 습관",
             "label_diet": "식습관",
             "label_stress": "스트레스 수준",
+            "stress_low": "낮음",
+            "stress_medium": "보통",
+            "stress_high": "높음",
             "label_sleep": "평균 수면 시간",
             "opt_smoker": "흡연",
             "opt_non_smoker": "비흡연",
@@ -280,58 +578,15 @@
             "msg_same": "실제 나이와 같습니다.",
             "disclaimer": "※ 재미로 보는 예측이며, 의학적 근거가 부족합니다."
         },
-        "sleep": {
-            "label_hours": "어젯밤 몇 시간 주무셨나요?",
-            "label_fall_asleep": "잠드는 데 얼마나 걸렸나요?",
-            "label_wake_ups": "밤에 몇 번이나 깨셨나요?",
-            "label_feeling": "아침에 일어났을 때 기분은?",
-            "opt_less_15": "15분 미만",
-            "opt_15_30": "15~30분",
-            "opt_30_60": "30~60분",
-            "opt_over_60": "60분 이상",
-            "opt_very_tired": "매우 피곤함",
-            "opt_tired": "피곤함",
-            "opt_average": "보통",
-            "opt_refreshed": "개운함",
-            "result_title": "당신의 수면 점수는",
-            "level_best": "최상의 수면",
-            "level_good": "좋은 수면",
-            "level_avg": "보통 수면",
-            "level_poor": "개선이 필요한 수면"
-        },
-        "stress": {
-            "q1": "중요한 일을 통제할 수 없다고 느낀 적이 얼마나 있었나요?",
-            "q2": "자신감을 잃은 적이 얼마나 있었나요?",
-            "q3": "일이 당신의 뜻대로 진행되지 않는다고 느낀 적이 얼마나 있었나요?",
-            "q4": "당신의 통제 범위를 벗어난 일 때문에 화가 난 적이 얼마나 있었나요?",
-            "q5": "어려움이 너무 많이 쌓여 극복할 수 없다고 느낀 적이 얼마나 있었나요?",
-            "opt_0": "전혀 없음 (0점)",
-            "opt_1": "거의 없음 (1점)",
-            "opt_2": "때때로 (2점)",
-            "opt_3": "자주 (3점)",
-            "opt_4": "매우 자주 (4점)",
-            "result_title": "당신의 스트레스 점수는",
-            "level_low": "낮은 스트레스",
-            "level_moderate": "보통 스트레스",
-            "level_high": "높은 스트레스",
-            "level_very_high": "매우 높은 스트레스"
-        },
-        "vo2": {
-            "label_resting_hr": "안정 시 심박수 (bpm)",
-            "result_title": "예상 VO2 Max",
-            "level_very_low": "매우 낮음",
-            "level_low": "낮음",
-            "level_fair": "보통",
-            "level_good": "좋음",
-            "level_excellent": "매우 좋음",
-            "msg_no_data": "해당 연령대 데이터 없음"
-        },
-        "water": {
-            "opt_normal": "보통",
-            "opt_active": "운동선수/활동량 많음",
-            "result_title": "하루 권장 물 섭취량",
-            "result_sum": "합계: {{sum}}",
-            "result_count": "개수: {{count}}"
+        "metabolism": {
+            "desc": "기초대사량(BMR)과 활동 대사량(TDEE)을 계산하여 하루 필요 칼로리를 확인합니다.",
+            "opt_male": "남성",
+            "opt_female": "여성",
+            "opt_sedentary": "운동 안 함 (사무직)",
+            "opt_light": "가벼운 활동 (주 1-3회 운동)",
+            "opt_moderate": "보통 활동 (주 3-5회 운동)",
+            "opt_active": "많은 활동 (주 6-7회 운동)",
+            "opt_very_active": "매우 많은 활동 (격렬한 운동/육체노동)"
         }
     },
     "school": {
@@ -348,6 +603,19 @@
             "result_header": "GPA 계산 결과",
             "result_total_credits": "총 {{credits}}학점 이수",
             "msg_disclaimer": "※ 위 계산 결과는 입력된 성적을 바탕으로 한 산술 평균값입니다."
+        },
+        "gpa_converter": {
+            "title": "GPA Change",
+            "desc": "학점 체계 간 변환",
+            "label_gpa": "변환할 학점",
+            "placeholder_gpa": "예: 3.7 ( / {{scale}})",
+            "label_current_scale": "현재 학점 기준",
+            "label_target_scale": "변환할 학점 기준",
+            "result": "변환 결과",
+            "scale_4_5": "4.5 만점",
+            "scale_4_3": "4.3 만점",
+            "scale_4_0": "4.0 만점",
+            "scale_100": "100점 만점"
         },
         "grade_converter": {
             "desc": "점수를 학점/GPA로 변환합니다.",
@@ -378,10 +646,11 @@
         "converter": "변환기"
     },
     "common": {
-        "convert": "변환하기",
+        "convert": "변환",
         "calculate": "계산하기",
         "result": "변환 결과",
         "calculation_result": "계산 결과",
+        "reset": "초기화",
         "from": "변환 전",
         "to": "변환 후",
         "input_value": "변환할 값",
@@ -392,22 +661,27 @@
         "from_currency": "변환 전 통화",
         "to_currency": "변환 후 통화",
         "based_on": "기준",
+        "select_option": "선택해주세요",
         "total_amount": "총 금액",
         "num_people": "인원 수",
         "per_person_amount": "1인당 부담할 금액",
         "people_count": "명",
         "show_more": "더보기",
-        "show_less": "간략히"
+        "show_less": "간략히",
+        "tools_count": "{{count}}개의 도구"
     },
     "currency": {
-        "KRW": "대한민국 원",
+        "KRW": "USD",
         "USD": "미국 달러",
         "EUR": "유로",
         "JPY": "일본 옌",
         "CNY": "중국 위안",
-        "KRW_symbol": "원"
+        "KRW_symbol": "$",
+        "symbol": "$"
     },
     "unit": {
+        "percent": "%",
+        "year": "년",
         "mm": "밀리미터 (mm)",
         "cm": "센티미터 (cm)",
         "m": "미터 (m)",
@@ -455,6 +729,9 @@
         "mrad": "밀리라디안 (mrad)",
         "n": "뉴턴 (N)",
         "kgf": "킬로그램힘 (kgf)",
+        "people": "명",
+        "day": "일",
+        "year_anniversary": "주년",
         "lbf": "파운드힘 (lbf)",
         "w": "와트 (W)",
         "kw": "킬로와트 (kW)",
@@ -469,32 +746,47 @@
         "gal": "갤런 (gal)",
         "cup": "컵 (cup)",
         "floz": "액량 온스 (fl oz)",
-        "doe": "되"
+        "doe": "되",
+        "age": "(세)"
     },
     "desc": {
-        "length": "미터, 인치, 피트를 쉽게 변환!",
-        "weight": "그램, 킬로그램, 파운드를 쉽게 변환!",
+        "length": "미터, 인치, 피트를 쉽게 Change!",
+        "weight": "그램, 킬로그램, 파운드를 쉽게 Change!",
         "exchange": "실시간 환율로 정확하게!",
         "dutch-pay": "N분할, 개별 금액 분담",
-        "area": "제곱미터, 평, 에이커를 쉽게 변환!",
-        "time": "초, 분, 시간을 쉽게 변환!",
-        "speed": "m/s, km/h, mph를 쉽게 변환!",
-        "data-storage": "바이트, KB, MB, GB를 쉽게 변환!",
-        "energy": "줄, 칼로리, 와트시를 쉽게 변환!",
-        "pressure": "파스칼, 바, psi를 쉽게 변환!",
-        "angle": "도, 라디안, 그라디안을 쉽게 변환!",
-        "force": "뉴턴, 킬로그램힘을 쉽게 변환!",
-        "power": "와트, 킬로와트, 마력을 쉽게 변환!",
-        "frequency": "헤르츠, 킬로헤르츠, rpm을 쉽게 변환!",
-        "volume": "리터, 갤런, 컵을 쉽게 변환!"
+        "area": "제곱미터, 평, 에이커를 쉽게 Change!",
+        "time": "초, 분, 시간을 쉽게 Change!",
+        "speed": "m/s, km/h, mph를 쉽게 Change!",
+        "data-storage": "바이트, KB, MB, GB를 쉽게 Change!",
+        "energy": "줄, 칼로리, 와트시를 쉽게 Change!",
+        "pressure": "파스칼, 바, psi를 쉽게 Change!",
+        "angle": "도, 라디안, 그라디안을 쉽게 Change!",
+        "force": "뉴턴, 킬로그램힘를 쉽게 Change!",
+        "power": "와트, 킬로와트, 마력을 쉽게 Change!",
+        "frequency": "헤르츠, 킬로헤르츠, rpm을 쉽게 Change!",
+        "volume": "리터, 갤런, 컵을 쉽게 Change!"
     },
     "category": {
-        "unit-conversion": "단위 변환기",
+        "unit-conversion": "단위 Change",
         "finance": "금융 계산기",
         "real-estate": "부동산 툴",
         "lifestyle": "생활 편의",
         "health": "건강/피트니스",
         "education": "교육/학습"
+    },
+    "math": {
+        "average": {
+            "desc": "입력한 숫자들의 평균값을 계산합니다.",
+            "placeholder_number": "숫자 입력 (예: 85)",
+            "result_average": "평균값",
+            "result_sum": "합계: {{sum}}",
+            "result_count": "개수: {{count}}개"
+        },
+        "percentage": {
+            "desc": "전체 값과 비율을 입력하여 퍼센트를 계산합니다.",
+            "label_total": "전체 값",
+            "label_rate": "비율 (%)"
+        }
     },
     "tool": {
         "length": "길이",
@@ -552,14 +844,14 @@
         "water-intake": "물 섭취량",
         "vo2-max": "최대산소섭취량",
         "sleep-score": "수면 점수",
-        "stress-level": "스트레스 수치",
+        "stress-level": "스트레스 수준",
         "health-risk": "건강 위험도",
         "biological-age": "생체 나이",
         "grade": "학점",
         "average": "평균",
-        "gpa": "GPA 변환",
+        "gpa": "GPA Change",
         "percentage": "퍼센트",
-        "grade-converter": "학점 변환",
+        "grade-converter": "학점 Change",
         "grade-predictor": "성적 예측",
         "periodic-table": "주기율표",
         "math-formulas": "수학 공식",
@@ -593,7 +885,7 @@
                 },
                 "photosynthesis": {
                     "word": "광합성",
-                    "meaning": "빛 에너지를 화학 에너지로 변환",
+                    "meaning": "빛 에너지를 화학 에너지로 Change",
                     "desc": "식물이 빛 에너지를 이용하여 이산화탄소와 물로부터 포도당과 산소를 만드는 과정입니다."
                 },
                 "homeostasis": {
@@ -862,7 +1154,7 @@
                 },
                 "mass_energy": {
                     "title": "질량-에너지 등가 원리",
-                    "desc": "질량과 에너지는 서로 변환될 수 있다 (c는 광속)"
+                    "desc": "질량과 에너지는 서로 Change될 수 있다 (c는 광속)"
                 },
                 "photoelectric": {
                     "title": "광전 효과 (광자 에너지)",
@@ -1141,7 +1433,7 @@
         }
     },
     "worldmap": {
-        "title": "세계 지도 정보",
+        "title": "세계 지도",
         "desc": "주요 국가의 위치와 핵심 정보를 학습하세요.",
         "placeholder": "국가명, 수도 검색...",
         "capital": "수도",
@@ -1208,5 +1500,23 @@
             "canberra": "캔버라",
             "cairo": "카이로"
         }
+    },
+    "date": {
+        "select_date": "날짜 선택",
+        "select_month": "월 선택",
+        "select_year": "년도 선택",
+        "days": [
+            "일",
+            "월",
+            "화",
+            "수",
+            "목",
+            "금",
+            "토"
+        ],
+        "year_suffix": "년",
+        "month_suffix": "월",
+        "day_suffix": "일",
+        "confirm_selection": "{{year}}년 {{month}}월 {{day}}일 선택"
     }
 }

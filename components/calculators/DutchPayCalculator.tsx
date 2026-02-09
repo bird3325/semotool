@@ -36,9 +36,9 @@ const DutchPayCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl text-white shadow-lg bg-gradient-to-br from-cyan-400 to-cyan-600">
                 <div className="flex items-center space-x-3">
                     <Users size={28} />
-                    <h2 className="text-2xl font-bold">{t('tool.dutch_pay')} {t('suffix.calculator')}</h2>
+                    <h2 className="text-2xl font-bold">{t('tool.dutch-pay')} {t('suffix.calculator')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">{t('math.dutch_pay.desc')}</p>
+                <p className="mt-1 opacity-90">{t('lifestyle.dutch_pay.desc')}</p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md space-y-6">
@@ -56,7 +56,7 @@ const DutchPayCalculator: React.FC = () => {
                     <AmountUnit value={totalAmount} />
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">{t('common.num_people')}</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">{t('lifestyle.dutch_pay.label_people_count')}</label>
                     <div className="flex items-center justify-between p-2 border border-gray-300 rounded-lg">
                         <button onClick={decrementPeople} className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"><Minus size={20} /></button>
                         <span className="text-2xl font-bold w-16 text-center">{numPeople}{t('unit.people')}</span>
@@ -73,12 +73,12 @@ const DutchPayCalculator: React.FC = () => {
 
             {perPersonAmount !== null && (
                 <div className="p-6 bg-gray-50 rounded-xl text-center">
-                    <p className="text-sm text-gray-600">{t('math.dutch_pay.result_per_person')}</p>
+                    <p className="text-sm text-gray-600">{t('lifestyle.dutch_pay.result_per_person')}</p>
                     <p className="text-4xl font-bold text-blue-600 my-2">
                         {Math.ceil(perPersonAmount).toLocaleString()}{t('currency.KRW')}
                     </p>
                     <p className="text-xs text-gray-500 mt-2">
-                        {t('math.dutch_pay.msg_detail', { total: totalAmount, count: numPeople })}
+                        {t('lifestyle.dutch_pay.msg_detail', { total: totalAmount, count: numPeople })}
                     </p>
                 </div>
             )}

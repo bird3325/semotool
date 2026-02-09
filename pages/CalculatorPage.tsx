@@ -212,7 +212,7 @@ const CalculatorPage: React.FC<CalculatorPageProps> = ({ favorites, toggleFavori
 
   const converterIds = [
     'length', 'weight', 'temperature', 'area', 'volume', 'time', 'gpa', 'data-storage',
-    'speed', 'energy', 'pressure', 'angle', 'force', 'power', 'frequency', 'grade-converter'
+    'speed', 'energy', 'pressure', 'angle', 'force', 'power', 'frequency'
   ];
 
   // Specific handling if some popular tools have nice names, but generally 'Name Calculator' works.

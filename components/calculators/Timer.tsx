@@ -58,30 +58,30 @@ const Timer: React.FC = () => {
                     <TimerIcon size={28} />
                     <h2 className="text-2xl font-bold">{t('tool.timer')}</h2>
                 </div>
-                <p className="mt-1 opacity-90">{t('date.timer.desc')}</p>
+                <p className="mt-1 opacity-90">{t('lifestyle.timer.desc')}</p>
             </div>
 
             {!isTimerSet ? (
                 <div className="bg-white p-6 md:p-10 rounded-xl shadow-md space-y-8">
                     <div className="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6 text-2xl sm:text-3xl md:text-5xl font-mono">
                         <div className="flex flex-col items-center">
-                            <span className="text-[10px] font-black text-gray-400 uppercase mb-2 tracking-widest">{t('date.timer.hours')}</span>
+                            <span className="text-[10px] font-black text-gray-400 uppercase mb-2 tracking-widest">{t('lifestyle.timer.hours')}</span>
                             <TimeInput value={hours} onChange={setHours} max={23} />
                         </div>
                         <span className="pt-6 text-gray-300">:</span>
                         <div className="flex flex-col items-center">
-                            <span className="text-[10px] font-black text-gray-400 uppercase mb-2 tracking-widest">{t('date.timer.mins')}</span>
+                            <span className="text-[10px] font-black text-gray-400 uppercase mb-2 tracking-widest">{t('lifestyle.timer.mins')}</span>
                             <TimeInput value={minutes} onChange={setMinutes} max={59} />
                         </div>
                         <span className="pt-6 text-gray-300">:</span>
                         <div className="flex flex-col items-center">
-                            <span className="text-[10px] font-black text-gray-400 uppercase mb-2 tracking-widest">{t('date.timer.secs')}</span>
+                            <span className="text-[10px] font-black text-gray-400 uppercase mb-2 tracking-widest">{t('lifestyle.timer.secs')}</span>
                             <TimeInput value={seconds} onChange={setSeconds} max={59} />
                         </div>
                     </div>
                     <button onClick={handleStart} className="w-full p-5 bg-cyan-500 hover:bg-cyan-600 text-white font-black rounded-2xl text-xl transition-all shadow-lg shadow-cyan-100 flex items-center justify-center space-x-2 active:scale-95">
                         <Play size={24} fill="currentColor" />
-                        <span>{t('date.timer.start')}</span>
+                        <span>{t('lifestyle.timer.start')}</span>
                     </button>
                 </div>
             ) : (
